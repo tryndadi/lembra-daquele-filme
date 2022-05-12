@@ -9,6 +9,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { ContainerGeral } from "./style";
 import {fakeApiAccess} from '../../services/api'
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
+
+
+
 
 const RegisterPage = () => {
   const sechema = yup.object().shape({
@@ -47,10 +51,9 @@ const RegisterPage = () => {
   return (
     <>
       <ContainerGeral>
-        <a className="ancora-logo" href="/">
-          {/*MANDAR PRA LANDING PAGE ============================= */}
+        <Link to='/' className="ancora-logo">
           <img src={logo} alt="Logo" />
-        </a>
+        </Link>
 
         <div className="cont-form">
 
@@ -97,11 +100,9 @@ const RegisterPage = () => {
 
           <span className="mensagem">
             Possui uma conta?
-            <a href="/">
-              {" "}
-              {/*COLOCAR O CAMINHO=============================*/}
+            <Link to='/login'>
               <strong>Conecte-se</strong>
-            </a>
+            </Link>
           </span>
         </div>
 

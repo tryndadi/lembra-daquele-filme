@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { css } from "styled-components";
 
-// MUDAR CORES PARA VARIAVEIS !!!!
+
 
 
 export const InputContainer = styled.div`
@@ -16,7 +16,7 @@ export const InputContainer = styled.div`
 
     background-color: transparent;
 
-    border: 1px solid #E2DFDF; //TROCAR COR POR VAR
+    border: 1px solid ${props => props.theme.colors.grey.light};
     border-radius: 10px;
 
     display: flex;
@@ -37,24 +37,24 @@ export const InputContainer = styled.div`
       outline: none;
 
       ::placeholder{
-        color: #E2DFDF;
+        color: ${props => props.theme.colors.grey.light};
 
         filter: opacity(55%);
       }
     }
 
     svg{
-      color: #E2DFDF; //TROCAR COR POR VAR
+      color: ${props => props.theme.colors.grey.light};
     }
 
     ${
       props => props.isErrored && css`
         margin-top: 5px;
 
-        border-color: #ff9b54;
+        border-color: ${props => props.theme.colors.text.error};
 
         svg{
-          color: #ff9b54;
+          color: ${props => props.theme.colors.text.error};
         }
       `
     }
