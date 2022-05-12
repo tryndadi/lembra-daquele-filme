@@ -34,6 +34,8 @@ export const InputContainer = styled.div`
 
       border: none;
 
+      outline: none;
+
       ::placeholder{
         color: #E2DFDF;
 

@@ -5,7 +5,6 @@ import { InputContainer } from "./style";
 
 const InputComponent = ({icon: Icon, error, register, name, ...rest}) => {
 
-  console.log();
 
   return (
     <>
