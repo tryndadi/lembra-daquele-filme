@@ -21,8 +21,6 @@ const LoginPage = () => {
     const {register, handleSubmit, formState: {errors}} = useForm({resolver: yupResolver(schema)})
 
     const onSubmit = ({email, password}) => {
-        
-        console.log({email, password})
 
         const infoUserLogin = {
             email,
