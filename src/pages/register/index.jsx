@@ -11,6 +11,9 @@ import {fakeApiAccess} from '../../services/api'
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 
+
+
+
 const RegisterPage = () => {
   const sechema = yup.object().shape({
     name: yup.string().required('Campo obrigatório.').matches(/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/, "Somente letras"),
