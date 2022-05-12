@@ -1,15 +1,12 @@
 import React from "react";
 import { ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 import Routes from "./Routes";
-
-
-
 
 function App() {
   return (
     <>
-      <Routes/>
+      <Routes />
       <ToastContainer
         position="top-right"
         autoClose={2500}
@@ -20,7 +17,7 @@ function App() {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme='colored'
+        theme="colored"
       />
     </>
   );
