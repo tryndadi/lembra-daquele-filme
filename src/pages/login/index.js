@@ -6,6 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import InputComponent from '../../components/Input'
 import logo from '../../images/logo.png'
 import { ContainerGeral } from "./style" 
+import { toast } from "react-toastify"
 
 const LoginPage = () => {
 
@@ -20,6 +21,8 @@ const LoginPage = () => {
     const onSubmit = (data) => {
 
         console.log(data);
+
+        toast.success("Login bem sucedido")
     
         //LÓGICA DA API
     }
@@ -64,7 +67,7 @@ const LoginPage = () => {
 
                     <span className="mensagem">Não possui uma conta? 
                         <a href="/"> {/*CAMINHO REGISTER PAGE =============*/}
-                            <strong>Cadastre-se</strong>
+                            <strong> Cadastre-se</strong>
                         </a>
                     </span>
                 </div>
