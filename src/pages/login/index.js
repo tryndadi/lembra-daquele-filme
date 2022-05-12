@@ -5,8 +5,9 @@ import * as yup from "yup"
 import { yupResolver } from '@hookform/resolvers/yup'
 import InputComponent from '../../components/Input'
 import logo from '../../images/logo.png'
-import { ContainerGeral } from "./style" 
+import { Main } from "./style" 
 import { toast } from "react-toastify"
+import { Link } from "react-router-dom"
 
 const LoginPage = () => {
 
@@ -30,13 +31,13 @@ const LoginPage = () => {
     return (
 
         <>
-            <ContainerGeral>
+            <Main>
 
-                <a className="ancora-logo" href="/"> {/*LandingPage*/}
+                <Link className="ancora-logo" to="/">
 
                     <img src={logo} alt="Logo" />
 
-                </a>
+                </Link>
 
                 <div className="cont-form">
 
@@ -66,14 +67,14 @@ const LoginPage = () => {
                     </form>
 
                     <span className="mensagem">Não possui uma conta? 
-                        <a href="/"> {/*CAMINHO REGISTER PAGE =============*/}
+                        <Link to="/register">
                             <strong> Cadastre-se</strong>
-                        </a>
+                        </Link>
                     </span>
                 </div>
 
                 <span className="copyright">Kenzie Academy Brazil &copy; 2022</span>
-            </ContainerGeral>
+            </Main>
 
         </>
 

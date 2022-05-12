@@ -2,12 +2,12 @@ import styled from "styled-components";
 
 // MUDAR COR POR VARIAVEIS !!!!!!
 
-export const ContainerGeral = styled.div`
+export const Main = styled.div`
 
   width: 100%;
   height: 100vh;
 
-  background: linear-gradient(360deg, rgba(48,25,51,1) 0%, rgba(132,19,56,1) 45%, rgba(171,16,58,1) 89%);
+  background: ${props => props.theme.colors.background.gradient};
 
   display: flex;
   flex-direction: column;
@@ -64,7 +64,7 @@ export const ContainerGeral = styled.div`
         color: #ffffff;
 
         :hover{
-          border-color: #FC094B; //TROCAR COR PELA VAR
+          border-color: ${props => props.theme.colors.card.light}; //TROCAR COR PELA VAR
 
           background-color: rgba(252, 9, 75, 0.26);
         }
@@ -85,7 +85,7 @@ export const ContainerGeral = styled.div`
         color: #ffffff;
 
         :hover{
-          color: #FC094B;
+          color: ${props => props.theme.colors.card.light};
         }
       }
     }
