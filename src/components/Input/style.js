@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { css } from "styled-components";
 
 // MUDAR CORES PARA VARIAVEIS !!!!
 
@@ -6,39 +7,55 @@ import styled from "styled-components";
 export const InputContainer = styled.div`
 
   width: 100%;
-  height: 30px;
-  margin: 0px 0 15px 0;
-  padding: 0 5px;
 
-  background-color: transparent;
+  .container-input{
+    width: 100%;
+    height: 30px;
+    margin: 0px 0 15px 0;
+    padding: 0 5px;
 
-  border: 1px solid #E2DFDF; //TROCAR COR POR VAR
-  border-radius: 10px;
+    background-color: transparent;
 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    border: 1px solid #E2DFDF; //TROCAR COR POR VAR
+    border-radius: 10px;
 
-  box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    box-sizing: border-box;
 
 
-  input{
-    width: 90%;
+    input{
+      width: 90%;
 
-    background: transparent;
-    color: #ffffff;
+      background: transparent;
+      color: #ffffff;
 
-    border: none;
+      border: none;
 
-    ::placeholder{
-      color: #E2DFDF;
+      ::placeholder{
+        color: #E2DFDF;
 
-      filter: opacity(55%);
+        filter: opacity(55%);
+      }
     }
-  }
 
-  svg{
-    color: #E2DFDF; //TROCAR COR POR VAR
+    svg{
+      color: #E2DFDF; //TROCAR COR POR VAR
+    }
+
+    ${
+      props => props.isErrored && css`
+        margin-top: 5px;
+
+        border-color: #ff9b54;
+
+        svg{
+          color: #ff9b54;
+        }
+      `
+    }
   }
 
 `

@@ -26,7 +26,7 @@ export const ContainerGeral = styled.div`
 
   .cont-form{
     width: 100%;
-    max-width: 300px;
+    max-width: 320px;
 
     display: flex;
     flex-direction: column;
@@ -36,7 +36,7 @@ export const ContainerGeral = styled.div`
     box-sizing: border-box;
 
     h2{
-      font-size: 2em;
+      font-size: 2rem;
 
       margin-bottom: 30px;
 
@@ -72,7 +72,7 @@ export const ContainerGeral = styled.div`
     }
 
     span.mensagem{
-      font-size: 0.8em;
+      font-size: 0.8rem;
 
       margin-top: 15px;
 
@@ -93,7 +93,7 @@ export const ContainerGeral = styled.div`
   }
 
   .copyright{
-    font-size: 0.6em;
+    font-size: 0.6rem;
 
     margin-bottom: 5px;
 

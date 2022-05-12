@@ -57,6 +57,7 @@ const RegisterPage = () => {
               placeholder='Nome'
               register={register}
               name='name'
+              error={errors.name && errors.name.message}
             />
 
             <InputComponent
@@ -65,6 +66,7 @@ const RegisterPage = () => {
               placeholder='Email'
               register={register}
               name='email'
+              error={errors.email && errors.email.message}
             />
 
             <InputComponent
@@ -73,6 +75,7 @@ const RegisterPage = () => {
               placeholder='Senha'
               register={register}
               name='password'
+              error={errors.password && errors.password.message}
             />
 
             <InputComponent
@@ -81,6 +84,7 @@ const RegisterPage = () => {
               placeholder='Confime a Senha'
               register={register}
               name='confirmPassword'
+              error={errors.confirmPassword && errors.confirmPassword.message}
             />
 
             <button type="submit">Cadastrar</button>

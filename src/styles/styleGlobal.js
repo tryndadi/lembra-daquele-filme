@@ -51,15 +51,22 @@ export default createGlobalStyle`
 
   //==============================
 
+  body{
+    font-family: 'Poppins', sans-serif;
+
+    cursor: default;
+  }
+
   button{
     cursor: pointer;
 
     transition: all 0.3s ease;
   }
 
-  body{
-    font-family: 'Poppins', sans-serif;
+  .erro{
+    font-size: 0.8rem;
 
-    cursor: default;
+    color: #ff9b54;
   }
+
 `

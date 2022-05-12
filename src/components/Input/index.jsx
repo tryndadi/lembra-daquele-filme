@@ -3,16 +3,23 @@ import { InputContainer } from "./style";
 
 
 
-const InputComponent = ({icon: Icon, register, name, ...rest}) => {
+const InputComponent = ({icon: Icon, error, register, name, ...rest}) => {
 
   console.log();
 
   return (
     <>
-      <InputContainer>
-        <input {...register(name)} {...rest} />
+      <InputContainer  isErrored={!!error}>
+        {
+        !!error && 
+        <span className="erro">{error}</span>
+        }
 
-        <Icon/>
+        <div className="container-input">
+          <input {...register(name)} {...rest} />
+
+          <Icon/>
+        </div>
       </InputContainer>
     </>
   )
