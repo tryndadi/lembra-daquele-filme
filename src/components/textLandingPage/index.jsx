@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 import React from "react";
+=======
+
+import react from "react"
+>>>>>>> 0923023ed589fbb28175a073c0daf15540408524
 import { Container } from "./styles"
 import landingPage_2 from "../../assets/img/landingPage_2.svg"
 import landingPage_3 from "../../assets/img/landingPage_3.svg"
@@ -45,3 +50,4 @@ const TextLandingPage = () => {
 }
 
 export default TextLandingPage
+
