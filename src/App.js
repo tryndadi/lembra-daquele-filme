@@ -1,12 +1,13 @@
 import React from "react";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import LandingPage from "./pages/landingPage";
-import RegisterPage from "./pages/register";
+import Routes from "./Routes";
+
 
 function App() {
   return (
     <>
+     <Routes/>
       <ToastContainer
         position="top-right"
         autoClose={2500}
@@ -19,8 +20,6 @@ function App() {
         pauseOnHover
         theme='colored'
       />
-      <RegisterPage />
-      <LandingPage />
     </>
   );
 }
