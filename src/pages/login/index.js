@@ -8,6 +8,7 @@ import logo from '../../images/logo.png'
 import { Main } from "./style" 
 import { toast } from "react-toastify"
 import { Link } from "react-router-dom"
+import { fakeApiAccess } from "../../services/api"
 
 const LoginPage = () => {
 
@@ -19,13 +20,24 @@ const LoginPage = () => {
 
     const {register, handleSubmit, formState: {errors}} = useForm({resolver: yupResolver(schema)})
 
-    const onSubmit = (data) => {
+    const onSubmit = ({email, password}) => {
+        
+        console.log({email, password})
 
-        console.log(data);
+        const infoUserLogin = {
+            email,
+            password,
+        }
 
-        toast.success("Login bem sucedido")
-    
-        //LÓGICA DA API
+        fakeApiAccess
+        .post("/api/login", JSON.stringify(infoUserLogin))
+        .then((res) => {
+
+            if(res.status === 200)
+            toast.success("Login bem sucedido!")
+        })
+        .catch((res) => toast.error("Email ou senha errados!"))
+        
     }
 
     return (
