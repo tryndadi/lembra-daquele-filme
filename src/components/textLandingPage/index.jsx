@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 import { Container } from "./styles"
 import landingPage_2 from "../../assets/img/landingPage_2.svg"
 import landingPage_3 from "../../assets/img/landingPage_3.svg"
