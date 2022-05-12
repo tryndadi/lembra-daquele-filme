@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup'
 import { ContainerGeral } from "./style";
+import {fakeApiAccess} from '../../services/api'
 
 
 
@@ -14,9 +15,13 @@ import { ContainerGeral } from "./style";
 const RegisterPage = () => {
 
   const sechema = yup.object().shape({
-    name: yup.string().required('Campo obrigatório.'),
+    name: yup.string().required('Campo obrigatório.').matches(/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/, "Somente letras"),
     email: yup.string().required('Campo obrigatório.').email('Digite um email válido.'),
-    password: yup.string().required('Campo obrigatório.').matches(/^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/, "A senha deve conter: Letras maiúsculas e minúsculas, símbolos e pelo menos 8 caracteres."),
+    password: yup.string().required('Campo obrigatório.').min(8, "Conter 8 ou mais caracteres")
+    .matches(/(?=.*?[a-z])/, "Conter ao menos uma letra minúscula")
+    .matches(/(?=.*?[A-Z])/, "Conter ao menos uma letra maiúscula")
+    .matches(/(?=.*?[0-9])/, "Conter ao menos um número")
+    .matches(/(?=.*?[#?!@$%^&*-])/, "Conter ao menos um símbolo"),
     confirmPassword: yup.string().required("Campo obrigatório.").oneOf([yup.ref("password")], "Senhas diferentes."),
   })
 
@@ -29,13 +34,20 @@ const RegisterPage = () => {
     resolver: yupResolver(sechema)
   })
 
-  const onSubmit = (data) => {
+  const onSubmit = ({name, email, password}) => {
 
-    console.log(data);
+    const infoUserRegister = {
+      name,
+      email,
+      password
+    }
 
-    // FAZER A LÓGICA
-    // DA REQUISIÇÃO
-    // NA API
+    console.log(infoUserRegister);
+    console.log(JSON.stringify(infoUserRegister));
+    
+    fakeApiAccess.post('/api/register', JSON.stringify(infoUserRegister))
+    .then((resp) => console.log(resp))
+    .catch((err) => console.log(err))
   }
 
 
@@ -49,7 +61,7 @@ const RegisterPage = () => {
 
         <div className="cont-form">
 
-          <h2>Conecte-se</h2>
+          <h2>Cadastre-se</h2>
 
           <form onSubmit={handleSubmit(onSubmit)}>
             <InputComponent
