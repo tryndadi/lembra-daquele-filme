@@ -1,6 +1,6 @@
-
 import React from "react";
 import { useHistory } from "react-router-dom";
+
 
 const ButtonToPage = ({route, children}) => {
     const history = useHistory()
