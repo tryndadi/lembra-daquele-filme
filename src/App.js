@@ -1,5 +1,12 @@
+import React from "react";
+import RegisterPage from "./pages/register";
+
 function App() {
-  return <h1>Hello, world!</h1>;
+  return (
+    <>
+      <RegisterPage />
+    </>
+  );
 }
 
 export default App;
