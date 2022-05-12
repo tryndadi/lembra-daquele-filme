@@ -8,6 +8,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ContainerGeral } from "./style";
 import {fakeApiAccess} from '../../services/api'
+import { toast } from "react-toastify";
 
 const RegisterPage = () => {
   const sechema = yup.object().shape({
@@ -36,13 +37,10 @@ const RegisterPage = () => {
       email,
       password
     }
-
-    console.log(infoUserRegister);
-    console.log(JSON.stringify(infoUserRegister));
     
     fakeApiAccess.post('/api/register', JSON.stringify(infoUserRegister))
-    .then((resp) => console.log(resp))
-    .catch((err) => console.log(err))
+    .then((_) => toast.success('Conta cadastrada com sucesso!'))
+    .catch((_) => toast.error('Email já cadastrado.'))
   }
 
 
@@ -50,7 +48,6 @@ const RegisterPage = () => {
     <>
       <ContainerGeral>
         <a className="ancora-logo" href="/">
-          {" "}
           {/*MANDAR PRA LANDING PAGE ============================= */}
           <img src={logo} alt="Logo" />
         </a>
