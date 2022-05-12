@@ -12,7 +12,6 @@ export const tmdbAccess = axios.create({
 
 export const fakeApiAccess = axios.create({
   baseURL: "https://ja-viu-esse-filme.herokuapp.com/",
-  timeout: 5000,
   headers: {
     "Content-Type": "application/json",
   },

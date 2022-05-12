@@ -1,3 +1,5 @@
+
+import React from "react";
 import { useHistory } from "react-router-dom";
 
 const ButtonToPage = ({route, children}) => {
@@ -12,3 +14,4 @@ const ButtonToPage = ({route, children}) => {
 }
 
 export default ButtonToPage
+
