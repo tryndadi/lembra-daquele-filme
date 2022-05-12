@@ -1,0 +1,7 @@
+const TextLandingPage = () => {
+    return (
+        <>
+        
+        </>
+    )
+}
