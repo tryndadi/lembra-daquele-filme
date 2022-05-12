@@ -1,7 +1,10 @@
 import React from "react";
 import ButtonToPage from "../../components/buttonToPage"
 import landingPage_1 from "../../assets/img/landingPage_1.svg"
+
 import TextLandingPage from "../../components/textLandingPage"
+import FooterLandingPage from "../../components/footerLandingPage"
+
 import { Header } from "./styles"
 
 const LandingPage = () => {
@@ -16,6 +19,7 @@ const LandingPage = () => {
         <img src={landingPage_1} alt="Ilustração" />
     </div>
         <TextLandingPage/>
+        <FooterLandingPage/>
     </>
     
  )
