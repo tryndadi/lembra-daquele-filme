@@ -1,4 +1,3 @@
-
 import React from "react";
 import ButtonToPage from "../../components/buttonToPage"
 import landingPage_1 from "../../assets/img/landingPage_1.svg"
