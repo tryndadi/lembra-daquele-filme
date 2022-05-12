@@ -7,24 +7,33 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ContainerGeral } from "./style";
-import {fakeApiAccess} from '../../services/api'
+import { fakeApiAccess } from "../../services/api";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 
-
-
-
 const RegisterPage = () => {
   const sechema = yup.object().shape({
-    name: yup.string().required('Campo obrigatório.').matches(/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/, "Somente letras"),
-    email: yup.string().required('Campo obrigatório.').email('Digite um email válido.'),
-    password: yup.string().required('Campo obrigatório.').min(8, "Conter 8 ou mais caracteres")
-    .matches(/(?=.*?[a-z])/, "Conter ao menos uma letra minúscula")
-    .matches(/(?=.*?[A-Z])/, "Conter ao menos uma letra maiúscula")
-    .matches(/(?=.*?[0-9])/, "Conter ao menos um número")
-    .matches(/(?=.*?[#?!@$%^&*-])/, "Conter ao menos um símbolo"),
-    confirmPassword: yup.string().required("Campo obrigatório.").oneOf([yup.ref("password")], "Senhas diferentes."),
-  })
+    name: yup
+      .string()
+      .required("Campo obrigatório.")
+      .matches(/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/, "Somente letras"),
+    email: yup
+      .string()
+      .required("Campo obrigatório.")
+      .email("Digite um email válido."),
+    password: yup
+      .string()
+      .required("Campo obrigatório.")
+      .min(8, "Conter 8 ou mais caracteres")
+      .matches(/(?=.*?[a-z])/, "Conter ao menos uma letra minúscula")
+      .matches(/(?=.*?[A-Z])/, "Conter ao menos uma letra maiúscula")
+      .matches(/(?=.*?[0-9])/, "Conter ao menos um número")
+      .matches(/(?=.*?[#?!@$%^&*-])/, "Conter ao menos um símbolo"),
+    confirmPassword: yup
+      .string()
+      .required("Campo obrigatório.")
+      .oneOf([yup.ref("password")], "Senhas diferentes."),
+  });
 
   const {
     register,
@@ -34,29 +43,27 @@ const RegisterPage = () => {
     resolver: yupResolver(sechema),
   });
 
-  const onSubmit = ({name, email, password}) => {
-
+  const onSubmit = ({ name, email, password }) => {
     const infoUserRegister = {
       name,
       email,
-      password
-    }
-    
-    fakeApiAccess.post('/api/register', JSON.stringify(infoUserRegister))
-    .then((_) => toast.success('Conta cadastrada com sucesso!'))
-    .catch((_) => toast.error('Email já cadastrado.'))
-  }
+      password,
+    };
 
+    fakeApiAccess
+      .post("/api/register", JSON.stringify(infoUserRegister))
+      .then((_) => toast.success("Conta cadastrada com sucesso!"))
+      .catch((_) => toast.error("Email já cadastrado."));
+  };
 
   return (
     <>
       <ContainerGeral>
-        <Link to='/' className="ancora-logo">
+        <Link to="/" className="ancora-logo">
           <img src={logo} alt="Logo" />
         </Link>
 
         <div className="cont-form">
-
           <h2>Cadastre-se</h2>
 
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -100,8 +107,8 @@ const RegisterPage = () => {
 
           <span className="mensagem">
             Possui uma conta?
-            <Link to='/login'>
-              <strong>Conecte-se</strong>
+            <Link to="/login">
+              <strong> Conecte-se</strong>
             </Link>
           </span>
         </div>
