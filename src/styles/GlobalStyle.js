@@ -52,6 +52,21 @@ const GlobalStyle = createGlobalStyle`
     border-collapse: collapse;
     border-spacing: 0;
   }
+  body{
+    font-family: 'Poppins', sans-serif;
+    cursor: default;
+  }
+
+  button{
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+  }
+
+  .erro{
+    font-size: 0.8rem;
+    color: #ff9b54;
+  }
 `;
 
 export default GlobalStyle;

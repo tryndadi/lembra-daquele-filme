@@ -1,10 +1,10 @@
-import StyleGlobal from './styles/styleGlobal';
-import RegisterPage from './pages/register';
+import React from "react";
+import RegisterPage from "./pages/register";
 
 function App() {
   return (
-    <>    
-      <RegisterPage/>
+    <>
+      <RegisterPage />
     </>
   );
 }
