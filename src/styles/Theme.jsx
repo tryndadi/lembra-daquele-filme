@@ -7,13 +7,14 @@ const theme = {
       main: "rgba(132, 19, 56, 1)",
       light: "rgba(171, 16, 58, 1)",
       dark: "rgba(48, 25, 51, 1)",
+      gradient: "linear-gradient(360deg, rgba(48,25,51,1) 0%, rgba(132,19,56,1) 45%, rgba(171,16,58,1) 89%)",
     },
     modal: {
       main: "rgba(102, 21, 54, 0.92)",
     },
     card: {
       main: "rgba(147, 17, 53, 1)",
-      light: "rgba(173, 115, 55, 1)",
+      light: "rgba(252, 9, 75, 1)",
       dark: "rgba(123, 19, 52, 1)",
     },
     grey: {
@@ -24,6 +25,7 @@ const theme = {
     text: {
       main: "rgba(255, 255, 255, 1)",
       secondary: "rgba(184, 183, 180, 1)",
+      error: "rgba(255, 155, 84, 1)"
     },
   },
 };

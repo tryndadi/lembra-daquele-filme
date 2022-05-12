@@ -1,16 +1,15 @@
 import React from "react";
 import { ToastContainer } from "react-toastify";
-import LoginPage from "./pages/login";
-import RegisterPage from "./pages/register";
-import 'react-toastify/dist/ReactToastify.css';
-
+import "react-toastify/dist/ReactToastify.css";
+import Routes from "./Routes";
 
 function App() {
   return (
     <>
-      <ToastContainer 
+      <Routes />
+      <ToastContainer
         position="top-right"
-        autoClose={5000}
+        autoClose={2500}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
@@ -18,8 +17,8 @@ function App() {
         pauseOnFocusLoss
         draggable
         pauseOnHover
+        theme="colored"
       />
-      <LoginPage />
     </>
   );
 }
