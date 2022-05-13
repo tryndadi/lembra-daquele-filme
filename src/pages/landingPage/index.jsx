@@ -11,10 +11,10 @@ import { Header, LogoContainer, TopPageContainer, Container } from "./styles"
 const LandingPage = () => {
  return (
     <Container>
-    <Header>
-        <ButtonToPage route='/login'>Entrar</ButtonToPage>
-        <ButtonToPage route='/dashboard'>Dashboard (provisorio)</ButtonToPage>
-    </Header>    
+
+        <Header>
+
+
     <TopPageContainer>
         <div>
             <LogoContainer>
@@ -23,10 +23,24 @@ const LandingPage = () => {
             </LogoContainer>           
             
             <ButtonToPage route='/register'>Faça seu cadastro</ButtonToPage>
+
             <ButtonToPage route='/login'>Entrar</ButtonToPage>
-        </div>        
-        <img src={landingPage_1} alt="Ilustração" />
-    </TopPageContainer>
+        </Header>    
+        <TopPageContainer>
+            <div>
+                <LogoContainer>
+                    <img className="img_logo" src={logo} alt=''/>
+                    <h2>Sua biblioteca de filmes ...</h2>                
+                </LogoContainer>           
+                
+                <ButtonToPage route='/register'>Faça seu cadastro</ButtonToPage>
+                <div className="div_button-login">
+                <ButtonToPage route='/login'>Entrar</ButtonToPage>
+                </div>
+                
+            </div>        
+            <img src={landingPage_1} alt="Ilustração" />
+        </TopPageContainer>
         <TextLandingPage/>
         <FooterLandingPage/>
     </Container>

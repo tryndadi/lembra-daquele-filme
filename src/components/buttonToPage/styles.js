@@ -16,9 +16,9 @@ export const ButtonPage = styled.button`
         max-width: 400px;
         background-color: ${props => props.login ? "transparent" : "#fff"};
         border: 2px solid #fff;
-        color: ${props => props.login ? "#fff" : "#FC094B"};
+        color: ${props => props.login ? "#fff" : "#FC094B"};        
         &:hover{
-            background-color: #FC094B;
+            background-color:  ${props => props.login ? "rgba(252, 9, 75, 0.26)" : "#FC094B"};
             border: 2px solid #FC094B;
             color: #fff;
         }
