@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form"
 import * as yup from "yup"
 import { yupResolver } from '@hookform/resolvers/yup'
 import InputComponent from '../../components/Input'
-import logo from '../../assets/img/logo.svg'
+import logo from '../../assets/img/logoCompleta.svg'
 import { Main } from "./style" 
 import { toast } from "react-toastify"
 import { Link } from "react-router-dom"

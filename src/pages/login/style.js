@@ -9,17 +9,19 @@ export const Main = styled.div`
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 
   box-sizing: border-box;
 
   .ancora-logo{
 
-    margin-bottom: 5rem;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
 
     img{
-      width: 140px;
+      width: 100%;
+      max-width: 12rem;
     }
   }
 
@@ -33,6 +35,9 @@ export const Main = styled.div`
     align-items: center;
 
     box-sizing: border-box;
+
+    margin-top: 9rem;
+    margin-bottom: 7rem;
 
     h2{
       font-size: 2rem;
@@ -104,8 +109,13 @@ export const Main = styled.div`
     color: #ffffff;
   }
 
-  @media screen and (max-width: 550px) {
+  @media screen and (max-width: 700px) {
     
+
+    .cont-form{
+      margin-top: 4rem;
+    }
+
     .ancora-logo{
       align-self: center;
     }
