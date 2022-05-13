@@ -30,6 +30,7 @@ export const LogoContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     box-sizing: border-box;
     .img_logo{
         width: 7rem;
@@ -43,13 +44,17 @@ export const LogoContainer = styled.div`
         margin: 1rem;
     }
     @media screen and (min-width: 769px){ 
+        flex-direction: column-reverse;
         width: 100%;
         .img_logo{
             width: 80%;
+            margin-bottom: 2rem;
         }
         h2{
             margin: 2rem;
-            width: 60%;
+            width: 100%;
+            color: #fff;
+            margin-bottom: 4rem;
         }
     }
 `
