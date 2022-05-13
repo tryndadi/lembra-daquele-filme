@@ -22,7 +22,10 @@ const LandingPage = () => {
             </LogoContainer>           
             
             <ButtonToPage route='/register'>Faça seu cadastro</ButtonToPage>
+            <div className="div_button-login">
             <ButtonToPage route='/login'>Entrar</ButtonToPage>
+            </div>
+            
         </div>        
         <img src={landingPage_1} alt="Ilustração" />
     </TopPageContainer>
