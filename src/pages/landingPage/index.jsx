@@ -13,6 +13,7 @@ const LandingPage = () => {
     <Container>
     <Header>
         <ButtonToPage route='/login'>Entrar</ButtonToPage>
+        <ButtonToPage route='/dashboard'>Dashboard (provisorio)</ButtonToPage>
     </Header>    
     <TopPageContainer>
         <div>
