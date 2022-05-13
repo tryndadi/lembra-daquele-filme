@@ -11,7 +11,19 @@ import { Header, LogoContainer, TopPageContainer, Container } from "./styles"
 const LandingPage = () => {
  return (
     <Container>
+
         <Header>
+
+
+    <TopPageContainer>
+        <div>
+            <LogoContainer>
+                <img src={logo} alt=''/>
+                <h2>Sua biblioteca de filmes ...</h2>                
+            </LogoContainer>           
+            
+            <ButtonToPage route='/register'>Faça seu cadastro</ButtonToPage>
+
             <ButtonToPage route='/login'>Entrar</ButtonToPage>
         </Header>    
         <TopPageContainer>

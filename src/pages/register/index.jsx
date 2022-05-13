@@ -1,6 +1,6 @@
 import InputComponent from "../../components/Input";
 import { FaUserAlt, FaEnvelope, FaKey } from "react-icons/fa";
-import logo from "../../images/logo.png";
+import logo from "../../assets/img/logo.svg";
 
 import React from "react";
 import { useForm } from "react-hook-form";
