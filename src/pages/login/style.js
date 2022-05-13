@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-// MUDAR COR POR VARIAVEIS !!!!!!
-
 export const Main = styled.div`
 
   width: 100%;
@@ -11,16 +9,17 @@ export const Main = styled.div`
 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 
   box-sizing: border-box;
 
   .ancora-logo{
-    align-self: flex-end;
+
+    margin-bottom: 5rem;
 
     img{
-      width: 50px;
+      width: 140px;
     }
   }
 
@@ -64,7 +63,7 @@ export const Main = styled.div`
         color: #ffffff;
 
         :hover{
-          border-color: ${props => props.theme.colors.card.light}; //TROCAR COR PELA VAR
+          border-color: ${props => props.theme.colors.card.light};
 
           background-color: rgba(252, 9, 75, 0.26);
         }
@@ -72,6 +71,7 @@ export const Main = styled.div`
     }
 
     span.mensagem{
+
       font-size: 0.8rem;
 
       margin-top: 15px;
@@ -93,6 +93,10 @@ export const Main = styled.div`
   }
 
   .copyright{
+
+    position: absolute;
+    bottom: 0px;
+
     font-size: 0.6rem;
 
     margin-bottom: 5px;

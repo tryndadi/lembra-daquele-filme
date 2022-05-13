@@ -60,7 +60,7 @@ const GlobalStyle = createGlobalStyle`
   button{
     cursor: pointer;
 
-    transition: all 0.3s ease;
+    transition: all 0.5s ease;
   }
 
   .erro{
