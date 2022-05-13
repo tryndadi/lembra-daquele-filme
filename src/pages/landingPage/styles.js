@@ -1,11 +1,17 @@
 import styled from 'styled-components'
 
+
 export const Container = styled.div`
     color: rgba(226, 223, 223, 1);
     width: 100vw;
     min-height: 100vh;
     height: fit-content;
     background: linear-gradient(360deg, rgba(48,25,51,1) 0%, rgba(132,19,56,1) 45%, rgba(171,16,58,1) 89%);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
 `
 
 export const Header = styled.div`
@@ -41,5 +47,16 @@ export const TopPageContainer = styled.div`
         display: flex;
         flex-direction: column;
         align-items: center;
-    }
+        .div_button-login{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        @media screen and (min-width: 769px){
+            >.div_button-login{
+            display: none
+            }
+        }       
+    }        
+    
 `
