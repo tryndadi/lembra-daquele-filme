@@ -23,7 +23,7 @@ const FooterLandingPage = () => {
               className="icon"
               href="https://github.com/arthur-r-goncalves"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
             >
               <FaGithub />
             </a>
@@ -31,7 +31,7 @@ const FooterLandingPage = () => {
               className="icon"
               href="https://www.linkedin.com/in/arthur-gon%C3%A7alves-271479217"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
             >
               <FaLinkedin />
             </a>
@@ -48,7 +48,7 @@ const FooterLandingPage = () => {
               className="icon"
               href="https://github.com/beatrizmunhozl"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
             >
               <FaGithub />
             </a>
@@ -56,7 +56,7 @@ const FooterLandingPage = () => {
               className="icon"
               href="https://www.linkedin.com/in/beatriz-munhoz-de-lima-0251b8226/"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
             >
               <FaLinkedin />
             </a>
@@ -73,7 +73,7 @@ const FooterLandingPage = () => {
               className="icon"
               href="https://github.com/gisela-mariano"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
             >
               <FaGithub />
             </a>
@@ -81,7 +81,7 @@ const FooterLandingPage = () => {
               className="icon"
               href="https://www.linkedin.com/in/gisela-mariano-3b8bb3170/"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
             >
               <FaLinkedin />
             </a>
@@ -98,7 +98,7 @@ const FooterLandingPage = () => {
               className="icon"
               href="https://github.com/imrochamatheus"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
             >
               <FaGithub />
             </a>
@@ -106,7 +106,7 @@ const FooterLandingPage = () => {
               className="icon"
               href="https://www.linkedin.com/in/matheus-rocha-9076601a1/"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
             >
               <FaLinkedin />
             </a>
@@ -123,7 +123,7 @@ const FooterLandingPage = () => {
               className="icon"
               href="https://github.com/stefanyfellix"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
             >
               <FaGithub />
             </a>
@@ -131,7 +131,7 @@ const FooterLandingPage = () => {
               className="icon"
               href="https://www.linkedin.com/in/stefany-felix-a12229238/"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
             >
               <FaLinkedin />
             </a>
@@ -148,7 +148,7 @@ const FooterLandingPage = () => {
               className="icon"
               href="https://github.com/tryndadi"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
             >
               <FaGithub />
             </a>
@@ -156,7 +156,7 @@ const FooterLandingPage = () => {
               className="icon"
               href="https://www.linkedin.com/in/trindadevinicius/"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
             >
               <FaLinkedin />
             </a>
