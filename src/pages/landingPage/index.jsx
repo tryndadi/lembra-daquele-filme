@@ -5,11 +5,12 @@ import logo from "../../assets/img/logo.svg"
 import TextLandingPage from "../../components/textLandingPage"
 import FooterLandingPage from "../../components/footerLandingPage"
 
-import { Header, LogoContainer, TopPageContainer } from "./styles"
+import { Header, LogoContainer, TopPageContainer, Container } from "./styles"
+
 
 const LandingPage = () => {
  return (
-    <>
+    <Container>
     <Header>
         <ButtonToPage route='/login'>Entrar</ButtonToPage>
     </Header>    
@@ -17,11 +18,7 @@ const LandingPage = () => {
         <div>
             <LogoContainer>
                 <img src={logo} alt=''/>
-                <div>
-                    <h2>Lembra</h2>
-                    <h1>Daquele</h1>
-                    <h2>Filme?</h2>
-                </div>
+                <h2>Sua biblioteca de filmes ...</h2>                
             </LogoContainer>           
             
             <ButtonToPage route='/register'>Faça seu cadastro</ButtonToPage>
@@ -31,7 +28,7 @@ const LandingPage = () => {
     </TopPageContainer>
         <TextLandingPage/>
         <FooterLandingPage/>
-    </>
+    </Container>
     
  )
 }
