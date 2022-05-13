@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-// MUDAR COR POR VARIAVEIS !!!!!!
-
 export const Main = styled.div`
 
   width: 100%;
@@ -64,7 +62,7 @@ export const Main = styled.div`
         color: #ffffff;
 
         :hover{
-          border-color: ${props => props.theme.colors.card.light}; //TROCAR COR PELA VAR
+          border-color: ${props => props.theme.colors.card.light};
 
           background-color: rgba(252, 9, 75, 0.26);
         }
