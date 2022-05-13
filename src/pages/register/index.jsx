@@ -1,6 +1,6 @@
 import InputComponent from "../../components/Input";
 import { FaUserAlt, FaEnvelope, FaKey } from "react-icons/fa";
-import logo from "../../assets/img/logo.svg";
+import logoCompleta from "../../assets/img/logoCompleta.svg";
 
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -60,7 +60,7 @@ const RegisterPage = () => {
     <>
       <ContainerGeral>
         <Link to="/" className="ancora-logo">
-          <img src={logo} alt="Logo" />
+          <img src={logoCompleta} alt="logoCompleta" />
         </Link>
 
         <div className="cont-form">
