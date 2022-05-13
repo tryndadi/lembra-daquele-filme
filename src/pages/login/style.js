@@ -9,16 +9,17 @@ export const Main = styled.div`
 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 
   box-sizing: border-box;
 
   .ancora-logo{
-    align-self: flex-end;
+
+    margin-bottom: 5rem;
 
     img{
-      width: 50px;
+      width: 140px;
     }
   }
 
@@ -70,6 +71,7 @@ export const Main = styled.div`
     }
 
     span.mensagem{
+
       font-size: 0.8rem;
 
       margin-top: 15px;
@@ -91,6 +93,10 @@ export const Main = styled.div`
   }
 
   .copyright{
+
+    position: absolute;
+    bottom: 0px;
+
     font-size: 0.6rem;
 
     margin-bottom: 5px;
