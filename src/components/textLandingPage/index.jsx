@@ -11,24 +11,27 @@ const TextLandingPage = () => {
         <div className="container_text">
             <div>
                 <h3>Acesse de qualquer dispositivo</h3>
-                <p>Lorem ipsum hendrerit eros vel proin laoreet velit porta tincidunt vitae pulvinar,
-                mollis odio fames lorem velit dolor blandit ante rutrum nunc, ultricesl li</p>
+                <p>Nossa aplicação foi pensada para facilitar sua visualização, 
+                sendo assim o site é totalmente responsivo e pode ser acessado 
+                de qualquer dispositivo.</p>
+
             </div>
             <img src={landingPage_2} alt="" />
         </div>
         <div className="container_text">
             <div>
-                <h3>Veja o que seus amigos estão assistindo</h3>
-                <p>Lorem ipsum hendrerit eros vel proin laoreet velit porta tincidunt vitae pulvinar,
-                mollis odio fames lorem velit dolor blandit ante rutrum nunc, ultricesl li</p>
+                <h3>Veja o que todos estão assistindo</h3>
+                <p>Nada como saber o que todos estão assistindo, aqui você tem acesso 
+                aos tops do momento.</p>
             </div>
             <img src={landingPage_3} alt="" />
         </div>
         <div className="container_text">
             <div>
                 <h3>Avalie os filmes que você assistiu</h3>
-                <p>Lorem ipsum hendrerit eros vel proin laoreet velit porta tincidunt vitae pulvinar,
-                mollis odio fames lorem velit dolor blandit ante rutrum nunc, ultricesl li</p>
+                <p>Com tantos lançamentos de séries e filmes 
+                fica difícil se organizar e lembrar de tudo. Mas no nosso site você pode
+                salvar o que você já assistiu e o que quer assistir.</p>
             </div>
             <img src={landingPage_4} alt="" />
         </div>
