@@ -35,6 +35,7 @@ export const ContainerDiv = styled.div`
         @media screen and (min-width: 769px){
             display: flex;
             flex-direction: row;
+            justify-content: space-around;
             &:nth-child(odd){
                 flex-direction: row-reverse;
             }
@@ -50,7 +51,7 @@ export const ContainerDiv = styled.div`
                 }
             } 
             >img{
-                width: 50%;
+                width: 40%;
                 margin: 10px;
                 box-sizing: border-box;
             }       
