@@ -1,5 +1,26 @@
 import styled from 'styled-components'
+import { keyframes } from 'styled-components'
 
+const appearFromLeft = keyframes`
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+`
+const appearFromRight = keyframes`
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+`
 
 export const Container = styled.div`
     margin: 0;
@@ -17,7 +38,7 @@ export const Container = styled.div`
 
 export const Header = styled.div`
     display: none;
-
+    animation: ${appearFromRight} 1s;
     @media screen and (min-width: 769px){
         display: flex;
         width: 100%;
@@ -32,11 +53,13 @@ export const LogoContainer = styled.div`
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
+    
     .img_logo{
         width: 7rem;
         
     }    
     h2{        
+        animation: ${appearFromLeft} 2s;
         text-align: center;
         width: 70%;
         font-weight: bold;
