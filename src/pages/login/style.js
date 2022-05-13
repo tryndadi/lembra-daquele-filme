@@ -1,9 +1,6 @@
 import styled from "styled-components";
 
-
-
-
-export const ContainerGeral = styled.div`
+export const Main = styled.div`
 
   width: 100%;
   height: 100vh;
@@ -18,18 +15,16 @@ export const ContainerGeral = styled.div`
   box-sizing: border-box;
 
   .ancora-logo{
-    margin-top: 15px;
+    align-self: flex-end;
 
     img{
-      width: 100%;
-      max-width: 140px;
+      width: 50px;
     }
   }
 
   .cont-form{
     width: 100%;
     max-width: 320px;
-    min-width: 250px;
 
     display: flex;
     flex-direction: column;
@@ -67,7 +62,7 @@ export const ContainerGeral = styled.div`
         color: #ffffff;
 
         :hover{
-          border-color: ${props => props.theme.colors.card.light}; //TROCAR COR PELA VAR
+          border-color: ${props => props.theme.colors.card.light};
 
           background-color: rgba(252, 9, 75, 0.26);
         }
