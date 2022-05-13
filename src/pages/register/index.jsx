@@ -99,9 +99,9 @@ const RegisterPage = () => {
           </form>
 
           <span className="mensagem">
-            Possui uma conta?
+            Possui uma conta? 
             <Link to='/login'>
-              <strong>Conecte-se</strong>
+              <strong> Conecte-se</strong>
             </Link>
           </span>
         </div>
