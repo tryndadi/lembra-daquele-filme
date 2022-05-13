@@ -4,6 +4,7 @@ import App from "./App";
 import GlobalStyle from "./styles/GlobalStyle";
 import Theme from "./styles/Theme.jsx";
 import { BrowserRouter } from "react-router-dom";
+import Providers from "./Providers";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -11,7 +12,9 @@ root.render(
     <React.StrictMode>
       <GlobalStyle />
       <Theme>
-        <App />
+        <Providers>
+          <App />
+        </Providers>
       </Theme>
     </React.StrictMode>
   </BrowserRouter>
