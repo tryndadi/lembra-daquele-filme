@@ -18,16 +18,18 @@ export const ContainerGeral = styled.div`
   box-sizing: border-box;
 
   .ancora-logo{
-    align-self: flex-end;
+    margin-top: 15px;
 
     img{
-      width: 50px;
+      width: 100%;
+      max-width: 140px;
     }
   }
 
   .cont-form{
     width: 100%;
     max-width: 320px;
+    min-width: 250px;
 
     display: flex;
     flex-direction: column;
