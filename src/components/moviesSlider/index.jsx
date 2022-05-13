@@ -4,22 +4,23 @@ import Slider from "react-slick";
 import LeftArrow from "../../assets/img/left-arrow.svg";
 import RightArrow from "../../assets/img/right-arrow.svg";
 
-export default function Card({ title, data }) {
+const Card = ({ title, data }) => {
   const SlickArrowLeft = ({ currentSlide, slideCount, ...props }) => (
     <img src={LeftArrow} alt="prevArrow" {...props} />
   );
 
   const SlickArrowRight = ({ currentSlide, slideCount, ...props }) => (
-    <img src={RightArrow} alt="nextArrow" {...props} />
+    <img src={RightArrow} alt="nextArrow" {...props} width="200px" />
   );
 
   var settings = {
     dots: true,
-    infinite: false,
+    infinite: true,
     speed: 500,
     slidesToShow: 4,
-    slidesToScroll: 1,
+    slidesToScroll: 4,
     initialSlide: 0,
+    arrows: true,
     prevArrow: <SlickArrowLeft />,
     nextArrow: <SlickArrowRight />,
     responsive: [
@@ -81,4 +82,6 @@ export default function Card({ title, data }) {
       </Slider>
     </div>
   );
-}
+};
+
+export default Card;
