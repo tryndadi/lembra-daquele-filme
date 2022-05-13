@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form"
 import * as yup from "yup"
 import { yupResolver } from '@hookform/resolvers/yup'
 import InputComponent from '../../components/Input'
-import logo from '../../images/logo.png'
+import logo from '../../assets/img/logo.svg'
 import { Main } from "./style" 
 import { toast } from "react-toastify"
 import { Link } from "react-router-dom"
@@ -73,7 +73,7 @@ const LoginPage = () => {
                             error={errors.password && errors.password.message}
                         />
 
-                        <button type="submit">Cadastrar</button>
+                        <button type="submit">Entrar</button>
                     </form>
 
                     <span className="mensagem">Não possui uma conta? 
