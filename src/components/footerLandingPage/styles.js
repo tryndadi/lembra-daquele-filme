@@ -21,14 +21,18 @@ export const Container = styled.footer`
   }
 `;
 export const DevContainer = styled.div`
-  width: 100px;
-  
+  width: 100px;  
   text-align: center;  
   margin: 1rem;
+  
   figure{
     width: 100%;
     overflow: hidden;
     border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
     >img{
       width: 100%;
     }
