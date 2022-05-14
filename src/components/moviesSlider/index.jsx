@@ -28,7 +28,7 @@ const MoviesSections = () => {
             (medias, i) =>
               medias && (
                 <div key={i}>
-                  <h1>{medias.title}</h1>
+                  <h1 style={{ color: "#FFF" }}>{medias.title}</h1>
                   <CustomSlider {...settings}>
                     {medias.items.map((media) => (
                       <CustomCard key={i}>
