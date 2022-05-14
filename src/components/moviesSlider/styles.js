@@ -9,9 +9,10 @@ const arrowsStyles = {
   right: -30,
   zIndex: -2,
   width: "75px",
-  height: "250px",
+  height: "100%",
   display: "flex",
   cursor: "pointer",
+  alignSelf: "center",
   position: "absolute",
   alignItems: "center",
   justifyContent: "flex-end",
@@ -23,7 +24,7 @@ const ArrowLeft = ({ currentSlide, slideCount, ...props }) => {
   const { style, onClick } = props;
 
   return (
-    <div
+    <a
       style={{
         ...style,
         ...arrowsStyles,
@@ -35,7 +36,7 @@ const ArrowLeft = ({ currentSlide, slideCount, ...props }) => {
       <IoIosArrowBack
         style={{ fontSize: "30px", color: "rgba(255,255,255, .5)" }}
       />
-    </div>
+    </a>
   );
 };
 
@@ -60,7 +61,7 @@ const ArrowRight = ({ currentSlide, slideCount, ...props }) => {
 export const settings = {
   dots: false,
   infinite: true,
-  speed: 1000,
+  speed: 500,
   slidesToShow: 8,
   slidesToScroll: 8,
   initialSlide: 0,
@@ -93,7 +94,7 @@ export const settings = {
 export const customSettings = {
   dots: false,
   infinite: true,
-  speed: 1000,
+  speed: 500,
   slidesToShow: 3,
   slidesToScroll: 3,
   initialSlide: 0,

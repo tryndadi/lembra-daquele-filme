@@ -23,14 +23,7 @@ const MoviesSections = () => {
                 <h1 style={{ color: "#FFF" }}>{medias.title}</h1>
                 <CustomSlider {...(i === 0 ? customSettings : settings)}>
                   {medias.items.map((media) => (
-                    <CustomCard
-                      key={media.id}
-                      custom={i === 0 ? true : false}
-                      // image={
-                      //   imagePathPrefix +
-                      //   (i !== 0 ? media.poster_path : media.backdrop_path)
-                      // }
-                    >
+                    <CustomCard key={media.id} custom={i === 0 ? true : false}>
                       <VerticalFade />
                       <img
                         src={
