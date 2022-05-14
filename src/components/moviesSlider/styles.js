@@ -1,6 +1,7 @@
 import React from "react";
 import slider from "react-slick/lib/slider";
 import styled from "styled-components";
+import { css } from "styled-components";
 
 import LeftArrow from "../../assets/img/left-arrow.svg";
 import RightArrow from "../../assets/img/right-arrow.svg";
@@ -21,7 +22,7 @@ export const settings = {
   slidesToScroll: 8,
   initialSlide: 0,
   arrows: true,
-  centerPadding: "60px",
+
   responsive: [
     {
       breakpoint: 1024,
@@ -44,19 +45,66 @@ export const settings = {
   ],
 };
 
+export const customSettings = {
+  dots: false,
+  infinite: true,
+  speed: 1000,
+  slidesToShow: 4,
+  slidesToScroll: 4,
+  initialSlide: 0,
+  arrows: true,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToScroll: 6,
+        slidesToShow: 6,
+        infinite: true,
+        dots: false,
+      },
+    },
+
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        initialSlide: 2,
+      },
+    },
+  ],
+};
+
 export const CustomCard = styled.div`
   height: 100%;
   cursor: pointer;
-
-  position: relative;
-  -webkit-transition: all 200ms ease-in;
-  -webkit-transform: scale(0.8);
-  -ms-transition: all 200ms ease-in;
-  -ms-transform: scale(0.8);
-  -moz-transition: all 200ms ease-in;
-  -moz-transform: scale(0.8);
-  transition: all 200ms ease-in;
-  transform: scale(0.8);
+  ${(props) => {
+    if (props.custom) {
+      return css`
+        position: relative;
+        -webkit-transition: all 200ms ease-in;
+        -webkit-transform: scale(0.95);
+        -ms-transition: all 200ms ease-in;
+        -ms-transform: scale(0.95);
+        -moz-transition: all 200ms ease-in;
+        -moz-transform: scale(0.95);
+        transition: all 200ms ease-in;
+        transform: scale(0.95);
+      `;
+    } else {
+      return css`
+        position: relative;
+        -webkit-transition: all 200ms ease-in;
+        -webkit-transform: scale(0.8);
+        -ms-transition: all 200ms ease-in;
+        -ms-transform: scale(0.8);
+        -moz-transition: all 200ms ease-in;
+        -moz-transform: scale(0.8);
+        transition: all 200ms ease-in;
+        transform: scale(0.8);
+      `;
+    }
+  }}
 
   &:hover {
     z-index: 2;
