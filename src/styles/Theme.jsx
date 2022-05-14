@@ -13,7 +13,7 @@ const theme = {
       main: "rgba(102, 21, 54, 0.92)",
     },
     card: {
-      main: "rgba(147, 17, 53, 1)",
+      main: "rgb(147, 17, 53)",
       light: "rgba(252, 9, 75, 1)",
       dark: "rgba(123, 19, 52, 1)",
     },
