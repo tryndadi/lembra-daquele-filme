@@ -8,11 +8,10 @@ import {
   TitleSection,
   InfosSection,
 } from "./styles";
-
 import { useTMDBMedias } from "../../Providers/MediasProvider";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 import { imagePathPrefix } from "../../assets/js/utils";
-import { Rating } from "@mui/material";
+import { Rating, Typography } from "@mui/material";
 
 const MoviesSections = () => {
   const { mediasList } = useTMDBMedias();
@@ -33,19 +32,28 @@ const MoviesSections = () => {
                           <TitleSection>
                             {media.title || media.name}
                           </TitleSection>
-                          <Rating
-                            name="read-only"
-                            precision={0.5}
-                            value={media.vote_average / 2}
-                            emptyIcon={
-                              <StarBorderIcon
-                                style={{
-                                  color: "rgba(255, 255, 255, 0.5)",
-                                  fontSize: "inherit",
-                                }}
-                              />
-                            }
-                          />
+
+                          <Typography
+                            size={12}
+                            sx={{ color: "rgba(255,255,255, 0.5)" }}
+                          >
+                            <Rating
+                              sx={{ verticalAlign: "middle" }}
+                              name="read-only"
+                              size="small"
+                              precision={0.5}
+                              value={media.vote_average / 2}
+                              emptyIcon={
+                                <StarBorderIcon
+                                  style={{
+                                    color: "rgba(255, 255, 255, 0.5)",
+                                    fontSize: "inherit",
+                                  }}
+                                />
+                              }
+                            />
+                            &nbsp;{media.vote_count} opiniões
+                          </Typography>
                         </InfosSection>
                       </VerticalFade>
                       <img

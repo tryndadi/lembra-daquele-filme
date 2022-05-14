@@ -73,15 +73,24 @@ export const settings = {
     {
       breakpoint: 1024,
       settings: {
-        slidesToScroll: 6,
-        slidesToShow: 6,
+        slidesToScroll: 5,
+        slidesToShow: 5,
+        infinite: true,
+        dots: false,
+      },
+    },
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToScroll: 4,
+        slidesToShow: 4,
         infinite: true,
         dots: false,
       },
     },
 
     {
-      breakpoint: 480,
+      breakpoint: 576,
       settings: {
         slidesToShow: 3,
         slidesToScroll: 3,
@@ -112,7 +121,7 @@ export const customSettings = {
       },
     },
     {
-      breakpoint: 480,
+      breakpoint: 768,
       settings: {
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -191,7 +200,10 @@ export const TitleSection = styled.div`
 `;
 
 export const InfosSection = styled.div`
+  flex-direction: column;
   position: absolute;
+  display: flex;
   padding: 10px;
+  gap: 10px;
   bottom: 0;
 `;
