@@ -1,11 +1,23 @@
+import React from "react";
 import styled from "styled-components";
+
+import LeftArrow from "../../assets/img/left-arrow.svg";
+import RightArrow from "../../assets/img/right-arrow.svg";
+
+const SlickArrowLeft = ({ currentSlide, slideCount, ...props }) => (
+  <img src={LeftArrow} alt="prevArrow" {...props} />
+);
+
+const SlickArrowRight = ({ currentSlide, slideCount, ...props }) => (
+  <img src={RightArrow} alt="nextArrow" {...props} width="200px" />
+);
 
 export const settings = {
   dots: false,
   infinite: true,
-  speed: 500,
-  slidesToShow: 10,
-  slidesToScroll: 10,
+  speed: 1000,
+  slidesToShow: 8,
+  slidesToScroll: 8,
   initialSlide: 0,
   arrows: true,
   centerPadding: "60px",
@@ -32,7 +44,6 @@ export const settings = {
 };
 
 export const CustomCard = styled.div`
-  max-width: 300px;
   height: 100%;
   cursor: pointer;
 
