@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const tmdbAccess = axios.create({
   baseURL: "https://api.themoviedb.org/3/",
-  timeout: 1000,
+  timeout: 5000,
   headers: {
     "Content-Type": "application/json",
     Authorization:
