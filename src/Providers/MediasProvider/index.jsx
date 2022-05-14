@@ -16,7 +16,7 @@ const MediasProvider = ({ children }) => {
         }))
       )
     );
-  });
+  }, []);
 
   return (
     <MediasContext.Provider value={{ mediasList }}>

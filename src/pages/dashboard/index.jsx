@@ -1,10 +1,12 @@
-import logo from "../../assets/img/logo.svg";
-import { FaSistrix } from "react-icons/fa";
-
 import React, { useEffect, useState } from "react";
-import { tmdbAccess } from "../../services/api";
+
+import logo from "../../assets/img/logo.svg";
+
+import { FaSistrix } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { tmdbAccess } from "../../services/api";
 import { StyleContainer } from "./style";
+
 import MoviesSections from "../../components/moviesSlider";
 
 const Dashboard = () => {

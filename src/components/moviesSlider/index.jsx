@@ -7,6 +7,7 @@ import { imagePathPrefix } from "../../assets/js/utils";
 const MoviesSections = () => {
   const { mediasList } = useTMDBMedias();
 
+  console.log(1);
   return (
     <div>
       {mediasList &&
