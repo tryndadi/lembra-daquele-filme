@@ -7,6 +7,7 @@ import FooterLandingPage from "../../components/footerLandingPage";
 
 import { Header, LogoContainer, TopPageContainer, Container } from "./styles";
 
+
 const LandingPage = () => {
   return (
     <Container>
