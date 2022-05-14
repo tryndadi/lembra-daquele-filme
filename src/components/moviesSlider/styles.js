@@ -62,8 +62,8 @@ export const settings = {
   dots: false,
   infinite: true,
   speed: 500,
-  slidesToShow: 8,
-  slidesToScroll: 8,
+  slidesToShow: 6,
+  slidesToScroll: 6,
   initialSlide: 0,
   arrows: true,
   nextArrow: <ArrowRight />,
@@ -122,16 +122,25 @@ export const customSettings = {
   ],
 };
 
+export const BackDrop = styled.div`
+  display: none;
+  height: 500px;
+  position: absolute;
+  bottom: -100;
+  z-index: 5;
+  background: rgba(0, 0, 0, 0.5);
+`;
+
 export const VerticalFade = styled.div`
   display: none;
   z-index: 3;
   width: 100%;
-  height: 250px;
+  height: 100%;
   position: absolute;
   transform: scale(1.008);
   background-color: black;
   transition: all 200ms ease-in;
-  background: linear-gradient(to top, #111 10%, transparent 90%);
+  background: linear-gradient(to top, #111 20%, transparent 90%);
 `;
 
 export const CustomCard = styled.div`
@@ -166,9 +175,23 @@ export const CustomCard = styled.div`
     ${VerticalFade} {
       display: block;
     }
+    ${BackDrop} {
+      display: block;
+    }
   }
 `;
 
 export const CustomSlider = styled(slider)`
   transform: scale(0.9);
+  position: relative;
+`;
+
+export const TitleSection = styled.div`
+  color: rgba(255, 255, 255, 0.5);
+`;
+
+export const InfosSection = styled.div`
+  position: absolute;
+  padding: 10px;
+  bottom: 0;
 `;

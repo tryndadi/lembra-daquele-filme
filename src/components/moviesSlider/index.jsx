@@ -1,14 +1,18 @@
 import React from "react";
-
 import {
   CustomCard,
   CustomSlider,
   settings,
   customSettings,
   VerticalFade,
+  TitleSection,
+  InfosSection,
 } from "./styles";
+
 import { useTMDBMedias } from "../../Providers/MediasProvider";
+import StarBorderIcon from "@material-ui/icons/StarBorder";
 import { imagePathPrefix } from "../../assets/js/utils";
+import { Rating } from "@mui/material";
 
 const MoviesSections = () => {
   const { mediasList } = useTMDBMedias();
@@ -25,7 +29,24 @@ const MoviesSections = () => {
                   {medias.items.map((media) => (
                     <CustomCard key={media.id} custom={i === 0 ? true : false}>
                       <VerticalFade>
-                        <div>{media.title}</div>
+                        <InfosSection>
+                          <TitleSection>
+                            {media.title || media.name}
+                          </TitleSection>
+                          <Rating
+                            name="read-only"
+                            precision={0.5}
+                            value={media.vote_average / 2}
+                            emptyIcon={
+                              <StarBorderIcon
+                                style={{
+                                  color: "rgba(255, 255, 255, 0.5)",
+                                  fontSize: "inherit",
+                                }}
+                              />
+                            }
+                          />
+                        </InfosSection>
                       </VerticalFade>
                       <img
                         src={
