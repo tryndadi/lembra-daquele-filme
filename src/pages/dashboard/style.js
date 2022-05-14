@@ -1,19 +1,16 @@
 import styled from "styled-components";
 
-
-
-export const StyleContainer= styled.div`
-
+export const StyleContainer = styled.div`
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
 
   background: ${(props) => props.theme.colors.background.gradient};
 
-  header{
+  header {
     width: 100vw;
     height: 90px;
 
-    .cont-header{
+    .cont-header {
       width: 100%;
 
       padding: 15px;
@@ -24,14 +21,14 @@ export const StyleContainer= styled.div`
 
       box-sizing: border-box;
 
-      img{
+      img {
         width: 60px;
       }
 
-      .cont-input-search{
+      .cont-input-search {
         width: 100%;
         max-width: 220px;
-        min-width: 195px;;
+        min-width: 195px;
 
         padding: 5px;
 
@@ -42,7 +39,7 @@ export const StyleContainer= styled.div`
         align-items: center;
         justify-content: space-between;
 
-        input{
+        input {
           width: 90%;
 
           background: transparent;
@@ -52,51 +49,49 @@ export const StyleContainer= styled.div`
 
           outline: none;
 
-          ::placeholder{
+          ::placeholder {
             color: ${(props) => props.theme.colors.grey.light};
 
             filter: opacity(70%);
           }
         }
 
-        svg{
+        svg {
           color: ${(props) => props.theme.colors.grey.light};
         }
       }
-
     }
   }
 
-
-  main{
+  main {
     padding: 0 15px 15px 15px;
 
-    nav{
+    nav {
       width: 100%;
       margin-bottom: 25px;
 
-      ul{
+      ul {
         padding: 5px 5px 8px 5px;
 
         overflow-x: scroll;
 
         display: flex;
 
-        ::-webkit-scrollbar{
+        ::-webkit-scrollbar {
           height: 5px;
           width: 5px;
         }
 
-        ::-webkit-scrollbar-track{
+        ::-webkit-scrollbar-track {
           background: rgba(147, 17, 54, 0);
         }
 
-        ::-webkit-scrollbar-thumb{
+        ::-webkit-scrollbar-thumb {
           background: ${(props) => props.theme.colors.card.light};
           border-radius: 3px;
         }
 
-        li{
+        li {
           font-size: 0.8rem;
 
           padding-right: 12px;
@@ -107,49 +102,43 @@ export const StyleContainer= styled.div`
 
           cursor: pointer;
 
-          :hover{
+          :hover {
             color: ${(props) => props.theme.colors.card.light};
           }
 
-          :last-child{
+          :last-child {
             padding: 0;
           }
         }
-
       }
     }
 
-    .slide{
-
-      h3{
+    .slide {
+      h3 {
         color: ${(props) => props.theme.colors.grey.light};
       }
     }
   }
 
-  @media screen and (max-width: 550px){
-    
-    header{
+  @media screen and (max-width: 550px) {
+    header {
       height: 130px;
 
-      .cont-header{
+      .cont-header {
         height: 100%;
 
         flex-direction: column;
       }
     }
 
-    main{
-      
-      nav{
-
-        ul{
-          li{
+    main {
+      nav {
+        ul {
+          li {
             font-size: 1rem;
           }
         }
-
       }
     }
   }
-`
+`;
