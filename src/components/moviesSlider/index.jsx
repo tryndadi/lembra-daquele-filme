@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Slider from "react-slick";
 
 import tmdb from "../../services/tmdb";
-import { CustomCard, CustomSlider, settings } from "./styles";
+import { CustomCard, CustomSlider, settings, customSettings } from "./styles";
 import { imagePathPrefix } from "../../assets/js/utils";
 
 const MoviesSections = () => {
@@ -29,11 +28,14 @@ const MoviesSections = () => {
               medias && (
                 <div key={i}>
                   <h1 style={{ color: "#FFF" }}>{medias.title}</h1>
-                  <CustomSlider {...settings}>
+                  <CustomSlider {...(i === 0 ? customSettings : settings)}>
                     {medias.items.map((media) => (
-                      <CustomCard key={i}>
+                      <CustomCard key={i} custom={i === 0 ? true : false}>
                         <img
-                          src={imagePathPrefix + media.poster_path}
+                          src={
+                            imagePathPrefix +
+                            (i !== 0 ? media.poster_path : media.backdrop_path)
+                          }
                           alt="a"
                           width="100%"
                         />

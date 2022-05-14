@@ -4,32 +4,24 @@ export default {
   getMedia: async () => {
     return [
       {
+        keyWord: "populars",
+        title: "Filmes mais populares",
+        items: await tmdbAccess.get("/movie/popular/?language=pt-BR"),
+      },
+      {
         keyWord: "originals",
         title: "Originais da Netflix",
         items: await tmdbAccess.get(
           "/discover/tv?with_network=213&language=pt-BR"
         ),
       },
-      {
-        keyWord: "populars",
-        title: "Filmes mais populares",
-        items: await tmdbAccess.get("/movie/popular/?language=pt-BR"),
-      },
-      {
-        keyWord: "popularsTV",
-        title: "Séries mais populares",
-        items: await tmdbAccess.get("/tv/popular/?language=pt-BR"),
-      },
+
       {
         keyWord: "trending",
         title: "Recomendados para você",
         items: await tmdbAccess.get("/trending/all/week?language=pt-BR"),
       },
-      {
-        keyWord: "toprated",
-        title: "Em Alta",
-        items: await tmdbAccess.get("/movie/top_rated/?language=pt-BR"),
-      },
+
       {
         keyWord: "action",
         title: "Ação",
