@@ -24,7 +24,9 @@ const MoviesSections = () => {
                 <CustomSlider {...(i === 0 ? customSettings : settings)}>
                   {medias.items.map((media) => (
                     <CustomCard key={media.id} custom={i === 0 ? true : false}>
-                      <VerticalFade />
+                      <VerticalFade>
+                        <div>{media.title}</div>
+                      </VerticalFade>
                       <img
                         src={
                           imagePathPrefix +
