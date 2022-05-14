@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
-import { imagePathPrefix } from "../../assets/js/utils";
+import axios from "axios";
 
+import tmdb from "../../services/tmdb";
 import { tmdbAccess } from "../../services/api";
-import { CustomCard } from "./styles";
+import { CustomCard, settings } from "./styles";
+import { imagePathPrefix } from "../../assets/js/utils";
 
 import LeftArrow from "../../assets/img/left-arrow.svg";
 import RightArrow from "../../assets/img/right-arrow.svg";
-import axios from "axios";
 
 const Card = ({ title, data }) => {
   const [populars, setPopulars] = useState(null);
@@ -20,6 +21,11 @@ const Card = ({ title, data }) => {
     const getTopRated = tmdbAccess.get("/movie/top_rated");
     const getPopularTvShow = tmdbAccess.get("/tv/popular");
     const getTopRatedTvShow = tmdbAccess.get("/tv/top_rated");
+
+    (async () => {
+      const fullList = await tmdb.getMedia();
+      console.log(fullList);
+    })();
 
     axios
       .all([getPopulars, getTopRated, getPopularTvShow, getTopRatedTvShow])
@@ -57,55 +63,21 @@ const Card = ({ title, data }) => {
     <img src={RightArrow} alt="nextArrow" {...props} width="200px" />
   );
 
-  var settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 8,
-    slidesToScroll: 10,
-    initialSlide: 0,
-    arrows: true,
-    prevArrow: <SlickArrowLeft />,
-    nextArrow: <SlickArrowRight />,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToScroll: 10,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 5,
-          slidesToScroll: 5,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 5,
-          slidesToScroll: 5,
-        },
-      },
-    ],
-  };
-
   return (
-    <div style={{ backgroundColor: "black" }}>
+    <div>
       <div>
         <h2> Populares </h2>
         <br />
         {populars && (
           <Slider {...settings}>
             {populars.map((movie) => (
-              <CustomCard
-                key={movie.id}
-                image={imagePathPrefix + movie.poster_path}
-              ></CustomCard>
+              <CustomCard key={movie.id}>
+                <img
+                  src={imagePathPrefix + movie.poster_path}
+                  alt="a"
+                  width="100%"
+                />
+              </CustomCard>
             ))}
           </Slider>
         )}
@@ -117,10 +89,13 @@ const Card = ({ title, data }) => {
         {topRated && (
           <Slider {...settings}>
             {topRated.map((movie) => (
-              <CustomCard
-                key={movie.id}
-                image={imagePathPrefix + movie.poster_path}
-              ></CustomCard>
+              <CustomCard key={movie.id}>
+                <img
+                  src={imagePathPrefix + movie.poster_path}
+                  alt="a"
+                  width="100%"
+                />
+              </CustomCard>
             ))}
           </Slider>
         )}
@@ -132,10 +107,13 @@ const Card = ({ title, data }) => {
         {popularTvShow && (
           <Slider {...settings}>
             {popularTvShow.map((movie) => (
-              <CustomCard
-                key={movie.id}
-                image={imagePathPrefix + movie.poster_path}
-              ></CustomCard>
+              <CustomCard key={movie.id}>
+                <img
+                  src={imagePathPrefix + movie.poster_path}
+                  alt="a"
+                  width="100%"
+                />
+              </CustomCard>
             ))}
           </Slider>
         )}
@@ -147,10 +125,13 @@ const Card = ({ title, data }) => {
         {topRatedTvShow && (
           <Slider {...settings}>
             {topRatedTvShow.map((movie) => (
-              <CustomCard
-                key={movie.id}
-                image={imagePathPrefix + movie.poster_path}
-              ></CustomCard>
+              <CustomCard key={movie.id}>
+                <img
+                  src={imagePathPrefix + movie.poster_path}
+                  alt="a"
+                  width="100%"
+                />
+              </CustomCard>
             ))}
           </Slider>
         )}
