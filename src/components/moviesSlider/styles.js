@@ -172,12 +172,6 @@ export const CustomCard = styled.div`
 
   &:hover {
     z-index: 2;
-    -webkit-transition: all 200ms ease-in;
-    -webkit-transform: scale(1);
-    -ms-transition: all 200ms ease-in;
-    -ms-transform: scale(1);
-    -moz-transition: all 200ms ease-in;
-    -moz-transform: scale(1);
     transition: all 200ms ease-in;
     transform: scale(1);
     ${VerticalFade} {
@@ -208,6 +202,7 @@ export const ButtonsSection = styled.div`
   gap: 15px;
   padding: 10px;
   display: flex;
+  transition: all 200ms ease-in;
   justify-content: space-between;
   background: linear-gradient(to bottom, #111 10%, transparent 90%);
 `;

@@ -53,7 +53,7 @@ const MoviesSections = () => {
                           >
                             <Rating
                               sx={{ verticalAlign: "middle" }}
-                              name="read-only"
+                              readOnly
                               size="small"
                               precision={0.5}
                               value={media.vote_average / 2}
