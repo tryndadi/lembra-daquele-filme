@@ -1,13 +1,18 @@
 import React from "react";
 
-import { CustomCard, CustomSlider, settings, customSettings } from "./styles";
+import {
+  CustomCard,
+  CustomSlider,
+  settings,
+  customSettings,
+  VerticalFade,
+} from "./styles";
 import { useTMDBMedias } from "../../Providers/MediasProvider";
 import { imagePathPrefix } from "../../assets/js/utils";
 
 const MoviesSections = () => {
   const { mediasList } = useTMDBMedias();
 
-  console.log(1);
   return (
     <div>
       {mediasList &&
@@ -18,7 +23,15 @@ const MoviesSections = () => {
                 <h1 style={{ color: "#FFF" }}>{medias.title}</h1>
                 <CustomSlider {...(i === 0 ? customSettings : settings)}>
                   {medias.items.map((media) => (
-                    <CustomCard key={media.id} custom={i === 0 ? true : false}>
+                    <CustomCard
+                      key={media.id}
+                      custom={i === 0 ? true : false}
+                      // image={
+                      //   imagePathPrefix +
+                      //   (i !== 0 ? media.poster_path : media.backdrop_path)
+                      // }
+                    >
+                      <VerticalFade />
                       <img
                         src={
                           imagePathPrefix +

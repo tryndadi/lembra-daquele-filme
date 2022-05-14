@@ -2,17 +2,60 @@ import React from "react";
 import slider from "react-slick/lib/slider";
 import styled from "styled-components";
 import { css } from "styled-components";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
-import LeftArrow from "../../assets/img/left-arrow.svg";
-import RightArrow from "../../assets/img/right-arrow.svg";
+const arrowsStyles = {
+  top: 0,
+  right: -30,
+  zIndex: -2,
+  width: "75px",
+  height: "250px",
+  display: "flex",
+  cursor: "pointer",
+  position: "absolute",
+  alignItems: "center",
+  justifyContent: "flex-end",
+  transform: "scale(0.8)",
+  background: "rgba(0,0,0,0.5)",
+};
 
-const SlickArrowLeft = ({ currentSlide, slideCount, ...props }) => (
-  <img src={LeftArrow} alt="prevArrow" {...props} />
-);
+const ArrowLeft = ({ currentSlide, slideCount, ...props }) => {
+  const { style, onClick } = props;
 
-const SlickArrowRight = ({ currentSlide, slideCount, ...props }) => (
-  <img src={RightArrow} alt="nextArrow" {...props} width="200px" />
-);
+  return (
+    <div
+      style={{
+        ...style,
+        ...arrowsStyles,
+        left: -30,
+        justifyContent: "flex-start",
+      }}
+      onClick={onClick}
+    >
+      <IoIosArrowBack
+        style={{ fontSize: "30px", color: "rgba(255,255,255, .5)" }}
+      />
+    </div>
+  );
+};
+
+const ArrowRight = ({ currentSlide, slideCount, ...props }) => {
+  const { style, onClick } = props;
+
+  return (
+    <div
+      style={{
+        ...style,
+        ...arrowsStyles,
+      }}
+      onClick={onClick}
+    >
+      <IoIosArrowForward
+        style={{ fontSize: "30px", color: "rgba(255,255,255, .5)" }}
+      />
+    </div>
+  );
+};
 
 export const settings = {
   dots: false,
@@ -22,6 +65,8 @@ export const settings = {
   slidesToScroll: 8,
   initialSlide: 0,
   arrows: true,
+  nextArrow: <ArrowRight />,
+  prevArrow: <ArrowLeft />,
 
   responsive: [
     {
@@ -53,6 +98,8 @@ export const customSettings = {
   slidesToScroll: 3,
   initialSlide: 0,
   arrows: true,
+  nextArrow: <ArrowRight />,
+  prevArrow: <ArrowLeft />,
   responsive: [
     {
       breakpoint: 1024,
@@ -63,7 +110,6 @@ export const customSettings = {
         dots: false,
       },
     },
-
     {
       breakpoint: 480,
       settings: {
@@ -75,31 +121,31 @@ export const customSettings = {
   ],
 };
 
+export const VerticalFade = styled.div`
+  display: none;
+  z-index: 3;
+  width: 100%;
+  height: 250px;
+  position: absolute;
+  transform: scale(1.008);
+  background-color: black;
+  transition: all 200ms ease-in;
+  background: linear-gradient(to top, #111 10%, transparent 90%);
+`;
+
 export const CustomCard = styled.div`
-  height: 100%;
   cursor: pointer;
+  position: relative;
   ${(props) => {
     if (props.custom) {
       return css`
         position: relative;
-        -webkit-transition: all 200ms ease-in;
-        -webkit-transform: scale(0.95);
-        -ms-transition: all 200ms ease-in;
-        -ms-transform: scale(0.95);
-        -moz-transition: all 200ms ease-in;
-        -moz-transform: scale(0.95);
         transition: all 200ms ease-in;
         transform: scale(0.95);
       `;
     } else {
       return css`
         position: relative;
-        -webkit-transition: all 200ms ease-in;
-        -webkit-transform: scale(0.9);
-        -ms-transition: all 200ms ease-in;
-        -ms-transform: scale(0.9);
-        -moz-transition: all 200ms ease-in;
-        -moz-transform: scale(0.9);
         transition: all 200ms ease-in;
         transform: scale(0.9);
       `;
@@ -116,6 +162,9 @@ export const CustomCard = styled.div`
     -moz-transform: scale(1);
     transition: all 200ms ease-in;
     transform: scale(1);
+    ${VerticalFade} {
+      display: block;
+    }
   }
 `;
 
