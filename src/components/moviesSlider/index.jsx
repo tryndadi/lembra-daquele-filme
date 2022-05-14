@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 
 import tmdb from "../../services/tmdb";
-import { CustomCard, settings } from "./styles";
+import { CustomCard, CustomSlider, settings } from "./styles";
 import { imagePathPrefix } from "../../assets/js/utils";
 
 const MoviesSections = () => {
@@ -29,9 +29,9 @@ const MoviesSections = () => {
               medias && (
                 <div key={i}>
                   <h1>{medias.title}</h1>
-                  <Slider {...settings}>
+                  <CustomSlider {...settings}>
                     {medias.items.map((media) => (
-                      <CustomCard key={Date.now() + Math.random()}>
+                      <CustomCard key={i}>
                         <img
                           src={imagePathPrefix + media.poster_path}
                           alt="a"
@@ -39,7 +39,7 @@ const MoviesSections = () => {
                         />
                       </CustomCard>
                     ))}
-                  </Slider>
+                  </CustomSlider>
                 </div>
               )
           )}

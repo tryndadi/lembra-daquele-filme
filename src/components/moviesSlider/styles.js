@@ -1,4 +1,5 @@
 import React from "react";
+import slider from "react-slick/lib/slider";
 import styled from "styled-components";
 
 import LeftArrow from "../../assets/img/left-arrow.svg";
@@ -68,4 +69,8 @@ export const CustomCard = styled.div`
     transition: all 200ms ease-in;
     transform: scale(1);
   }
+`;
+
+export const CustomSlider = styled(slider)`
+  transform: scale(0.9);
 `;
