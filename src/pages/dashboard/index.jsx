@@ -21,6 +21,7 @@ const Dashboard = () => {
 
   }, [])
 
+  
 
   return (
     <>
@@ -50,6 +51,7 @@ const Dashboard = () => {
           <nav>
 
             <ul>
+              <li>Todos</li>
               {
                 movieGenres.genres && movieGenres.genres.map((genre) => (
                   <li key={genre.id}>
@@ -61,7 +63,7 @@ const Dashboard = () => {
 
           </nav>
           
-          <ul className='lista-filmes'>
+          <ul className='slide'>
             <h3>TOP Filmes</h3>
 
             {
@@ -69,7 +71,7 @@ const Dashboard = () => {
             }
           </ul>
 
-          <ul className='lista-filmes'>
+          <ul className='slide'>
             <h3>Melhores Filmes</h3>
 
             {
@@ -77,7 +79,7 @@ const Dashboard = () => {
             }
           </ul>
 
-          <ul className='lista-filmes'>
+          <ul className='slide'>
             <h3>Melhores Séries</h3>
 
             {
