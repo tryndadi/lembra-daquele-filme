@@ -24,7 +24,7 @@ const ArrowLeft = ({ currentSlide, slideCount, ...props }) => {
   const { style, onClick } = props;
 
   return (
-    <a
+    <div
       style={{
         ...style,
         ...arrowsStyles,
@@ -36,7 +36,7 @@ const ArrowLeft = ({ currentSlide, slideCount, ...props }) => {
       <IoIosArrowBack
         style={{ fontSize: "30px", color: "rgba(255,255,255, .5)" }}
       />
-    </a>
+    </div>
   );
 };
 
