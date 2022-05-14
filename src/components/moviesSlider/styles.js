@@ -6,7 +6,7 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 const arrowsStyles = {
   top: 0,
-  right: -30,
+  right: -35,
   zIndex: -2,
   width: "75px",
   height: "100%",
@@ -28,13 +28,13 @@ const ArrowLeft = ({ currentSlide, slideCount, ...props }) => {
       style={{
         ...style,
         ...arrowsStyles,
-        left: -30,
+        left: -35,
         justifyContent: "flex-start",
       }}
       onClick={onClick}
     >
       <IoIosArrowBack
-        style={{ fontSize: "30px", color: "rgba(255,255,255, .5)" }}
+        style={{ fontSize: "35px", color: "rgba(255,255,255, .5)" }}
       />
     </div>
   );
@@ -52,7 +52,7 @@ const ArrowRight = ({ currentSlide, slideCount, ...props }) => {
       onClick={onClick}
     >
       <IoIosArrowForward
-        style={{ fontSize: "30px", color: "rgba(255,255,255, .5)" }}
+        style={{ fontSize: "35px", color: "rgba(255,255,255, .5)" }}
       />
     </div>
   );
