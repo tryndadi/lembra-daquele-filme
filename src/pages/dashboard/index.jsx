@@ -8,6 +8,7 @@ import { tmdbAccess } from "../../services/api";
 import { StyleContainer } from "./style";
 
 import MoviesSections from "../../components/moviesSlider";
+import SearchBar from "../../components/searchBar";
 
 const Dashboard = () => {
   const [movieGenres, setMovieGenres] = useState([]);
@@ -30,11 +31,7 @@ const Dashboard = () => {
               <img src={logo} alt="logo" />
             </Link>
 
-            <div className="cont-input-search">
-              <input type="search" placeholder="Pesquisar" />
-
-              <FaSistrix />
-            </div>
+            <SearchBar/>
           </div>
         </header>
 

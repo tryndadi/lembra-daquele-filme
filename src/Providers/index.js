@@ -1,12 +1,18 @@
 import CollectionProvider from "./CollectionProvider";
 import MediasProvider from "./MediasProvider";
 import React from "react";
+import SearchProvider from "./SearchProvider";
 
 const Providers = ({ children }) => {
   return (
-    <MediasProvider>
-      <CollectionProvider>{children}</CollectionProvider>;
-    </MediasProvider>
+    <SearchProvider>
+      <MediasProvider>
+        <CollectionProvider>
+          {children}
+        </CollectionProvider>;
+      </MediasProvider>
+    </SearchProvider>
+
   );
 };
 
