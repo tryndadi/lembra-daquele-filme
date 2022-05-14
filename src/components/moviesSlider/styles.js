@@ -49,16 +49,16 @@ export const customSettings = {
   dots: false,
   infinite: true,
   speed: 1000,
-  slidesToShow: 4,
-  slidesToScroll: 4,
+  slidesToShow: 3,
+  slidesToScroll: 3,
   initialSlide: 0,
   arrows: true,
   responsive: [
     {
       breakpoint: 1024,
       settings: {
-        slidesToScroll: 6,
-        slidesToShow: 6,
+        slidesToScroll: 2,
+        slidesToShow: 2,
         infinite: true,
         dots: false,
       },
@@ -95,13 +95,13 @@ export const CustomCard = styled.div`
       return css`
         position: relative;
         -webkit-transition: all 200ms ease-in;
-        -webkit-transform: scale(0.8);
+        -webkit-transform: scale(0.9);
         -ms-transition: all 200ms ease-in;
-        -ms-transform: scale(0.8);
+        -ms-transform: scale(0.9);
         -moz-transition: all 200ms ease-in;
-        -moz-transform: scale(0.8);
+        -moz-transform: scale(0.9);
         transition: all 200ms ease-in;
-        transform: scale(0.8);
+        transform: scale(0.9);
       `;
     }
   }}
