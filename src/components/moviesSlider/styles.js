@@ -153,7 +153,6 @@ export const VerticalFade = styled.div`
 `;
 
 export const CustomCard = styled.div`
-  cursor: pointer;
   position: relative;
   ${(props) => {
     if (props.custom) {
@@ -173,18 +172,9 @@ export const CustomCard = styled.div`
 
   &:hover {
     z-index: 2;
-    -webkit-transition: all 200ms ease-in;
-    -webkit-transform: scale(1);
-    -ms-transition: all 200ms ease-in;
-    -ms-transform: scale(1);
-    -moz-transition: all 200ms ease-in;
-    -moz-transform: scale(1);
     transition: all 200ms ease-in;
     transform: scale(1);
     ${VerticalFade} {
-      display: block;
-    }
-    ${BackDrop} {
       display: block;
     }
   }
@@ -206,4 +196,13 @@ export const InfosSection = styled.div`
   padding: 10px;
   gap: 10px;
   bottom: 0;
+`;
+
+export const ButtonsSection = styled.div`
+  gap: 15px;
+  padding: 10px;
+  display: flex;
+  transition: all 200ms ease-in;
+  justify-content: space-between;
+  background: linear-gradient(to bottom, #111 10%, transparent 90%);
 `;
