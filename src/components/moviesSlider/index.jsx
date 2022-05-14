@@ -7,11 +7,15 @@ import {
   VerticalFade,
   TitleSection,
   InfosSection,
+  ButtonsSection,
 } from "./styles";
 import { useTMDBMedias } from "../../Providers/MediasProvider";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 import { imagePathPrefix } from "../../assets/js/utils";
 import { Rating, Typography } from "@mui/material";
+
+import { IoIosAddCircle } from "react-icons/io";
+import { BiCameraMovie } from "react-icons/bi";
 
 const MoviesSections = () => {
   const { mediasList } = useTMDBMedias();
@@ -28,6 +32,16 @@ const MoviesSections = () => {
                   {medias.items.map((media) => (
                     <CustomCard key={media.id} custom={i === 0 ? true : false}>
                       <VerticalFade>
+                        <ButtonsSection>
+                          <BiCameraMovie
+                            size={30}
+                            color="rgba(255,255,255,0.5)"
+                          />
+                          <IoIosAddCircle
+                            size={30}
+                            color="rgba(255,255,255,0.5)"
+                          />
+                        </ButtonsSection>
                         <InfosSection>
                           <TitleSection>
                             {media.title || media.name}

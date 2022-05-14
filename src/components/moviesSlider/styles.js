@@ -153,7 +153,6 @@ export const VerticalFade = styled.div`
 `;
 
 export const CustomCard = styled.div`
-  cursor: pointer;
   position: relative;
   ${(props) => {
     if (props.custom) {
@@ -184,9 +183,6 @@ export const CustomCard = styled.div`
     ${VerticalFade} {
       display: block;
     }
-    ${BackDrop} {
-      display: block;
-    }
   }
 `;
 
@@ -206,4 +202,12 @@ export const InfosSection = styled.div`
   padding: 10px;
   gap: 10px;
   bottom: 0;
+`;
+
+export const ButtonsSection = styled.div`
+  gap: 15px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  background: linear-gradient(to bottom, #111 10%, transparent 90%);
 `;
