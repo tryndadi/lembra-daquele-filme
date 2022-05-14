@@ -5,7 +5,7 @@ import tmdb from "../../services/tmdb";
 import { CustomCard, settings } from "./styles";
 import { imagePathPrefix } from "../../assets/js/utils";
 
-const Card = () => {
+const MoviesSections = () => {
   const [mediasList, setMediasList] = useState(null);
 
   useEffect(() => {
@@ -48,4 +48,4 @@ const Card = () => {
   );
 };
 
-export default Card;
+export default MoviesSections;

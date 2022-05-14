@@ -4,12 +4,11 @@ import Dashboard from "../pages/dashboard";
 import LandingPage from "../pages/landingPage";
 import LoginPage from "../pages/login";
 import RegisterPage from "../pages/register";
-import Card from "../components/moviesSlider";
 
 const Routes = () => {
   return (
     <Switch>
-      <Route component={Card} path="/" exact />
+      <Route component={LandingPage} path="/" exact />
       <Route component={RegisterPage} path="/register" />
       <Route component={LoginPage} path="/login" />
       <Route component={Dashboard} path="/dashboard" />
