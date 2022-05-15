@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   CustomCard,
   CustomSlider,
@@ -9,7 +9,10 @@ import {
   ButtonsSection,
   SliderContainer,
   iconStyle,
+  modalStyles,
 } from "./styles";
+
+import { toast } from "react-toastify";
 import { useTMDBMedias } from "../../Providers/MediasProvider";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 import { imagePathPrefix } from "../../assets/js/utils";
@@ -18,8 +21,33 @@ import { Rating, Typography } from "@mui/material";
 import { IoIosAddCircle } from "react-icons/io";
 import { BiCameraMovie } from "react-icons/bi";
 
+import ReactModal from "react-modal";
+import TraillerPlayer from "../TraillerPlayer";
+
+import { tmdbAccess } from "../../services/api";
+
 const MoviesSections = () => {
+  const [traillerId, setTraillerId] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
+
   const { mediasList } = useTMDBMedias();
+
+  const handleCLick = async (media) => {
+    try {
+      const videos = await tmdbAccess
+        .get(`/movie/${media.id}/videos?language=pt-BR`)
+        .then(({ data }) => data.results);
+
+      const selectedMovie = videos.find(
+        (video) => video.type === "Trailer" && video.site === "YouTube"
+      );
+
+      setTraillerId(selectedMovie.key);
+      setIsOpen(true);
+    } catch (error) {
+      toast.error("Nenhum vídeo encontrado.");
+    }
+  };
 
   return (
     <div>
@@ -34,7 +62,10 @@ const MoviesSections = () => {
                     <CustomCard key={media.id} custom={i === 0 ? true : false}>
                       <VerticalFade>
                         <ButtonsSection>
-                          <BiCameraMovie style={{ ...iconStyle }} />
+                          <BiCameraMovie
+                            style={{ ...iconStyle }}
+                            onClick={() => handleCLick(media)}
+                          />
                           <IoIosAddCircle style={{ ...iconStyle }} />
                         </ButtonsSection>
                         <InfosSection>
@@ -73,6 +104,13 @@ const MoviesSections = () => {
               </SliderContainer>
             )
         )}
+      <ReactModal
+        isOpen={isOpen}
+        onRequestClose={() => setIsOpen(false)}
+        style={{ ...modalStyles }}
+      >
+        <TraillerPlayer id={traillerId} />
+      </ReactModal>
     </div>
   );
 };

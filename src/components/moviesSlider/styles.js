@@ -174,6 +174,7 @@ export const CustomCard = styled.div`
 export const iconStyle = {
   fontSize: "30px",
   color: "rgba(255,255,255,0.5)",
+  cursor: "pointer",
 };
 
 export const SliderContainer = styled.div`
@@ -202,3 +203,28 @@ export const ButtonsSection = styled.div`
   justify-content: space-between;
   background: linear-gradient(to bottom, #111 10%, transparent 90%);
 `;
+
+export const modalStyles = {
+  overlay: {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+  },
+  content: {
+    position: "absolute",
+    top: "40px",
+    left: "40px",
+    right: "40px",
+    bottom: "40px",
+    border: "none",
+    background: "transparent",
+    overflow: "auto",
+    WebkitOverflowScrolling: "touch",
+    borderRadius: "4px",
+    outline: "none",
+    padding: "20px",
+  },
+};
