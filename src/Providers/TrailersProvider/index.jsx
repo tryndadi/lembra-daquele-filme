@@ -9,8 +9,6 @@ const TrailersProvider = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const getTrailer = async (media) => {
-    setIsOpen(true);
-
     try {
       const videos = await tmdbAccess
         .get(`/movie/${media.id}/videos?language=pt-BR`)
