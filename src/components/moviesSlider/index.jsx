@@ -26,9 +26,13 @@ import TraillerPlayer from "../TraillerPlayer";
 
 import { tmdbAccess } from "../../services/api";
 
+import useStyles from "./styles";
+
 const MoviesSections = () => {
   const [traillerId, setTraillerId] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
+
+  const classes = useStyles();
 
   const { mediasList } = useTMDBMedias();
 
@@ -118,6 +122,7 @@ const MoviesSections = () => {
             )
         )}
       <ReactModal
+        className={classes.modal}
         ariaHideApp={false}
         isOpen={isOpen}
         onRequestClose={() => setIsOpen(false)}

@@ -1,8 +1,19 @@
 import React from "react";
 import slider from "react-slick/lib/slider";
 import styled from "styled-components";
+
 import { css } from "styled-components";
+import { makeStyles } from "@material-ui/styles";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+
+export default makeStyles(() => ({
+  modal: {
+    "@media screen and (max-width: 486px)": {
+      maxWidth: "320px",
+      maxWeight: "180px",
+    },
+  },
+}));
 
 export const arrowsStyles = {
   top: 0,
@@ -211,20 +222,19 @@ export const modalStyles = {
     left: 0,
     right: 0,
     bottom: 0,
+    display: "flex",
+    height: "100vh",
+    justifyContent: "center",
+    alignItems: "center",
     backgroundColor: "rgba(0, 0, 0, 0.5)",
   },
   content: {
-    position: "absolute",
-    top: "40px",
-    left: "40px",
-    right: "40px",
-    bottom: "40px",
-    border: "none",
     background: "transparent",
     overflow: "auto",
     WebkitOverflowScrolling: "touch",
     borderRadius: "4px",
     outline: "none",
-    padding: "20px",
+    padding: "5px",
+    width: "100%",
   },
 };
