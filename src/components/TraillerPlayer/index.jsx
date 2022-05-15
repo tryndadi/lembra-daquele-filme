@@ -9,7 +9,7 @@ const TraillerPlayer = ({ id }) => {
       url={baseURL + id}
       playing
       width="100%"
-      height="100%"
+      style={{ maxWidth: "640px", margin: "0 auto" }}
     />
   );
 };
