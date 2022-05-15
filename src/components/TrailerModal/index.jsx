@@ -14,7 +14,6 @@ const TrailerModal = ({ isOpen, setIsOpen, traillerId }) => {
   return (
     <ReactModal
       className={classes.modal}
-      ariaHideApp={false}
       isOpen={isOpen}
       onRequestClose={() => setIsOpen(false)}
       style={{ ...modalStyles }}

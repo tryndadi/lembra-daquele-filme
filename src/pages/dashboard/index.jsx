@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import logo from "../../assets/img/logo.svg";
 
 import loader from "../../assets/img/loader.gif";
-import { FaSistrix } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { tmdbAccess } from "../../services/api";
 import { StyleContainer } from "./style";
@@ -12,8 +11,7 @@ import MoviesSections from "../../components/moviesSlider";
 import SearchBar from "../../components/searchBar";
 
 import { useTMDBMedias } from "../../Providers/MediasProvider";
-import { CircularProgress, Grid } from "@mui/material";
-import { blue } from "@mui/material/colors";
+import { Grid } from "@mui/material";
 
 const Dashboard = () => {
   const [movieGenres, setMovieGenres] = useState([]);

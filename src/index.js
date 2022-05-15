@@ -7,6 +7,10 @@ import { BrowserRouter } from "react-router-dom";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Providers from "./Providers";
+import ReactModal from "react-modal";
+
+const appEl = document.getElementById("root");
+ReactModal.setAppElement(appEl);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
