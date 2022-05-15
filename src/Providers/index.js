@@ -6,13 +6,13 @@ import CollectionProvider from "./CollectionProvider";
 
 const Providers = ({ children }) => {
   return (
-    <SearchProvider>
-      <MediasProvider>
+    <MediasProvider>
+      <SearchProvider>
         <TrailersProvider>
           <CollectionProvider>{children}</CollectionProvider>;
         </TrailersProvider>
-      </MediasProvider>
-    </SearchProvider>
+      </SearchProvider>
+    </MediasProvider>
   );
 };
 
