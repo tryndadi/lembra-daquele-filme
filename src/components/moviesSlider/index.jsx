@@ -5,9 +5,10 @@ import {
   settings,
   customSettings,
   VerticalFade,
-  TitleSection,
   InfosSection,
   ButtonsSection,
+  SliderContainer,
+  iconStyle,
 } from "./styles";
 import { useTMDBMedias } from "../../Providers/MediasProvider";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
@@ -26,31 +27,19 @@ const MoviesSections = () => {
         mediasList.map(
           (medias, i) =>
             medias && (
-              <div key={i}>
-                <h1 style={{ color: "#FFF" }}>{medias.title}</h1>
+              <SliderContainer key={i}>
+                <Typography variant="h6">{medias.title}</Typography>
                 <CustomSlider {...(i === 0 ? customSettings : settings)}>
                   {medias.items.map((media) => (
                     <CustomCard key={media.id} custom={i === 0 ? true : false}>
                       <VerticalFade>
                         <ButtonsSection>
-                          <BiCameraMovie
-                            size={30}
-                            color="rgba(255,255,255,0.5)"
-                          />
-                          <IoIosAddCircle
-                            size={30}
-                            color="rgba(255,255,255,0.5)"
-                          />
+                          <BiCameraMovie style={{ ...iconStyle }} />
+                          <IoIosAddCircle style={{ ...iconStyle }} />
                         </ButtonsSection>
                         <InfosSection>
-                          <TitleSection>
-                            {media.title || media.name}
-                          </TitleSection>
-
-                          <Typography
-                            size={12}
-                            sx={{ color: "rgba(255,255,255, 0.5)" }}
-                          >
+                          <Typography>{media.title || media.name}</Typography>
+                          <Typography size={12}>
                             <Rating
                               sx={{ verticalAlign: "middle" }}
                               readOnly
@@ -81,7 +70,7 @@ const MoviesSections = () => {
                     </CustomCard>
                   ))}
                 </CustomSlider>
-              </div>
+              </SliderContainer>
             )
         )}
     </div>

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { css } from "styled-components";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
-const arrowsStyles = {
+export const arrowsStyles = {
   top: 0,
   right: -35,
   zIndex: -2,
@@ -20,7 +20,7 @@ const arrowsStyles = {
   background: "rgba(0,0,0,0.5)",
 };
 
-const ArrowLeft = ({ currentSlide, slideCount, ...props }) => {
+export const ArrowLeft = ({ currentSlide, slideCount, ...props }) => {
   const { style, onClick } = props;
 
   return (
@@ -40,7 +40,7 @@ const ArrowLeft = ({ currentSlide, slideCount, ...props }) => {
   );
 };
 
-const ArrowRight = ({ currentSlide, slideCount, ...props }) => {
+export const ArrowRight = ({ currentSlide, slideCount, ...props }) => {
   const { style, onClick } = props;
 
   return (
@@ -131,15 +131,6 @@ export const customSettings = {
   ],
 };
 
-export const BackDrop = styled.div`
-  display: none;
-  height: 500px;
-  position: absolute;
-  bottom: -100;
-  z-index: 5;
-  background: rgba(0, 0, 0, 0.5);
-`;
-
 export const VerticalFade = styled.div`
   display: none;
   z-index: 3;
@@ -180,13 +171,18 @@ export const CustomCard = styled.div`
   }
 `;
 
+export const iconStyle = {
+  fontSize: "30px",
+  color: "rgba(255,255,255,0.5)",
+};
+
+export const SliderContainer = styled.div`
+  color: rgba(255, 255, 255, 0.5);
+`;
+
 export const CustomSlider = styled(slider)`
   transform: scale(0.9);
   position: relative;
-`;
-
-export const TitleSection = styled.div`
-  color: rgba(255, 255, 255, 0.5);
 `;
 
 export const InfosSection = styled.div`
