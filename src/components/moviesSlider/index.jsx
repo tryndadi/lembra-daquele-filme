@@ -45,7 +45,20 @@ const MoviesSections = () => {
       setTraillerId(selectedMovie.key);
       setIsOpen(true);
     } catch (error) {
-      toast.error("Nenhum vídeo encontrado.");
+      try {
+        const videos = await tmdbAccess
+          .get(`/tv/${media.id}/videos?language=pt-BR`)
+          .then(({ data }) => data.results);
+
+        const selectedMovie = videos.find(
+          (video) => video.type === "Trailer" && video.site === "YouTube"
+        );
+
+        setTraillerId(selectedMovie.key);
+        setIsOpen(true);
+      } catch (error) {
+        toast.error("Nenhum vídeo encontrado.");
+      }
     }
   };
 
@@ -105,6 +118,7 @@ const MoviesSections = () => {
             )
         )}
       <ReactModal
+        ariaHideApp={false}
         isOpen={isOpen}
         onRequestClose={() => setIsOpen(false)}
         style={{ ...modalStyles }}
