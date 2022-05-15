@@ -1,18 +1,18 @@
-import CollectionProvider from "./CollectionProvider";
-import MediasProvider from "./MediasProvider";
 import React from "react";
+import MediasProvider from "./MediasProvider";
 import SearchProvider from "./SearchProvider";
+import TrailersProvider from "./TrailersProvider";
+import CollectionProvider from "./CollectionProvider";
 
 const Providers = ({ children }) => {
   return (
     <SearchProvider>
       <MediasProvider>
-        <CollectionProvider>
-          {children}
-        </CollectionProvider>;
+        <TrailersProvider>
+          <CollectionProvider>{children}</CollectionProvider>;
+        </TrailersProvider>
       </MediasProvider>
     </SearchProvider>
-
   );
 };
 

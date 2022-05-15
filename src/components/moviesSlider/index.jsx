@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   CustomCard,
   CustomSlider,
@@ -9,64 +9,23 @@ import {
   ButtonsSection,
   SliderContainer,
   iconStyle,
-  modalStyles,
 } from "./styles";
 
-import { toast } from "react-toastify";
 import { useTMDBMedias } from "../../Providers/MediasProvider";
+import { useTrailer } from "../../Providers/TrailersProvider";
+
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 import { imagePathPrefix } from "../../assets/js/utils";
 import { Rating, Typography } from "@mui/material";
 
 import { IoIosAddCircle } from "react-icons/io";
 import { BiCameraMovie } from "react-icons/bi";
-import { AiFillCloseSquare } from "react-icons/ai";
 
-import ReactModal from "react-modal";
-import TraillerPlayer from "../TraillerPlayer";
-
-import { tmdbAccess } from "../../services/api";
-
-import useStyles from "./styles";
 import TrailerModal from "../TrailerModal";
 
 const MoviesSections = () => {
-  const [traillerId, setTraillerId] = useState(null);
-  const [isOpen, setIsOpen] = useState(false);
-
-  const classes = useStyles();
-
   const { mediasList } = useTMDBMedias();
-
-  const handleCLick = async (media) => {
-    try {
-      const videos = await tmdbAccess
-        .get(`/movie/${media.id}/videos?language=pt-BR`)
-        .then(({ data }) => data.results);
-
-      const selectedMovie = videos.find(
-        (video) => video.type === "Trailer" && video.site === "YouTube"
-      );
-
-      setTraillerId(selectedMovie.key);
-      setIsOpen(true);
-    } catch (error) {
-      try {
-        const videos = await tmdbAccess
-          .get(`/tv/${media.id}/videos?language=pt-BR`)
-          .then(({ data }) => data.results);
-
-        const selectedMovie = videos.find(
-          (video) => video.type === "Trailer" && video.site === "YouTube"
-        );
-
-        setTraillerId(selectedMovie.key);
-        setIsOpen(true);
-      } catch (error) {
-        toast.error("Nenhum vídeo encontrado.");
-      }
-    }
-  };
+  const { getTrailer, traillerId, isOpen, setIsOpen } = useTrailer();
 
   return (
     <div>
@@ -83,7 +42,7 @@ const MoviesSections = () => {
                         <ButtonsSection>
                           <BiCameraMovie
                             style={{ ...iconStyle }}
-                            onClick={() => handleCLick(media)}
+                            onClick={() => getTrailer(media)}
                           />
                           <IoIosAddCircle style={{ ...iconStyle }} />
                         </ButtonsSection>
