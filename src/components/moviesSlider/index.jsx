@@ -22,6 +22,7 @@ import { IoIosAddCircle } from "react-icons/io";
 import { BiCameraMovie } from "react-icons/bi";
 
 import TrailerModal from "../TrailerModal";
+import CustomIconButton from "../CustomIconButton";
 
 const MoviesSections = () => {
   const { mediasList } = useTMDBMedias();
@@ -40,11 +41,15 @@ const MoviesSections = () => {
                     <CustomCard key={media.id} custom={i === 0 ? true : false}>
                       <VerticalFade>
                         <ButtonsSection>
-                          <BiCameraMovie
-                            style={{ ...iconStyle }}
+                          <CustomIconButton
+                            title="Ver Trailer"
                             onClick={() => getTrailer(media)}
-                          />
-                          <IoIosAddCircle style={{ ...iconStyle }} />
+                          >
+                            <BiCameraMovie style={{ ...iconStyle }} />
+                          </CustomIconButton>
+                          <CustomIconButton title="Mais informações">
+                            <IoIosAddCircle style={{ ...iconStyle }} />
+                          </CustomIconButton>
                         </ButtonsSection>
                         <InfosSection>
                           <Typography>{media.title || media.name}</Typography>
