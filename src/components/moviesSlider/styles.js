@@ -230,11 +230,14 @@ export const modalStyles = {
   },
   content: {
     background: "transparent",
+    position: "relative",
     overflow: "auto",
     WebkitOverflowScrolling: "touch",
     borderRadius: "4px",
     outline: "none",
-    padding: "5px",
+    padding: "20px",
     width: "100%",
+    maxWidth: "640px",
+    textAlign: "right",
   },
 };

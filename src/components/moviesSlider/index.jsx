@@ -20,6 +20,7 @@ import { Rating, Typography } from "@mui/material";
 
 import { IoIosAddCircle } from "react-icons/io";
 import { BiCameraMovie } from "react-icons/bi";
+import { AiFillCloseSquare } from "react-icons/ai";
 
 import ReactModal from "react-modal";
 import TraillerPlayer from "../TraillerPlayer";
@@ -27,6 +28,7 @@ import TraillerPlayer from "../TraillerPlayer";
 import { tmdbAccess } from "../../services/api";
 
 import useStyles from "./styles";
+import TrailerModal from "../TrailerModal";
 
 const MoviesSections = () => {
   const [traillerId, setTraillerId] = useState(null);
@@ -121,15 +123,11 @@ const MoviesSections = () => {
               </SliderContainer>
             )
         )}
-      <ReactModal
-        className={classes.modal}
-        ariaHideApp={false}
+      <TrailerModal
         isOpen={isOpen}
-        onRequestClose={() => setIsOpen(false)}
-        style={{ ...modalStyles }}
-      >
-        <TraillerPlayer id={traillerId} />
-      </ReactModal>
+        setIsOpen={setIsOpen}
+        traillerId={traillerId}
+      />
     </div>
   );
 };
