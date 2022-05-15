@@ -20,11 +20,11 @@ export default {
         title: "Recomendados para você",
         items: await tmdbAccess.get("/trending/all/week?language=pt-BR"),
       },
-      {
-        keyWord: "toprated",
-        title: "Em Alta",
-        items: await tmdbAccess.get("/movie/top_rated/?language=pt-BR"),
-      },
+      // {
+      //   keyWord: "toprated",
+      //   title: "Em Alta",
+      //   items: await tmdbAccess.get("/movie/top_rated/?language=pt-BR"),
+      // },
       // {
       //   keyWord: "action",
       //   title: "Ação",

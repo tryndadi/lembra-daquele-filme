@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import logo from "../../assets/img/logo.svg";
 
+import loader from "../../assets/img/loader.gif";
 import { FaSistrix } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { tmdbAccess } from "../../services/api";
@@ -10,8 +11,13 @@ import { StyleContainer } from "./style";
 import MoviesSections from "../../components/moviesSlider";
 import SearchBar from "../../components/searchBar";
 
+import { useTMDBMedias } from "../../Providers/MediasProvider";
+import { CircularProgress, Grid } from "@mui/material";
+import { blue } from "@mui/material/colors";
+
 const Dashboard = () => {
   const [movieGenres, setMovieGenres] = useState([]);
+  const { isLoading } = useTMDBMedias();
 
   useEffect(() => {
     tmdbAccess
@@ -31,7 +37,7 @@ const Dashboard = () => {
               <img src={logo} alt="logo" />
             </Link>
 
-            <SearchBar/>
+            <SearchBar />
           </div>
         </header>
 
@@ -46,7 +52,26 @@ const Dashboard = () => {
             </ul>
           </nav>
 
-          <MoviesSections />
+          {isLoading ? (
+            <Grid
+              spacing={1}
+              container
+              justifyContent="center"
+              alignItems="center"
+              height="50vh"
+            >
+              <Grid xs={1} item>
+                <img
+                  src={loader}
+                  width="100%"
+                  style={{ maxWidth: "50px" }}
+                  alt="loader"
+                />
+              </Grid>
+            </Grid>
+          ) : (
+            <MoviesSections />
+          )}
 
           {/* <ul className="slide">
             <h3>TOP Filmes</h3>

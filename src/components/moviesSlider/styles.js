@@ -20,6 +20,7 @@ export const arrowsStyles = {
   right: -35,
   zIndex: -2,
   width: "75px",
+  minHeight: "50px",
   height: "100%",
   display: "flex",
   cursor: "pointer",

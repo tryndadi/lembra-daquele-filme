@@ -5,6 +5,7 @@ import ReactModal from "react-modal";
 import { AiFillCloseSquare } from "react-icons/ai";
 
 import { modalStyles } from "./styles";
+
 import useStyles from "./styles";
 
 const TrailerModal = ({ isOpen, setIsOpen, traillerId }) => {
@@ -24,6 +25,7 @@ const TrailerModal = ({ isOpen, setIsOpen, traillerId }) => {
         cursor="pointer"
         onClick={() => setIsOpen(false)}
       />
+
       <TraillerPlayer id={traillerId} />
     </ReactModal>
   );

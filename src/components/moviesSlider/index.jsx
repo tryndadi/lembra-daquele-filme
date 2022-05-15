@@ -11,7 +11,7 @@ import { useTMDBMedias } from "../../Providers/MediasProvider";
 import { useTrailer } from "../../Providers/TrailersProvider";
 
 import { imagePathPrefix } from "../../assets/js/utils";
-import { Typography } from "@mui/material";
+import { Typography, CircularProgress } from "@mui/material";
 
 import TrailerModal from "../TrailerModal";
 import CardFade from "../CardFade";
