@@ -6,10 +6,10 @@ const TraillerPlayer = ({ id }) => {
   return (
     <ReactPlayer
       controls
-      url={baseURL + id}
       playing
+      url={baseURL + id}
       width="100%"
-      height="100%"
+      style={{ maxWidth: "640px", margin: "0 auto" }}
     />
   );
 };

@@ -4,22 +4,25 @@ import tmdb from "../../services/tmdb";
 const MediasContext = createContext();
 
 const MediasProvider = ({ children }) => {
-  const [mediasList, setMediasList] = useState(null);
+  const [mediasList, setMediasList] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    tmdb.getMedia().then((res) =>
+    setIsLoading(true);
+    tmdb.getMedia.then((res) => {
       setMediasList(
         res.map(({ keyWord, title, items }) => ({
           keyWord,
           title,
           items: items.data.results,
         }))
-      )
-    );
+      );
+      return setIsLoading(false);
+    });
   }, []);
 
   return (
-    <MediasContext.Provider value={{ mediasList }}>
+    <MediasContext.Provider value={{ mediasList, isLoading }}>
       {children}
     </MediasContext.Provider>
   );
