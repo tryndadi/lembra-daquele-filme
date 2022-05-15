@@ -2,7 +2,7 @@ import React from "react";
 import slider from "react-slick/lib/slider";
 import styled from "styled-components";
 
-import { css } from "styled-components";
+import { VerticalFade } from "../CardFade/styles";
 import { makeStyles } from "@material-ui/styles";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
@@ -142,35 +142,10 @@ export const customSettings = {
   ],
 };
 
-export const VerticalFade = styled.div`
-  display: none;
-  z-index: 3;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  transform: scale(1.008);
-  background-color: black;
-  transition: all 200ms ease-in;
-  background: linear-gradient(to top, #111 20%, transparent 90%);
-`;
-
 export const CustomCard = styled.div`
   position: relative;
-  ${(props) => {
-    if (props.custom) {
-      return css`
-        position: relative;
-        transition: all 200ms ease-in;
-        transform: scale(0.95);
-      `;
-    } else {
-      return css`
-        position: relative;
-        transition: all 200ms ease-in;
-        transform: scale(0.9);
-      `;
-    }
-  }}
+  transition: all 200ms ease-in;
+  transform: scale(0.95);
 
   &:hover {
     z-index: 2;
@@ -182,12 +157,6 @@ export const CustomCard = styled.div`
   }
 `;
 
-export const iconStyle = {
-  fontSize: "30px",
-  color: "rgba(255,255,255,0.5)",
-  cursor: "pointer",
-};
-
 export const SliderContainer = styled.div`
   color: rgba(255, 255, 255, 0.5);
 `;
@@ -196,48 +165,3 @@ export const CustomSlider = styled(slider)`
   transform: scale(0.9);
   position: relative;
 `;
-
-export const InfosSection = styled.div`
-  flex-direction: column;
-  position: absolute;
-  display: flex;
-  padding: 10px;
-  gap: 10px;
-  bottom: 0;
-`;
-
-export const ButtonsSection = styled.div`
-  gap: 15px;
-  padding: 10px;
-  display: flex;
-  transition: all 200ms ease-in;
-  justify-content: space-between;
-  background: linear-gradient(to bottom, #111 10%, transparent 90%);
-`;
-
-export const modalStyles = {
-  overlay: {
-    position: "fixed",
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    display: "flex",
-    height: "100vh",
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
-  },
-  content: {
-    background: "transparent",
-    position: "relative",
-    overflow: "auto",
-    WebkitOverflowScrolling: "touch",
-    borderRadius: "4px",
-    outline: "none",
-    padding: "20px",
-    width: "100%",
-    maxWidth: "640px",
-    textAlign: "right",
-  },
-};
