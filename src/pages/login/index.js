@@ -1,19 +1,17 @@
 import React from "react";
-import { FaEnvelope, FaKey } from "react-icons/fa";
-import { useForm } from "react-hook-form";
 import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-import InputComponent from "../../components/Input";
 import logo from "../../assets/img/logoCompleta.svg";
+import InputComponent from "../../components/Input";
+
 import { Main } from "./style";
-import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
-import { fakeApiAccess } from "../../services/api";
-import { addToStorage } from "../../assets/js/utils";
-import { useHistory } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { FaEnvelope, FaKey } from "react-icons/fa";
+import { useUser } from "../../Providers/UserProvider";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 const LoginPage = () => {
-  const history = useHistory();
+  const { login } = useUser();
 
   const schema = yup.object().shape({
     email: yup
@@ -29,29 +27,6 @@ const LoginPage = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const onSubmit = ({ email, password }) => {
-    const infoUserLogin = {
-      email,
-      password,
-    };
-
-    fakeApiAccess
-      .post("/api/login", JSON.stringify(infoUserLogin))
-      .then((res) => {
-        if (res.status === 200) {
-          toast.success("Login bem sucedido!");
-          const {
-            data: { accessToken, user },
-          } = res;
-          addToStorage("userData", { accessToken, ...user });
-          setTimeout(() => {
-            history.push("/dashboard");
-          }, 1000);
-        }
-      })
-      .catch((res) => toast.error("Email ou senha errados!"));
-  };
-
   return (
     <>
       <Main>
@@ -62,7 +37,7 @@ const LoginPage = () => {
         <div className="cont-form">
           <h2>Conecte-se</h2>
 
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form onSubmit={handleSubmit(login)}>
             <InputComponent
               type="email"
               icon={FaEnvelope}
