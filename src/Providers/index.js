@@ -11,7 +11,7 @@ const Providers = ({ children }) => {
       <MediasProvider>
         <SearchProvider>
           <TrailersProvider>
-            <CollectionProvider>{children}</CollectionProvider>;
+            <CollectionProvider>{children}</CollectionProvider>
           </TrailersProvider>
         </SearchProvider>
       </MediasProvider>
