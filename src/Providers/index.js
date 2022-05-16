@@ -4,18 +4,23 @@ import SearchProvider from "./SearchProvider";
 import TrailersProvider from "./TrailersProvider";
 import CollectionProvider from "./CollectionProvider";
 import UserProvider from "./UserProvider";
+import CommentaryProvider from './CommentaryProvider'
+import WishListContext from "./WishListProvider";
 
 const Providers = ({ children }) => {
   return (
-    <UserProvider>
-      <MediasProvider>
-        <SearchProvider>
-          <TrailersProvider>
-            <CollectionProvider>{children}</CollectionProvider>
-          </TrailersProvider>
-        </SearchProvider>
-      </MediasProvider>
-    </UserProvider>
+    <WishListContext>
+      <UserProvider>
+        <MediasProvider>
+          <SearchProvider>
+            <TrailersProvider>
+              <CollectionProvider>{children}</CollectionProvider>
+            </TrailersProvider>
+          </SearchProvider>
+        </MediasProvider>
+      </UserProvider>
+    </WishListContext>
+
   );
 };
 
