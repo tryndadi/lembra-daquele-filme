@@ -13,7 +13,7 @@ import { useUser } from "../../Providers/UserProvider";
 
 import MoviesSections from "../../components/moviesSlider";
 import SearchBar from "../../components/searchBar";
-import { CollectionContext } from "../../Providers/CollectionProvider";
+import { WishListContext } from "../../Providers/WishListProvider";
 
 const Dashboard = () => {
   const [movieGenres, setMovieGenres] = useState([]);
@@ -31,9 +31,6 @@ const Dashboard = () => {
     const filteredMovies = await getByGenre(genre);
     getMedias(filteredMovies);
   };
-  const { addMovieToCollection, removeMovieFromCollection } = useContext(
-    CollectionContext
-  );
 
   return isLoggedIn ? (
     <StyleContainer>
