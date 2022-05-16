@@ -1,28 +1,7 @@
 import React, { useState } from "react";
 import ReactModal from "react-modal";
-import { BtnAdd, BtnClose } from "./style";
+import { BtnAdd, BtnClose, modalStyle } from "./style";
 import { FaTimes, FaPlusCircle } from "react-icons/fa";
-
-const modalStyle = {
-  overlay: {
-    backgroundColor: "#none",
-  },
-  content: {
-    position: "relative",
-    inset: "25% 25%",
-    backgroundColor: "rgb(102, 21, 54)",
-    opacity: 0.8,
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-around",
-    border: "1px solid #FC094B",
-    overflow: "auto",
-    borderRadius: "2%",
-    width: "45vw",
-    height: "45vh",
-    alignItems: "stretch",
-  },
-};
 
 const ModalCardFilm = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -41,7 +20,7 @@ const ModalCardFilm = () => {
       </BtnAdd>
 
       <ReactModal
-        style={modalStyle}
+        style={{ ...modalStyle }}
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         ariaHideApp={false}
