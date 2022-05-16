@@ -12,3 +12,4 @@ export const BtnAdd = styled.button`
 export const BtnClose = styled(BtnAdd)`
   color: red;
 `;
+

@@ -3,13 +3,7 @@ import ReactModal from "react-modal";
 import { BtnAdd, BtnClose } from "./style";
 import { FaTimes, FaPlusCircle } from "react-icons/fa";
 
-/* -------- Estilização do Modal --------*/
 const modalStyle = {
-  BtnClose: {
-    position: "absolute",
-    right: "0",
-    top: "0",
-  },
   overlay: {
     backgroundColor: "#none",
   },
