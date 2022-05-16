@@ -92,7 +92,7 @@ export const StyleContainer = styled.div`
         }
 
         li {
-          font-size: 0.8rem;
+          font-size: 0.9rem;
 
           padding-right: 12px;
 
