@@ -6,121 +6,140 @@ export const StyleContainer = styled.div`
 
   background: ${(props) => props.theme.colors.background.gradient};
 
-  /* display: flex; */
+  display: flex;
 
-  header {
-    width: 100vw;
-    height: 90px;
+  .pro-sidebar{
+    width: 100%;
+    /* max-width: 280px; */
+    /* max-width: 18vw; */
+    height: 100vh;
 
-    .cont-header {
-      width: 100%;
-
-      padding: 15px;
-
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      box-sizing: border-box;
-
-      img {
-        width: 60px;
-      }
-
-      .cont-input-search {
-        width: 100%;
-        max-width: 220px;
-        min-width: 195px;
-
-        padding: 5px;
-
-        border: 1px solid ${(props) => props.theme.colors.grey.light};
-        border-radius: 10px;
-
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        input {
-          width: 90%;
-
-          background: transparent;
-          color: #ffffff;
-
-          border: none;
-
-          outline: none;
-
-          ::placeholder {
-            color: ${(props) => props.theme.colors.grey.light};
-
-            filter: opacity(70%);
-          }
-        }
-
-        svg {
-          color: ${(props) => props.theme.colors.grey.light};
-        }
-      }
-    }
+    position: relative;
   }
 
-  main {
-    padding: 0 15px 15px 15px;
+  .pro-sidebar-inner{
+    width: 280px;
 
-    /* display: flex;
-    flex-direction: column; */
+    position: fixed;
+  }
 
-    nav {
-      width: 100%;
-      margin-bottom: 25px;
+  .cont-geral-dashboard{
 
-      ul {
-        padding: 5px 5px 8px 5px;
+    header {
+      width: 80vw;
+      height: 90px;
 
-        overflow-x: scroll;
+      .cont-header {
+        width: 100%;
+
+        padding: 15px;
 
         display: flex;
+        justify-content: space-between;
+        align-items: center;
 
-        ::-webkit-scrollbar {
-          height: 5px;
-          width: 5px;
+        box-sizing: border-box;
+
+        img {
+          width: 60px;
         }
 
-        ::-webkit-scrollbar-track {
-          background: rgba(147, 17, 54, 0);
-        }
+        .cont-input-search {
+          width: 100%;
+          max-width: 220px;
+          min-width: 195px;
 
-        ::-webkit-scrollbar-thumb {
-          background: ${(props) => props.theme.colors.card.light};
-          border-radius: 3px;
-        }
+          padding: 5px;
 
-        li {
-          font-size: 0.9rem;
+          border: 1px solid ${(props) => props.theme.colors.grey.light};
+          border-radius: 10px;
 
-          padding-right: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
 
-          color: ${(props) => props.theme.colors.grey.light};
+          input {
+            width: 90%;
 
-          white-space: nowrap;
+            background: transparent;
+            color: #ffffff;
 
-          cursor: pointer;
+            border: none;
 
-          :hover {
-            color: ${(props) => props.theme.colors.card.light};
+            outline: none;
+
+            ::placeholder {
+              color: ${(props) => props.theme.colors.grey.light};
+
+              filter: opacity(70%);
+            }
           }
 
-          :last-child {
-            padding: 0;
+          svg {
+            color: ${(props) => props.theme.colors.grey.light};
           }
         }
       }
     }
 
-    .slide {
-      h3 {
-        color: ${(props) => props.theme.colors.grey.light};
+    main {
+      width: 80vw;
+      padding: 0 15px 15px 15px;
+
+      /* display: flex;
+      flex-direction: column; */
+
+      nav {
+        width: 100%;
+        margin-bottom: 25px;
+
+        ul {
+          padding: 5px 5px 8px 5px;
+
+          overflow-x: scroll;
+
+          display: flex;
+
+          ::-webkit-scrollbar {
+            height: 5px;
+            width: 5px;
+          }
+
+          ::-webkit-scrollbar-track {
+            background: rgba(147, 17, 54, 0);
+          }
+
+          ::-webkit-scrollbar-thumb {
+            background: ${(props) => props.theme.colors.card.light};
+            border-radius: 3px;
+          }
+
+          li {
+            font-size: 0.9rem;
+
+            padding-right: 12px;
+
+            color: ${(props) => props.theme.colors.grey.light};
+
+            white-space: nowrap;
+
+            cursor: pointer;
+
+            :hover {
+              color: ${(props) => props.theme.colors.card.light};
+            }
+
+            :last-child {
+              padding: 0;
+            }
+          }
+        }
+      }
+
+      .slide {
+        h3 {
+          color: ${(props) => props.theme.colors.grey.light};
+        }
       }
     }
   }
