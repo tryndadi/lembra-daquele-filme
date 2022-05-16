@@ -23,17 +23,6 @@ const MediasProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    // setIsLoading(true);
-    // tmdb.getMedia().then((res) => {
-    //   setMediasList(
-    //     res.map(({ keyWord, title, items }) => ({
-    //       keyWord,
-    //       title,
-    //       items: items.data.results,
-    //     }))
-    //   );
-    //   return setIsLoading(false);
-    // });
     getMedias(tmdb.getMedia);
   }, []);
 

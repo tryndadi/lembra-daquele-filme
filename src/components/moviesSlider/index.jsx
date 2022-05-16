@@ -18,7 +18,7 @@ import CardFade from "../CardFade";
 
 const MoviesSections = () => {
   const { mediasList } = useTMDBMedias();
-  const { traillerId, isOpen, setIsOpen, getTrailer } = useTrailer();
+  const { traillerId, isOpen, setIsOpen } = useTrailer();
 
   return (
     <div>
