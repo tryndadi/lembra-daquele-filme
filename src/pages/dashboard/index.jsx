@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from "react";
-
 import logo from "../../assets/img/logo.svg";
-
 import loader from "../../assets/img/loader.gif";
+
+import { Grid } from "@mui/material";
 import { Link } from "react-router-dom";
-import { tmdbAccess } from "../../services/api";
 import { StyleContainer } from "./style";
+import { tmdbAccess } from "../../services/api";
+import { useUser } from "../../Providers/UserProvider";
+import tmdb, { getByGenre } from "../../services/tmdb";
+import { useTMDBMedias } from "../../Providers/MediasProvider";
+import { Redirect } from "react-router-dom";
 
 import MoviesSections from "../../components/moviesSlider";
 import SearchBar from "../../components/searchBar";
 
-import { useTMDBMedias } from "../../Providers/MediasProvider";
-import tmdb, { getByGenre } from "../../services/tmdb";
-
-import { Grid } from "@mui/material";
-
 const Dashboard = () => {
   const [movieGenres, setMovieGenres] = useState([]);
   const { isLoading, getMedias } = useTMDBMedias();
+  const { isLoggedIn } = useUser();
 
   useEffect(() => {
     tmdbAccess
@@ -31,7 +31,7 @@ const Dashboard = () => {
     getMedias(filteredMovies);
   };
 
-  return (
+  return isLoggedIn ? (
     <StyleContainer>
       <aside>{/* COLOCAR A SIDEBAR AQUI */}</aside>
 
@@ -80,6 +80,8 @@ const Dashboard = () => {
         )}
       </main>
     </StyleContainer>
+  ) : (
+    <Redirect to="/login" />
   );
 };
 
