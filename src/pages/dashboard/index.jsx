@@ -6,10 +6,10 @@ import { Grid } from "@mui/material";
 import { Link } from "react-router-dom";
 import { StyleContainer } from "./style";
 import { tmdbAccess } from "../../services/api";
-import { useUser } from "../../Providers/UserProvider";
 import tmdb, { getByGenre } from "../../services/tmdb";
 import { useTMDBMedias } from "../../Providers/MediasProvider";
 import { Redirect } from "react-router-dom";
+import { useUser } from "../../Providers/UserProvider";
 
 import MoviesSections from "../../components/moviesSlider";
 import SearchBar from "../../components/searchBar";
