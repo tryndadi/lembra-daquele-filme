@@ -7,9 +7,10 @@ const MediasProvider = ({ children }) => {
   const [mediasList, setMediasList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    setIsLoading(true);
-    tmdb.getMedia.then((res) => {
+  const getMedias = (callback) => {
+    callback().then((res) => {
+      setIsLoading(true);
+      res = !Array.isArray(res) ? [res] : res;
       setMediasList(
         res.map(({ keyWord, title, items }) => ({
           keyWord,
@@ -19,10 +20,25 @@ const MediasProvider = ({ children }) => {
       );
       return setIsLoading(false);
     });
+  };
+
+  useEffect(() => {
+    // setIsLoading(true);
+    // tmdb.getMedia().then((res) => {
+    //   setMediasList(
+    //     res.map(({ keyWord, title, items }) => ({
+    //       keyWord,
+    //       title,
+    //       items: items.data.results,
+    //     }))
+    //   );
+    //   return setIsLoading(false);
+    // });
+    getMedias(tmdb.getMedia);
   }, []);
 
   return (
-    <MediasContext.Provider value={{ mediasList, isLoading }}>
+    <MediasContext.Provider value={{ mediasList, isLoading, getMedias }}>
       {children}
     </MediasContext.Provider>
   );

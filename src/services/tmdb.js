@@ -1,7 +1,17 @@
 import { tmdbAccess } from "./api";
 
+export const getByGenre = async ({ name, id }) => {
+  return async () => ({
+    keyWord: "genres",
+    name,
+    items: await tmdbAccess.get(
+      `/discover/movie?with_genres=${id}&language=pt-BR`
+    ),
+  });
+};
+
 export default {
-  getMedia: (async () => {
+  getMedia: async () => {
     return [
       {
         keyWord: "populars",
@@ -117,5 +127,5 @@ export default {
       //   ),
       // },
     ];
-  })(),
+  },
 };
