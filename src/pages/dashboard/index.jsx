@@ -32,74 +32,54 @@ const Dashboard = () => {
   };
 
   return (
-    <>
-      <StyleContainer>
-        <aside>{/* COLOCAR A SIDEBAR AQUI */}</aside>
+    <StyleContainer>
+      <aside>{/* COLOCAR A SIDEBAR AQUI */}</aside>
 
-        <header>
-          <div className="cont-header">
-            <Link to="/">
-              <img src={logo} alt="logo" />
-            </Link>
+      <header>
+        <div className="cont-header">
+          <Link to="/">
+            <img src={logo} alt="logo" />
+          </Link>
 
-            <SearchBar />
-          </div>
-        </header>
+          <SearchBar />
+        </div>
+      </header>
 
-        <main>
-          <nav>
-            <ul>
-              <li onClick={() => getMedias(tmdb.getMedia)}>Todos</li>
-              {movieGenres.genres &&
-                movieGenres.genres.map((genre) => (
-                  <li key={genre.id} onClick={() => handleFilterClick(genre)}>
-                    {genre.name}
-                  </li>
-                ))}
-            </ul>
-          </nav>
+      <main>
+        <nav>
+          <ul>
+            <li onClick={() => getMedias(tmdb.getMedia)}>Todos</li>
+            {movieGenres.genres &&
+              movieGenres.genres.map((genre) => (
+                <li key={genre.id} onClick={() => handleFilterClick(genre)}>
+                  {genre.name}
+                </li>
+              ))}
+          </ul>
+        </nav>
 
-          {isLoading ? (
-            <Grid
-              spacing={1}
-              container
-              justifyContent="center"
-              alignItems="center"
-              height="50vh"
-            >
-              <Grid xs={1} item>
-                <img
-                  src={loader}
-                  width="100%"
-                  style={{ maxWidth: "50px" }}
-                  alt="loader"
-                />
-              </Grid>
+        {isLoading ? (
+          <Grid
+            spacing={1}
+            container
+            justifyContent="center"
+            alignItems="center"
+            height="50vh"
+          >
+            <Grid xs={1} item>
+              <img
+                src={loader}
+                width="100%"
+                style={{ maxWidth: "50px" }}
+                alt="loader"
+              />
             </Grid>
-          ) : (
-            <MoviesSections />
-          )}
-
-          {/* <ul className="slide">
-            <h3>TOP Filmes</h3>
-
-           
-          </ul>
-
-          <ul className="slide">
-            <h3>Melhores Filmes</h3>
-
-           
-          </ul>
-
-          <ul className="slide">
-            <h3>Melhores Séries</h3>
-
-           
-          </ul> */}
-        </main>
-      </StyleContainer>
-    </>
+          </Grid>
+        ) : (
+          <MoviesSections />
+        )}
+      </main>
+    </StyleContainer>
   );
 };
 
