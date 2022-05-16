@@ -4,6 +4,7 @@ import SearchProvider from "./SearchProvider";
 import TrailersProvider from "./TrailersProvider";
 import CollectionProvider from "./CollectionProvider";
 import UserProvider from "./UserProvider";
+import CommentaryProvider from './CommentaryProvider'
 import WishListContext from "./WishListProvider";
 
 const Providers = ({ children }) => {
@@ -19,6 +20,7 @@ const Providers = ({ children }) => {
         </MediasProvider>
       </UserProvider>
     </WishListContext>
+
   );
 };
 
