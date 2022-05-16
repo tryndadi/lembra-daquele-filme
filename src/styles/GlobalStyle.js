@@ -3,6 +3,7 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
   :root {
     --bg-red-low: rgba(48, 25, 51, 1);
+    --bg-red-ligth: rgba(252, 9, 75, 1);
     --bg-red-middle: rgba(132, 19, 56, 1);
     --bg-red-high: rgba(132, 19, 56, 1);
     --grey-low: rgba(184, 183, 180, 1);
@@ -55,6 +56,20 @@ const GlobalStyle = createGlobalStyle`
   body{
     font-family: 'Poppins', sans-serif;
     cursor: default;
+
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+
+    ::-webkit-scrollbar-track, ::-webkit-scrollbar-corner {
+      background: var(--bg-red-middle);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--bg-red-ligth);
+      border-radius: 3px;
+    }
   }
 
   button{
