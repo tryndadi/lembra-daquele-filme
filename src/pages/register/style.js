@@ -18,7 +18,7 @@ export const ContainerGeral = styled.div`
   box-sizing: border-box;
 
   .ancora-logo{
-    margin-top: 4rem;
+    margin-top: 1rem;
     margin-bottom: 2rem;
 
     img{
@@ -39,13 +39,10 @@ export const ContainerGeral = styled.div`
 
     box-sizing: border-box;
 
-    margin-top: 7rem;
-    margin-bottom: 7rem;
-
     h2{
       font-size: 2rem;
 
-      margin-bottom: 30px;
+      margin-bottom: 1rem;
 
       color: #ffffff;
     }

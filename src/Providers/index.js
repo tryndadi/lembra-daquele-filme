@@ -5,20 +5,22 @@ import TrailersProvider from "./TrailersProvider";
 import CollectionProvider from "./CollectionProvider";
 import UserProvider from "./UserProvider";
 import CommentaryProvider from './CommentaryProvider'
+import WishListContext from "./WishListProvider";
 
 const Providers = ({ children }) => {
   return (
-    <UserProvider>
-      <CommentaryProvider>
+    <WishListContext>
+      <UserProvider>
         <MediasProvider>
           <SearchProvider>
             <TrailersProvider>
-              <CollectionProvider>{children}</CollectionProvider>;
+              <CollectionProvider>{children}</CollectionProvider>
             </TrailersProvider>
           </SearchProvider>
         </MediasProvider>
-      </CommentaryProvider>
-    </UserProvider>
+      </UserProvider>
+    </WishListContext>
+
   );
 };
 

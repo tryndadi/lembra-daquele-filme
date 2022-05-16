@@ -6,6 +6,8 @@ export const StyleContainer = styled.div`
 
   background: ${(props) => props.theme.colors.background.gradient};
 
+  /* display: flex; */
+
   header {
     width: 100vw;
     height: 90px;
@@ -66,6 +68,9 @@ export const StyleContainer = styled.div`
   main {
     padding: 0 15px 15px 15px;
 
+    /* display: flex;
+    flex-direction: column; */
+
     nav {
       width: 100%;
       margin-bottom: 25px;
@@ -92,7 +97,7 @@ export const StyleContainer = styled.div`
         }
 
         li {
-          font-size: 0.8rem;
+          font-size: 0.9rem;
 
           padding-right: 12px;
 
