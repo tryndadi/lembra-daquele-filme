@@ -16,6 +16,9 @@ import MoviesSections from "../../components/moviesSlider";
 import Sidebar from "../../components/Sidebar";
 import SearchBar from "../../components/searchBar";
 
+import { WishListContext } from "../../Providers/WishListProvider";
+
+
 const Dashboard = () => {
   const [movieGenres, setMovieGenres] = useState([]);
   const { isLoading, getMedias } = useTMDBMedias();
@@ -37,9 +40,6 @@ const Dashboard = () => {
     const filteredMovies = await getByGenre(genre);
     getMedias(filteredMovies);
   };
-  const { addMovieToCollection, removeMovieFromCollection } = useContext(
-    CollectionContext
-  );
 
   return isLoggedIn ? (
     <StyleContainer>
