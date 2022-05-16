@@ -1,7 +1,6 @@
 import React from "react";
 import slider from "react-slick/lib/slider";
 import styled from "styled-components";
-import loader from "../../assets/img/loader.gif";
 
 import { VerticalFade } from "../CardFade/styles";
 import { makeStyles } from "@material-ui/styles";
