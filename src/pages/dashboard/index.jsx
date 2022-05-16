@@ -10,11 +10,11 @@ import tmdb, { getByGenre } from "../../services/tmdb";
 import { useTMDBMedias } from "../../Providers/MediasProvider";
 import { Redirect } from "react-router-dom";
 import { useUser } from "../../Providers/UserProvider";
+import { CollectionContext } from "../../Providers/CollectionProvider";
 
 import MoviesSections from "../../components/moviesSlider";
-import SearchBar from "../../components/searchBar";
-import { CollectionContext } from "../../Providers/CollectionProvider";
 import Sidebar from "../../components/Sidebar";
+import SearchBar from "../../components/searchBar";
 
 const Dashboard = () => {
   const [movieGenres, setMovieGenres] = useState([]);
@@ -41,11 +41,10 @@ const Dashboard = () => {
     CollectionContext
   );
 
-
   return isLoggedIn ? (
     <StyleContainer>
       <aside>
-        <Sidebar/>
+        <Sidebar />
       </aside>
 
       <main>
