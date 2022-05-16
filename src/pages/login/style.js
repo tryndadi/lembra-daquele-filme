@@ -1,11 +1,10 @@
 import styled from "styled-components";
 
 export const Main = styled.div`
-
   width: 100%;
   height: 100vh;
 
-  background: ${props => props.theme.colors.background.gradient};
+  background: ${(props) => props.theme.colors.background.gradient};
 
   display: flex;
   flex-direction: column;
@@ -14,18 +13,17 @@ export const Main = styled.div`
 
   box-sizing: border-box;
 
-  .ancora-logo{
-
+  .ancora-logo {
     margin-top: 4rem;
     margin-bottom: 2rem;
 
-    img{
+    img {
       width: 100%;
       max-width: 12rem;
     }
   }
 
-  .cont-form{
+  .cont-form {
     width: 100%;
     max-width: 320px;
 
@@ -39,7 +37,7 @@ export const Main = styled.div`
     margin-top: 9rem;
     margin-bottom: 7rem;
 
-    h2{
+    h2 {
       font-size: 2rem;
 
       margin-bottom: 30px;
@@ -47,7 +45,7 @@ export const Main = styled.div`
       color: #ffffff;
     }
 
-    form{
+    form {
       width: 100%;
       padding: 0 15px;
 
@@ -57,7 +55,7 @@ export const Main = styled.div`
 
       box-sizing: border-box;
 
-      button{
+      button {
         width: 70%;
         height: 30px;
 
@@ -67,38 +65,35 @@ export const Main = styled.div`
         background: transparent;
         color: #ffffff;
 
-        :hover{
-          border-color: ${props => props.theme.colors.card.light};
+        :hover {
+          border-color: ${(props) => props.theme.colors.card.light};
 
           background-color: rgba(252, 9, 75, 0.26);
         }
       }
     }
 
-    span.mensagem{
-
+    span.mensagem {
       font-size: 0.8rem;
 
       margin-top: 15px;
 
       color: #ffffff;
 
-      a{
+      a {
         font-weight: bold;
         text-decoration: none;
 
         color: #ffffff;
 
-        :hover{
-          color: ${props => props.theme.colors.card.light};
+        :hover {
+          color: ${(props) => props.theme.colors.card.light};
         }
       }
     }
-
   }
 
-  .copyright{
-
+  .copyright {
     position: absolute;
     bottom: 0px;
 
@@ -110,14 +105,12 @@ export const Main = styled.div`
   }
 
   @media screen and (max-width: 700px) {
-    
-
-    .cont-form{
+    .cont-form {
       margin-top: 4rem;
     }
 
-    .ancora-logo{
+    .ancora-logo {
       align-self: center;
     }
   }
-`
+`;
