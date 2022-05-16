@@ -1,19 +1,16 @@
-import React, { createContext, useState, useContext, useEffect } from "react";
+import React, { createContext, useState, useContext } from "react";
 import { toast } from "react-toastify";
 import { fakeApiAccess } from "../../services/api";
-import { getFromStorage, addToStorage } from "../../assets/js/utils";
+import { addToStorage } from "../../assets/js/utils";
 import { useHistory } from "react-router-dom";
 
 const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const history = useHistory();
-
-  useEffect(() => {
-    const userData = getFromStorage("userData");
-    userData ? setIsLoggedIn(true) : setIsLoggedIn(false);
-  }, []);
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    JSON.parse(localStorage.getItem("userData")) || false
+  );
 
   const login = ({ email, password }) => {
     const infoUserLogin = {
@@ -30,6 +27,7 @@ const UserProvider = ({ children }) => {
             data: { accessToken, user },
           } = res;
           addToStorage("userData", { accessToken, ...user });
+          setIsLoggedIn(true);
           setTimeout(() => {
             history.push("/dashboard");
           }, 1000);
