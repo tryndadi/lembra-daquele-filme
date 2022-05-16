@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 
-
 export const ContainerDiv = styled.div`
     display: flex;
     flex-direction: column;
@@ -10,6 +9,7 @@ export const ContainerDiv = styled.div`
         flex-direction: column;
         align-items: center;
         width: 100%;
+        
         >img{
             width: 90%;
             max-width: 500px;

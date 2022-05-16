@@ -12,22 +12,25 @@ export const ContainerGeral = styled.div`
 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
 
   box-sizing: border-box;
 
   .ancora-logo{
-    align-self: flex-end;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
 
     img{
-      width: 50px;
+      width: 100%;
+      max-width: 12rem;
     }
   }
 
   .cont-form{
     width: 100%;
     max-width: 320px;
+    min-width: 250px;
 
     display: flex;
     flex-direction: column;
@@ -35,6 +38,9 @@ export const ContainerGeral = styled.div`
     align-items: center;
 
     box-sizing: border-box;
+
+    margin-top: 7rem;
+    margin-bottom: 7rem;
 
     h2{
       font-size: 2rem;
@@ -94,6 +100,10 @@ export const ContainerGeral = styled.div`
   }
 
   .copyright{
+
+    position: absolute;
+    bottom: 0px;
+
     font-size: 0.6rem;
 
     margin-bottom: 5px;
@@ -101,8 +111,13 @@ export const ContainerGeral = styled.div`
     color: #ffffff;
   }
 
-  @media screen and (max-width: 550px) {
+  @media screen and (max-width: 700px) {
     
+    .cont-form{
+      
+      margin-top: 4rem;
+    }
+
     .ancora-logo{
       align-self: center;
     }
