@@ -8,8 +8,8 @@ const MediasProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const getMedias = (callback) => {
+    setIsLoading(true);
     callback().then((res) => {
-      setIsLoading(true);
       res = !Array.isArray(res) ? [res] : res;
       setMediasList(
         res.map(({ keyWord, title, items }) => ({
