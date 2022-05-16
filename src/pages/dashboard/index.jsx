@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import logo from "../../assets/img/logo.svg";
 
 import loader from "../../assets/img/loader.gif";
-import { FaSistrix } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { tmdbAccess } from "../../services/api";
 import { StyleContainer } from "./style";
@@ -12,12 +11,13 @@ import MoviesSections from "../../components/moviesSlider";
 import SearchBar from "../../components/searchBar";
 
 import { useTMDBMedias } from "../../Providers/MediasProvider";
-import { CircularProgress, Grid } from "@mui/material";
-import { blue } from "@mui/material/colors";
+import tmdb, { getByGenre } from "../../services/tmdb";
+
+import { Grid } from "@mui/material";
 
 const Dashboard = () => {
   const [movieGenres, setMovieGenres] = useState([]);
-  const { isLoading } = useTMDBMedias();
+  const { isLoading, getMedias } = useTMDBMedias();
 
   useEffect(() => {
     tmdbAccess
@@ -25,6 +25,11 @@ const Dashboard = () => {
       .then((resp) => setMovieGenres(resp.data))
       .catch((err) => console.log(`erro getGenres => ${err}`));
   }, []);
+
+  const handleFilterClick = async (genre) => {
+    const filteredMovies = await getByGenre(genre);
+    getMedias(filteredMovies);
+  };
 
   return (
     <>
@@ -44,10 +49,12 @@ const Dashboard = () => {
         <main>
           <nav>
             <ul>
-              <li>Todos</li>
+              <li onClick={() => getMedias(tmdb.getMedia)}>Todos</li>
               {movieGenres.genres &&
                 movieGenres.genres.map((genre) => (
-                  <li key={genre.id}>{genre.name}</li>
+                  <li key={genre.id} onClick={() => handleFilterClick(genre)}>
+                    {genre.name}
+                  </li>
                 ))}
             </ul>
           </nav>
