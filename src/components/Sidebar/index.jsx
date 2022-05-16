@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 
 
 
-
 const Sidebar = () => {
 
   const userData = localStorage.getItem('userData');
@@ -32,45 +31,47 @@ const Sidebar = () => {
 
 
   return (
-    <ProSidebar>
-      <SidebarHeader>
-        <img src="" alt="Imagem do usuário" />
-        <h2>{name}</h2>
-        <span>{email}</span>
-      </SidebarHeader>
+      <ProSidebar 
+        width='18vw'
+      >
+        <SidebarHeader>
+          <img src="" alt="Imagem do usuário" />
+          <h2>{name}</h2>
+          <span>{email}</span>
+        </SidebarHeader>
 
-      <SidebarContent>
-        <Menu>
-          <SubMenu title='Media'>
-            <MenuItem>Filmes</MenuItem>
-            <MenuItem>Séries</MenuItem>
-          </SubMenu>
+        <SidebarContent>
+          <Menu>
+            <SubMenu title='Media'>
+              <MenuItem>Filmes</MenuItem>
+              <MenuItem>Séries</MenuItem>
+            </SubMenu>
 
-          <SubMenu title='Conta'>
-            <MenuItem>Biblioteca</MenuItem>
-            <MenuItem>Perfil</MenuItem>
-          </SubMenu>
+            <SubMenu title='Categorias'>
+              {movieGenres.genres &&
+                movieGenres.genres.map((genre) => (
+                  <MenuItem key={genre.id} onClick={() => handleFilterClick(genre)}>
+                    {genre.name}
+                  </MenuItem>
+              ))}
+            </SubMenu>
 
-          <SubMenu title='Categorias'>
-            {movieGenres.genres &&
-              movieGenres.genres.map((genre) => (
-                <MenuItem key={genre.id} onClick={() => handleFilterClick(genre)}>
-                  {genre.name}
-                </MenuItem>
-            ))}
-          </SubMenu>
-        </Menu>
-      </SidebarContent>
+            <SubMenu title='Conta'>
+              <MenuItem>Biblioteca</MenuItem>
+              <MenuItem>Perfil</MenuItem>
+            </SubMenu>
+          </Menu>
+        </SidebarContent>
 
-      <SidebarFooter>
-        <Menu>
-          <MenuItem>
-            Sair
-            <Link to='/'/>
-          </MenuItem>
-        </Menu>
-      </SidebarFooter>
-    </ProSidebar>
+        <SidebarFooter>
+          <Menu>
+            <MenuItem>
+              Sair
+              <Link to='/'/>
+            </MenuItem>
+          </Menu>
+        </SidebarFooter>
+      </ProSidebar>
   )
 };
 

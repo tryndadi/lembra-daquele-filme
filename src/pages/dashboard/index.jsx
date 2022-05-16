@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import logo from "../../assets/img/logo.svg";
 import loader from "../../assets/img/loader.gif";
 
@@ -10,13 +10,17 @@ import tmdb, { getByGenre } from "../../services/tmdb";
 import { useTMDBMedias } from "../../Providers/MediasProvider";
 import { Redirect } from "react-router-dom";
 import { useUser } from "../../Providers/UserProvider";
-
+import { CollectionContext } from "../../Providers/CollectionProvider";
 import MoviesSections from "../../components/moviesSlider";
-import SearchBar from "../../components/searchBar";
 import Sidebar from "../../components/Sidebar";
+import SearchBar from "../../components/searchBar";
+import { WishListContext } from "../../Providers/WishListProvider";
+import SidebarMUI from "../../components/sidebarMUI";
+
 
 const Dashboard = () => {
   const [movieGenres, setMovieGenres] = useState([]);
+  const [openSidebar, setOpenSidebar] = useState(false)
   const { isLoading, getMedias } = useTMDBMedias();
   const { isLoggedIn } = useUser();
 
@@ -32,61 +36,68 @@ const Dashboard = () => {
   //   getMedias(filteredMovies);
   // };
 
+  const handleFilterClick = async (genre) => {
+    const filteredMovies = await getByGenre(genre);
+    getMedias(filteredMovies);
+  };
 
   return isLoggedIn ? (
     <StyleContainer>
       <aside>
-        <Sidebar/>
+        <SidebarMUI openSidebar={openSidebar} setOpenSidebar={setOpenSidebar}/>
+        <button onClick={() => setOpenSidebar(true)}>sidebar</button>
       </aside>
 
-      <main>
-        {/* <nav>
-          <ul>
-            <li onClick={() => getMedias(tmdb.getMedia)}>Todos</li>
-            {movieGenres.genres &&
-              movieGenres.genres.map((genre) => (
-                <li key={genre.id} onClick={() => handleFilterClick(genre)}>
-                  {genre.name}
-                </li>
-              ))}
-          </ul>
-        </nav> */}
-
+      <div className="cont-geral-dashboard">
         <header>
-          <div className="cont-header">
-            <Link to="/">
-              <img src={logo} alt="logo" />
-            </Link>
+            <div className="cont-header">
+              <Link to="/">
+                <img src={logo} alt="logo" />
+              </Link>
 
-            <SearchBar />
-          </div>
+              <SearchBar />
+            </div>
         </header>
 
-        {isLoading ? (
-          <Grid
-            spacing={1}
-            container
-            justifyContent="center"
-            alignItems="center"
-            height="50vh"
-          >
-            <Grid xs={1} item>
-              <img
-                src={loader}
-                width="100%"
-                style={{ maxWidth: "50px" }}
-                alt="loader"
-              />
+        <main>
+          {/* <nav>
+            <ul>
+              <li onClick={() => getMedias(tmdb.getMedia)}>Todos</li>
+              {movieGenres.genres &&
+                movieGenres.genres.map((genre) => (
+                  <li key={genre.id} onClick={() => handleFilterClick(genre)}>
+                    {genre.name}
+                  </li>
+                ))}
+            </ul>
+          </nav> */}
+
+          {isLoading ? (
+            <Grid
+              spacing={1}
+              container
+              justifyContent="center"
+              alignItems="center"
+              height="50vh"
+            >
+              <Grid xs={1} item>
+                <img
+                  src={loader}
+                  width="100%"
+                  style={{ maxWidth: "50px" }}
+                  alt="loader"
+                />
+              </Grid>
             </Grid>
-          </Grid>
-        ) : (
-          <MoviesSections />
-        )}
-      </main>
+          ) : (
+            <MoviesSections />
+          )}
+        </main>
+      </div>
     </StyleContainer>
-  ) : (
-    <Redirect to="/login" />
-  );
+   ) : (
+     <Redirect to="/login" />
+   );
 };
 
 export default Dashboard;
