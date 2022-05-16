@@ -35,7 +35,9 @@ const MoviesSections = () => {
                   <img
                     src={
                       imagePathPrefix +
-                      (i !== 0 ? media.poster_path : media.backdrop_path)
+                      (i !== 0 || mediasList.length === 1
+                        ? media.poster_path
+                        : media.backdrop_path)
                     }
                     alt={media.title}
                     width="100%"
