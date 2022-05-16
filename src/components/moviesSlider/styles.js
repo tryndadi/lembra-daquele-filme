@@ -1,6 +1,7 @@
 import React from "react";
 import slider from "react-slick/lib/slider";
 import styled from "styled-components";
+import loader from "../../assets/img/loader.gif";
 
 import { VerticalFade } from "../CardFade/styles";
 import { makeStyles } from "@material-ui/styles";
@@ -100,7 +101,6 @@ export const settings = {
         dots: false,
       },
     },
-
     {
       breakpoint: 576,
       settings: {
@@ -147,6 +147,10 @@ export const CustomCard = styled.div`
   position: relative;
   transition: all 200ms ease-in;
   transform: scale(0.95);
+  width: 100%;
+  min-height: 150px;
+
+  background: rgba(0, 0, 0, 0.3);
 
   &:hover {
     z-index: 2;
