@@ -80,9 +80,9 @@ const Dashboard = () => {
         )}
       </main>
     </StyleContainer>
-  ) : (
-    <Redirect to="/login" />
-  );
+   ) : (
+     <Redirect to="/login" />
+   );
 };
 
 export default Dashboard;

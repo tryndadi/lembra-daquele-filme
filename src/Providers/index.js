@@ -4,17 +4,20 @@ import SearchProvider from "./SearchProvider";
 import TrailersProvider from "./TrailersProvider";
 import CollectionProvider from "./CollectionProvider";
 import UserProvider from "./UserProvider";
+import CommentaryProvider from './CommentaryProvider'
 
 const Providers = ({ children }) => {
   return (
     <UserProvider>
-      <MediasProvider>
-        <SearchProvider>
-          <TrailersProvider>
-            <CollectionProvider>{children}</CollectionProvider>;
-          </TrailersProvider>
-        </SearchProvider>
-      </MediasProvider>
+      <CommentaryProvider>
+        <MediasProvider>
+          <SearchProvider>
+            <TrailersProvider>
+              <CollectionProvider>{children}</CollectionProvider>;
+            </TrailersProvider>
+          </SearchProvider>
+        </MediasProvider>
+      </CommentaryProvider>
     </UserProvider>
   );
 };
