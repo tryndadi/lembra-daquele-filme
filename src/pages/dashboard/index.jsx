@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import logo from "../../assets/img/logo.svg";
 import loader from "../../assets/img/loader.gif";
 
@@ -13,6 +13,7 @@ import { useUser } from "../../Providers/UserProvider";
 
 import MoviesSections from "../../components/moviesSlider";
 import SearchBar from "../../components/searchBar";
+import { CollectionContext } from "../../Providers/CollectionProvider";
 import Sidebar from "../../components/Sidebar";
 
 const Dashboard = () => {
@@ -31,6 +32,14 @@ const Dashboard = () => {
   //   const filteredMovies = await getByGenre(genre);
   //   getMedias(filteredMovies);
   // };
+
+  const handleFilterClick = async (genre) => {
+    const filteredMovies = await getByGenre(genre);
+    getMedias(filteredMovies);
+  };
+  const { addMovieToCollection, removeMovieFromCollection } = useContext(
+    CollectionContext
+  );
 
 
   return isLoggedIn ? (
