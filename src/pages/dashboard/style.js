@@ -8,16 +8,13 @@ export const StyleContainer = styled.div`
 
   display: flex;
 
-  /* .menu{
-    width: 50px;
-    height: 50px;
-
-    color: #ffffff;
-  } */
 
   .cont-geral-dashboard {
+
+    width: 100%;
+
     header {
-      width: 100vw;
+      width: 100%;
       height: 90px;
 
       .cont-header {
@@ -30,6 +27,32 @@ export const StyleContainer = styled.div`
         align-items: center;
 
         box-sizing: border-box;
+
+        .menu{
+          width: 270px;
+
+          display: flex;
+          align-items: center;
+
+          /* cursor: pointer; */
+
+          span{
+            margin-left: 10px;
+
+            color: ${(props) => props.theme.colors.grey.light};
+
+            cursor: pointer;
+          }
+
+          svg{
+            width: 35px;
+            height: 35px;
+  
+            color: ${(props) => props.theme.colors.grey.light};
+
+            cursor: pointer;
+          }
+        }
 
         img {
           width: 60px;
@@ -74,8 +97,8 @@ export const StyleContainer = styled.div`
     }
 
     main {
-      width: 90vw;
-      padding: 0 15px 15px 15px;
+      width: 99%;
+      padding-left: 15px;
 
       nav {
         width: 100%;

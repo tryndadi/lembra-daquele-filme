@@ -10,11 +10,17 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import Collapse from "@mui/material/Collapse";
 
-import { ListItem, Drawer } from "@mui/material";
-import { ContainerSidebar, section, category } from "./style";
+import { ListItem, Drawer, Divider } from "@mui/material";
+import { ContainerSidebar, section, category, divider, generalStyle } from "./style";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 
-const SidebarMUI = ({ openSidebar, setOpenSidebar }) => {
+import perfil from '../../assets/img/perfil.webp'; // ========= ========= IMAGEM PROVISORIA !!! ========= =========
+
+
+
+
+const SidebarMUI = ({ openSidebar, setOpenSidebar, handleLogout }) => {
+
   const [open, setOpen] = useState(false);
   const [movieGenres, setMovieGenres] = useState([]);
 
@@ -32,13 +38,14 @@ const SidebarMUI = ({ openSidebar, setOpenSidebar }) => {
     setOpenSidebar(false);
   };
 
+
   return (
-    <Drawer open={openSidebar} onClose={() => setOpenSidebar(false)}>
+    <Drawer open={openSidebar} onClose={() => setOpenSidebar(false)} >
       <ContainerSidebar>
-        <List>
+        <List sx={{...generalStyle}}>
           <ListItem>
             <div className="cont-infos-usuario">
-              <img src="" alt="Foto de perfil" />
+              <img src={perfil} alt="Foto de perfil" />
 
               <div className="cont-nome-email">
                 <span>{name}</span>
@@ -47,7 +54,7 @@ const SidebarMUI = ({ openSidebar, setOpenSidebar }) => {
             </div>
           </ListItem>
 
-          <div className="divider" />
+          <Divider sx={{...divider}}/>
 
           <ListItem sx={{ ...section }}>Media</ListItem>
 
@@ -66,6 +73,14 @@ const SidebarMUI = ({ openSidebar, setOpenSidebar }) => {
 
           <Collapse in={open} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
+
+              <ListItemButton
+                // onClick={() => applyFilter('todos')}
+                sx={{ ...category }}
+              >
+                <ListItemText primary='Todos'/>
+              </ListItemButton>
+
               {movieGenres.genres &&
                 movieGenres.genres.map((genre) => (
                   <ListItemButton
@@ -79,22 +94,22 @@ const SidebarMUI = ({ openSidebar, setOpenSidebar }) => {
             </List>
           </Collapse>
 
-          <div className="divider" />
+          <Divider sx={{...divider}}/>
 
           <ListItem sx={{ ...section }}>Conta</ListItem>
 
           <ListItemButton>
-            <ListItemText primary="Biblioteca" />
+            <ListItemText primary="Lista de Desejos" />
           </ListItemButton>
 
           <ListItemButton>
-            <ListItemText primary="Perfil" />
+            <ListItemText primary="Filmes Assistidos" />
           </ListItemButton>
 
-          <div className="divider" />
+          <Divider sx={{...divider}}/>
 
           <ListItemButton>
-            <ListItemText primary="Sair" />
+            <ListItemText primary="Sair" onClick={() => handleLogout()}/>
           </ListItemButton>
         </List>
       </ContainerSidebar>
