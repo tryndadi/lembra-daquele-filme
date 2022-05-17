@@ -1,5 +1,5 @@
 import React from "react";
-import { createContext, useState } from "react";
+import { createContext, useState, useContext } from "react";
 import { fakeApiAccess } from "../../services/api";
 
 export const CollectionContext = createContext([]);
@@ -46,3 +46,4 @@ const CollectionProvider = ({ children }) => {
 };
 
 export default CollectionProvider;
+export const useCollection = () => useContext(CollectionContext);

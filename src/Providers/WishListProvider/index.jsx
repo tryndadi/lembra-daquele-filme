@@ -1,7 +1,7 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useContext } from "react";
 import { fakeApiAccess } from "../../services/api";
 
-export const WishListContext = createContext([]);
+export const WishListContext = createContext();
 
 const WishListProvider = ({ children }) => {
   const [userData, setUserData] = useState(
@@ -34,3 +34,4 @@ const WishListProvider = ({ children }) => {
 };
 
 export default WishListProvider;
+export const useWishList = () => useContext(WishListContext);

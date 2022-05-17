@@ -1,23 +1,27 @@
 import React, { useState } from "react";
+
 import logo from "../../assets/img/logo.svg";
 import loader from "../../assets/img/loader.gif";
 
 import { Grid } from "@mui/material";
 import { Link } from "react-router-dom";
-import { StyleContainer } from "./style";
-import { useTMDBMedias } from "../../Providers/MediasProvider";
-import { Redirect } from "react-router-dom";
-import { useUser } from "../../Providers/UserProvider";
-import { CollectionContext } from "../../Providers/CollectionProvider";
-import MoviesSections from "../../components/moviesSlider";
-import SearchBar from "../../components/searchBar";
-import { WishListContext } from "../../Providers/WishListProvider";
-import SidebarMUI from "../../components/Sidebar";
 import { HiMenu } from "react-icons/hi";
+import { StyleContainer } from "./style";
+import { Redirect } from "react-router-dom";
+
+import SearchBar from "../../components/searchBar";
+import SidebarMUI from "../../components/Sidebar";
+import MoviesSections from "../../components/moviesSlider";
+
+import { useUser } from "../../Providers/UserProvider";
+import { useTMDBMedias } from "../../Providers/MediasProvider";
+
+import { useWishList } from "../../Providers/WishListProvider";
+import { useCollection } from "../../Providers/CollectionProvider";
 
 const Dashboard = () => {
   const [openSidebar, setOpenSidebar] = useState(false);
-  const { isLoading, getMedias } = useTMDBMedias();
+  const { isLoading } = useTMDBMedias();
   const { isLoggedIn } = useUser();
 
   return isLoggedIn ? (
