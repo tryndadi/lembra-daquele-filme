@@ -156,7 +156,7 @@ export const CustomCard = styled.div`
     transition: all 200ms ease-in;
     transform: scale(1);
     ${VerticalFade} {
-      display: block;
+      opacity: 1;
     }
   }
 `;

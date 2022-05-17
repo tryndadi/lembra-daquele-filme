@@ -3,29 +3,20 @@ import ReactModal from "react-modal";
 import { BtnAdd, BtnClose, modalStyle } from "./style";
 import { FaTimes, FaPlusCircle } from "react-icons/fa";
 
-const ModalCardFilm = () => {
-  const [modalIsOpen, setIsOpen] = useState(false);
+import { useInfosModal } from "../../Providers/InfosModalProvider";
 
-  const openModal = () => {
-    setIsOpen(true);
-  };
-  const closeModal = () => {
-    setIsOpen(false);
-  };
+const ModalCardFilm = ({ isInfosModalOpen, setIsInfosModalOpen }) => {
+  const { isOpen, toogle } = useInfosModal();
 
   return (
     <div>
-      <BtnAdd onClick={openModal}>
-        <FaPlusCircle />
-      </BtnAdd>
-
       <ReactModal
         style={{ ...modalStyle }}
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
+        isOpen={isOpen}
+        onRequestClose={toogle}
         ariaHideApp={false}
       >
-        <BtnClose onClick={closeModal}>
+        <BtnClose onClick={toogle}>
           <FaTimes />
         </BtnClose>
 

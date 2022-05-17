@@ -1,33 +1,17 @@
 import React from "react";
-import { Drawer, List, ListItem, SwipeableDrawer } from "@mui/material";
-// import useStyles from "../../components/sidebarMUI/style";
+import { Drawer, List, ListItem } from "@mui/material";
 import { ContainerTeste } from "../../components/sidebarMUI/style";
 
-
-
-const SidebarMUI = ({openSidebar, setOpenSidebar, }) => {
-
-  // const classes = useStyles();
-
-
-  return(
-    
-      <SwipeableDrawer 
-        open={openSidebar}
-        onClose={() => setOpenSidebar(false)}
-        // sx={{
-        //   width: '300px',
-        //   background: 'red',
-        // }}
-      >
-        <ContainerTeste>
-          <List>
-            <ListItem>Menu</ListItem>
-          </List>
-        </ContainerTeste>
-      </SwipeableDrawer>
-  )
-}
-
+const SidebarMUI = ({ openSidebar, setOpenSidebar }) => {
+  return (
+    <Drawer open={!!openSidebar} onClose={() => setOpenSidebar(false)}>
+      <ContainerTeste>
+        <List>
+          <ListItem>Menu</ListItem>
+        </List>
+      </ContainerTeste>
+    </Drawer>
+  );
+};
 
 export default SidebarMUI;

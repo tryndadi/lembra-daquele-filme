@@ -16,11 +16,12 @@ import Sidebar from "../../components/Sidebar";
 import SearchBar from "../../components/searchBar";
 import { WishListContext } from "../../Providers/WishListProvider";
 import SidebarMUI from "../../components/sidebarMUI";
-
+import ModalCardFilm from "../../components/modalCardFilm";
 
 const Dashboard = () => {
   const [movieGenres, setMovieGenres] = useState([]);
-  const [openSidebar, setOpenSidebar] = useState(false)
+  const [openSidebar, setOpenSidebar] = useState(null);
+
   const { isLoading, getMedias } = useTMDBMedias();
   const { isLoggedIn } = useUser();
 
@@ -44,19 +45,19 @@ const Dashboard = () => {
   return isLoggedIn ? (
     <StyleContainer>
       <aside>
-        <SidebarMUI openSidebar={openSidebar} setOpenSidebar={setOpenSidebar}/>
+        <SidebarMUI openSidebar={openSidebar} setOpenSidebar={setOpenSidebar} />
         <button onClick={() => setOpenSidebar(true)}>sidebar</button>
       </aside>
 
       <div className="cont-geral-dashboard">
         <header>
-            <div className="cont-header">
-              <Link to="/">
-                <img src={logo} alt="logo" />
-              </Link>
+          <div className="cont-header">
+            <Link to="/">
+              <img src={logo} alt="logo" />
+            </Link>
 
-              <SearchBar />
-            </div>
+            <SearchBar />
+          </div>
         </header>
 
         <main>
@@ -95,9 +96,9 @@ const Dashboard = () => {
         </main>
       </div>
     </StyleContainer>
-   ) : (
-     <Redirect to="/login" />
-   );
+  ) : (
+    <Redirect to="/login" />
+  );
 };
 
 export default Dashboard;
