@@ -8,25 +8,17 @@ export const StyleContainer = styled.div`
 
   display: flex;
 
-  .pro-sidebar{
-    width: 100%;
-    /* max-width: 280px; */
-    /* max-width: 18vw; */
-    height: 100vh;
+  /* .menu{
+    width: 50px;
+    height: 50px;
 
-    position: relative;
-  }
-
-  .pro-sidebar-inner{
-    width: 280px;
-
-    position: fixed;
-  }
+    color: #ffffff;
+  } */
 
   .cont-geral-dashboard{
 
     header {
-      width: 80vw;
+      width: 100vw;
       height: 90px;
 
       .cont-header {
@@ -83,11 +75,8 @@ export const StyleContainer = styled.div`
     }
 
     main {
-      width: 80vw;
+      width: 98vw;
       padding: 0 15px 15px 15px;
-
-      /* display: flex;
-      flex-direction: column; */
 
       nav {
         width: 100%;
