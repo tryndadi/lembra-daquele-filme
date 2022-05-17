@@ -5,7 +5,6 @@ import loader from "../../assets/img/loader.gif";
 import { Grid } from "@mui/material";
 import { Link } from "react-router-dom";
 import { StyleContainer } from "./style";
-import { getByGenre } from "../../services/tmdb";
 import { useTMDBMedias } from "../../Providers/MediasProvider";
 import { Redirect } from "react-router-dom";
 import { useUser } from "../../Providers/UserProvider";
@@ -14,34 +13,24 @@ import MoviesSections from "../../components/moviesSlider";
 import SearchBar from "../../components/searchBar";
 import { WishListContext } from "../../Providers/WishListProvider";
 import SidebarMUI from "../../components/Sidebar";
-import { HiMenu } from 'react-icons/hi'
-
-
-
+import { HiMenu } from "react-icons/hi";
 
 const Dashboard = () => {
-  const [movieGenres, setMovieGenres] = useState([]);
-  const [openSidebar, setOpenSidebar] = useState(false)
+  const [openSidebar, setOpenSidebar] = useState(false);
   const { isLoading, getMedias } = useTMDBMedias();
   const { isLoggedIn } = useUser();
-
-  const handleFilterClick = async (genre) => {
-    const filteredMovies = await getByGenre(genre);
-    getMedias(filteredMovies);
-  };
 
   return isLoggedIn ? (
     <StyleContainer>
       <aside>
-        <SidebarMUI openSidebar={openSidebar} setOpenSidebar={setOpenSidebar}/>
+        <SidebarMUI openSidebar={openSidebar} setOpenSidebar={setOpenSidebar} />
       </aside>
 
       <div className="cont-geral-dashboard">
         <header>
           <div className="cont-header">
-            
             <div className="menu" onClick={() => setOpenSidebar(true)}>
-              <HiMenu width={70}/>
+              <HiMenu width={70} />
             </div>
 
             <Link to="/">
@@ -53,18 +42,6 @@ const Dashboard = () => {
         </header>
 
         <main>
-          {/* <nav>
-            <ul>
-              <li onClick={() => getMedias(tmdb.getMedia)}>Todos</li>
-              {movieGenres.genres &&
-                movieGenres.genres.map((genre) => (
-                  <li key={genre.id} onClick={() => handleFilterClick(genre)}>
-                    {genre.name}
-                  </li>
-                ))}
-            </ul>
-          </nav> */}
-
           {isLoading ? (
             <Grid
               spacing={1}
@@ -88,9 +65,9 @@ const Dashboard = () => {
         </main>
       </div>
     </StyleContainer>
-   ) : (
-     <Redirect to="/login" />
-   );
+  ) : (
+    <Redirect to="/login" />
+  );
 };
 
 export default Dashboard;

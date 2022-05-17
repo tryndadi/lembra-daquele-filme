@@ -27,9 +27,10 @@ const SidebarMUI = ({ openSidebar, setOpenSidebar }) => {
       .then(({ data }) => setMovieGenres(data));
   }, []);
 
-  const applyFilter = async (genre) => (
-    getMedias(await getByGenre(genre)), setOpenSidebar(false)
-  );
+  const applyFilter = async (genre) => {
+    getMedias(await getByGenre(genre));
+    setOpenSidebar(false);
+  };
 
   return (
     <Drawer open={openSidebar} onClose={() => setOpenSidebar(false)}>
