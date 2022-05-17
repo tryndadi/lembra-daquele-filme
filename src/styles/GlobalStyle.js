@@ -5,7 +5,7 @@ const GlobalStyle = createGlobalStyle`
     --bg-red-low: rgba(48, 25, 51, 1);
     --bg-red-ligth: rgba(252, 9, 75, 1);
     --bg-red-middle: rgba(132, 19, 56, 1);
-    --bg-red-high: rgba(132, 19, 56, 1);
+    --bg-red-high: rgba(123, 19, 52, 1);
     --grey-low: rgba(184, 183, 180, 1);
     --grey-middle: rgba(196, 196, 196, 1)
     --grey-high: rgba(226, 223, 223, 1);
@@ -81,6 +81,10 @@ const GlobalStyle = createGlobalStyle`
   .erro{
     font-size: 0.8rem;
     color: #ff9b54;
+  }
+
+  .MuiPaper-root{
+    background: linear-gradient(360deg, rgba(48,25,51,1) 0%, rgba(132,19,56,1) 45%, rgba(171,16,58,1) 89%);
   }
 `;
 

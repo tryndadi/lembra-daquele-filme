@@ -8,12 +8,6 @@ export const StyleContainer = styled.div`
 
   display: flex;
 
-  /* .menu{
-    width: 50px;
-    height: 50px;
-
-    color: #ffffff;
-  } */
 
   .cont-geral-dashboard {
 
@@ -33,6 +27,32 @@ export const StyleContainer = styled.div`
         align-items: center;
 
         box-sizing: border-box;
+
+        .menu{
+          width: 270px;
+
+          display: flex;
+          align-items: center;
+
+          /* cursor: pointer; */
+
+          span{
+            margin-left: 10px;
+
+            color: ${(props) => props.theme.colors.grey.light};
+
+            cursor: pointer;
+          }
+
+          svg{
+            width: 35px;
+            height: 35px;
+  
+            color: ${(props) => props.theme.colors.grey.light};
+
+            cursor: pointer;
+          }
+        }
 
         img {
           width: 60px;
