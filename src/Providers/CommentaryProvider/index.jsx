@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { createContext } from "react";
 import {fakeApiAccess} from '../../services/api'
 import { toast } from "react-toastify";
@@ -8,23 +8,22 @@ export const CommentaryContext = createContext([])
 const CommentaryProvider = ({children}) => {
     const userData = JSON.parse(localStorage.getItem("userData"))
     const [commentsMovie, setCommentsMovie] = useState([])
-    
+        
     const getComments = (idMovie) => {
         fakeApiAccess.get(`api/comments/movie/${idMovie}`)
-        .then((res) => setCommentsMovie(res.data))        
+        .then((res) => setCommentsMovie(res.data.splice(-10)))        
         .catch((err) => console.log(err))    
     }
 
     const addComment = (idMovie, comment) => {
-        fakeApiAccess.defaults.headers.post["Authorization"] =
-        `Bearer ${userData.accessToken}`;
+        fakeApiAccess.defaults.headers.post["Authorization"] = `Bearer ${userData.accessToken}`;
         fakeApiAccess.post('/comments', {        
                 userId: userData.id,
                 message: comment,
                 movieId: idMovie        
         })
         .then((res) => toast.success("Comentário enviado com sucesso!"))
-        .catch((err) => toast.error("Algo deu errado! Não foi possível enviar seu comentário :("))  
+        .catch((err) => console.log(err))  
         .finally((_) => delete fakeApiAccess.defaults.headers.common["Authorization"])      
     }
 
@@ -53,3 +52,4 @@ const CommentaryProvider = ({children}) => {
 }
 
 export default CommentaryProvider
+export const useCommentary = () => useContext(CommentaryContext);
