@@ -28,15 +28,16 @@ const ModalCommentFilm = () => {
             setMovieComment(comment)
         }        
     }
-
-    return(
+    return (
         <ReactModal
-        style={{...modalStyle}}
+        style={{ ...modalStyle }}
         isOpen={isOpen}
         onRequestClose={toggle}
         ariaHideApp={false}
         >
-            <BtnClose onClick={toggle}><FaTimes/></BtnClose>
+        <BtnClose onClick={toggle}>
+            <FaTimes />
+        </BtnClose>
             <Grid container spacing={1}>
                 <Grid item xs={12} sm={6} display="flex" justifyContent="center" alignItems="center">
                     <Image src={imagePathPrefix + media.poster_path} />
@@ -51,15 +52,13 @@ const ModalCommentFilm = () => {
                             size="small"
                             precision={0.5}
                             value={media.vote_average / 2}
-                            emptyIcon={
-                            <StarBorderIcon
+                            emptyIcon={<StarBorderIcon
                                 style={{
                                 color: "rgba(255, 255, 255, 0.5)",
                                 fontSize: "inherit",
                                 }}
-                            />
-                            }
-                        />
+                                />
+                            }/>
                         &nbsp;{media.vote_count} opiniões
                         </Typography>
                         <form onSubmit={(evt) => handleSubmit(evt)}>
@@ -87,4 +86,5 @@ const ModalCommentFilm = () => {
     )
 }
 
-export default ModalCommentFilm
+
+export default ModalCommentFilm;
