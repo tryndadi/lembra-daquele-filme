@@ -24,8 +24,7 @@ const SidebarMUI = ({ openSidebar, setOpenSidebar }) => {
   useEffect(() => {
     tmdbAccess
       .get("/genre/movie/list?&language=pt-BR")
-      .then((resp) => setMovieGenres(resp.data))
-      .catch((err) => console.log(`erro getGenres => ${err}`));
+      .then(({ data }) => setMovieGenres(data));
   }, []);
 
   const applyFilter = async (genre) => (
