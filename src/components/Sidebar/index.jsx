@@ -5,13 +5,13 @@ import { getByGenre } from "../../services/tmdb";
 import { getFromStorage } from "../../assets/js/utils";
 import { useTMDBMedias } from "../../Providers/MediasProvider";
 
-import { ListItem, Drawer } from "@mui/material";
-import { ContainerSidebar, section, category } from "./style";
-
 import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import Collapse from "@mui/material/Collapse";
+
+import { ListItem, Drawer } from "@mui/material";
+import { ContainerSidebar, section, category } from "./style";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 
 const SidebarMUI = ({ openSidebar, setOpenSidebar }) => {
