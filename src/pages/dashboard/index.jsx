@@ -18,16 +18,29 @@ import { useTMDBMedias } from "../../Providers/MediasProvider";
 
 import { useWishList } from "../../Providers/WishListProvider";
 import { useCollection } from "../../Providers/CollectionProvider";
+import { useHistory } from "react-router-dom";
 
 const Dashboard = () => {
   const [openSidebar, setOpenSidebar] = useState(false);
   const { isLoading } = useTMDBMedias();
   const { isLoggedIn } = useUser();
 
+  const history = useHistory();
+
+  const handleLogout = () => {
+    localStorage.removeItem("userData");
+
+    history.push("/");
+  };
+
   return isLoggedIn ? (
     <StyleContainer>
       <aside>
-        <SidebarMUI openSidebar={openSidebar} setOpenSidebar={setOpenSidebar} />
+        <SidebarMUI
+          openSidebar={openSidebar}
+          setOpenSidebar={setOpenSidebar}
+          handleLogout={handleLogout}
+        />
       </aside>
 
       <div className="cont-geral-dashboard">
@@ -35,6 +48,8 @@ const Dashboard = () => {
           <div className="cont-header">
             <div className="menu" onClick={() => setOpenSidebar(true)}>
               <HiMenu width={70} />
+
+              <span>Menu</span>
             </div>
 
             <Link to="/">
