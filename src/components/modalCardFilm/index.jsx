@@ -11,10 +11,6 @@ const ModalCardFilm = () => {
 
   const imagePathPrefix = "http://image.tmdb.org/t/p/w500/";
 
-  useEffect(() => {
-    console.log(media);
-  }, [media]);
-
   return (
     <ReactModal
       style={{ ...modalStyle }}
