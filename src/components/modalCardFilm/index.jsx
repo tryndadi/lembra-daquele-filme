@@ -1,16 +1,8 @@
 import React, { useEffect } from "react";
 import ReactModal from "react-modal";
-
 import { FaTimes } from "react-icons/fa";
-import {
-  Image,
-  Infos,
-  BtnClose,
-  ModalBody,
-  modalStyle,
-  HorizontalFade,
-} from "./style";
-import { Avatar, Button, Rating, Typography, Box, Grid } from "@mui/material";
+import { Image, Infos, BtnAdd, BtnClose, modalStyle } from "./style";
+import { Avatar, Rating, Typography, Box, Grid } from "@mui/material";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 import { useInfosModal } from "../../Providers/InfosModalProvider";
 
@@ -33,33 +25,36 @@ const ModalCardFilm = () => {
       <BtnClose onClick={toogle}>
         <FaTimes />
       </BtnClose>
-      <Grid container spacing={1}>
+      <Grid container spacing={1} alignItems={"center"}>
         <Grid item xs={12} sm={6} display="flex" justifyContent="center">
           <Image src={imagePathPrefix + media.poster_path} />
         </Grid>
 
         <Grid item xs={12} sm={6} display="flex" justifyContent="center">
           <Infos>
-            <Typography variant="h6">{media.title || media.name}</Typography>
-            <Typography size={16}>{media.overview}</Typography>
-            <Typography size={12}>
-              <Rating
-                sx={{ verticalAlign: "middle" }}
-                readOnly
-                size="small"
-                precision={0.5}
-                value={media.vote_average / 2}
-                emptyIcon={
-                  <StarBorderIcon
-                    style={{
-                      color: "rgba(255, 255, 255, 0.5)",
-                      fontSize: "inherit",
-                    }}
-                  />
-                }
-              />
-              &nbsp;{media.vote_count} opiniões
-            </Typography>
+            <section overflow={"auto"}>
+              <Typography variant="h6">{media.title || media.name}</Typography>
+              <Typography size={16}>{media.overview}</Typography>
+              <Typography size={12}>
+                <Rating
+                  sx={{ verticalAlign: "middle" }}
+                  readOnly
+                  size="small"
+                  precision={0.5}
+                  value={media.vote_average / 2}
+                  emptyIcon={
+                    <StarBorderIcon
+                      style={{
+                        color: "rgba(255, 255, 255, 0.5)",
+                        fontSize: "inherit",
+                      }}
+                    />
+                  }
+                />
+                &nbsp;{media.vote_count} opiniões
+              </Typography>
+            </section>
+
             <Box
               sx={{
                 display: "flex",
@@ -72,24 +67,11 @@ const ModalCardFilm = () => {
               <Avatar sx={{ width: "30px", height: "30px" }}>M</Avatar>
               <Avatar sx={{ width: "30px", height: "30px" }}>A</Avatar>
             </Box>
-            <Button variant="contained" sx={{ textTransform: "none" }}>
-              Adicionar à coleção
-            </Button>
-            <Button variant="contained" sx={{ textTransform: "none" }}>
-              Adicionar aos desejados
-            </Button>
+            <BtnAdd>Adicionar à coleção</BtnAdd>
+            <BtnAdd>Adicionar aos desejados</BtnAdd>
           </Infos>
         </Grid>
       </Grid>
-      {/* 
-        <figure>
-          <img src={""} alt="imagem do filme" />
-        </figure>
-        <h2>Nome do filme</h2>
-        <section>
-          <button>Coleção</button>
-          <button>Desejados</button>
-        </section> */}
     </ReactModal>
   );
 };

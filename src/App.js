@@ -4,7 +4,7 @@ import Routes from "./Routes";
 import { ToastContainer } from "react-toastify";
 import { useInfosModal } from "./Providers/InfosModalProvider";
 
-import ModalCardFilm from "./components/modalCardFilm";
+import ModalCardFilm from "./components/ModalCardFilm";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {

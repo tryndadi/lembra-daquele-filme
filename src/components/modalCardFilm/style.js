@@ -1,20 +1,18 @@
 import styled from "styled-components";
 
-export const BtnAdd = styled.button`
+export const BtnClose = styled.button`
   background: none;
   border: none;
-  color: #ffffff;
   :hover {
     cursor: pointer;
   }
-`;
-
-export const BtnClose = styled(BtnAdd)`
-  color: red;
+  color: #fc094b;
   position: absolute;
   top: 10px;
   right: 10px;
+  font-size: 25px;
 `;
+
 export const modalStyle = {
   overlay: {
     width: "100%",
@@ -26,6 +24,7 @@ export const modalStyle = {
     backgroundColor: "rgba(0,0,0,0.7)",
   },
   content: {
+    overflow: "auto",
     position: "absolute",
     maxWidth: "840px",
     display: "flex",
@@ -39,19 +38,11 @@ export const modalStyle = {
   },
 };
 
-export const ModalBody = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  gap: 10px;
-  @media screen and (max-width: 576px) {
-    flex-direction: column;
-    align-items: center;
-  }
-`;
-
 export const Image = styled.img`
   width: 100%;
+  height: 100%;
   max-width: 350px;
+  max-height: 490px;
   @media screen and (max-width: 576px) {
     margin-top: 200px;
   }
@@ -66,4 +57,17 @@ export const Infos = styled.div`
   justify-content: center;
   flex-direction: column;
   gap: 10px;
+`;
+
+export const BtnAdd = styled.button`
+  border: none;
+  font-size: 14px;
+  color: #fc094b;
+  text-transform: uppercase;
+  background-color: transparent;
+  min-width: 64px;
+  padding: 6px 8px;
+  :hover {
+    background-color: #fc094b1a;
+  }
 `;
