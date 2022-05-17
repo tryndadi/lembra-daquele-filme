@@ -29,15 +29,19 @@ export const StyleContainer = styled.div`
         box-sizing: border-box;
 
         .menu{
-
           width: 270px;
+
           display: flex;
           align-items: center;
+
+          /* cursor: pointer; */
 
           span{
             margin-left: 10px;
 
             color: ${(props) => props.theme.colors.grey.light};
+
+            cursor: pointer;
           }
 
           svg{
@@ -45,6 +49,8 @@ export const StyleContainer = styled.div`
             height: 35px;
   
             color: ${(props) => props.theme.colors.grey.light};
+
+            cursor: pointer;
           }
         }
 

@@ -19,7 +19,8 @@ import perfil from '../../assets/img/perfil.webp'; // ========= ========= IMAGEM
 
 
 
-const SidebarMUI = ({ openSidebar, setOpenSidebar }) => {
+const SidebarMUI = ({ openSidebar, setOpenSidebar, handleLogout }) => {
+
   const [open, setOpen] = useState(false);
   const [movieGenres, setMovieGenres] = useState([]);
 
@@ -36,6 +37,7 @@ const SidebarMUI = ({ openSidebar, setOpenSidebar }) => {
     getMedias(await getByGenre(genre));
     setOpenSidebar(false);
   };
+
 
   return (
     <Drawer open={openSidebar} onClose={() => setOpenSidebar(false)} >
@@ -107,7 +109,7 @@ const SidebarMUI = ({ openSidebar, setOpenSidebar }) => {
           <Divider sx={{...divider}}/>
 
           <ListItemButton>
-            <ListItemText primary="Sair" />
+            <ListItemText primary="Sair" onClick={() => handleLogout()}/>
           </ListItemButton>
         </List>
       </ContainerSidebar>
