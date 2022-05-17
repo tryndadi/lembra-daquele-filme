@@ -1,12 +1,13 @@
 import React from "react";
-import ButtonToPage from "../../components/buttonToPage";
-import landingPage_1 from "../../assets/img/landingPage_1.svg";
+
 import logo from "../../assets/img/logoCompleta.svg";
+import landingPage_1 from "../../assets/img/landingPage_1.svg";
+
+import ButtonToPage from "../../components/buttonToPage";
 import TextLandingPage from "../../components/textLandingPage";
 import FooterLandingPage from "../../components/footerLandingPage";
 
 import { Header, LogoContainer, TopPageContainer, Container } from "./styles";
-
 
 const LandingPage = () => {
   return (
