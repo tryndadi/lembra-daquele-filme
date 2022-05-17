@@ -4,14 +4,16 @@ import { createContext, useContext, useState } from "react";
 const InfosModalContext = createContext();
 
 const InfosModalProvider = ({ children }) => {
+  const [media, setMedia] = useState([]);
   const [isOpen, setisOpen] = useState(false);
 
-  const toogle = () => {
-    return setisOpen((currentState) => !currentState);
+  const toogle = (data) => {
+    setMedia(data);
+    setisOpen((currentState) => !currentState);
   };
 
   return (
-    <InfosModalContext.Provider value={{ isOpen, toogle }}>
+    <InfosModalContext.Provider value={{ isOpen, toogle, media }}>
       {children}
     </InfosModalContext.Provider>
   );

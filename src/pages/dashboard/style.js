@@ -15,8 +15,7 @@ export const StyleContainer = styled.div`
     color: #ffffff;
   } */
 
-  .cont-geral-dashboard{
-
+  .cont-geral-dashboard {
     header {
       width: 100vw;
       height: 90px;

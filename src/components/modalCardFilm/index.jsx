@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import ReactModal from "react-modal";
-import { BtnAdd, BtnClose, modalStyle } from "./style";
-import { FaTimes, FaPlusCircle } from "react-icons/fa";
 
+import { FaTimes } from "react-icons/fa";
+import { BtnClose, modalStyle } from "./style";
 import { useInfosModal } from "../../Providers/InfosModalProvider";
 
-const ModalCardFilm = ({ isInfosModalOpen, setIsInfosModalOpen }) => {
-  const { isOpen, toogle } = useInfosModal();
+const ModalCardFilm = () => {
+  const { isOpen, toogle, media } = useInfosModal();
+
+  useEffect(() => {
+    console.log(media);
+  }, [media]);
 
   return (
     <div>

@@ -11,7 +11,7 @@ import { ButtonsSection, InfosSection, iconStyle } from "./styles";
 
 import { useInfosModal } from "../../Providers/InfosModalProvider";
 
-const CardFade = ({ media, setIsInfosModalOpen }) => {
+const CardFade = ({ media }) => {
   const { toogle } = useInfosModal();
   const { getTrailer } = useTrailer();
 
@@ -21,7 +21,10 @@ const CardFade = ({ media, setIsInfosModalOpen }) => {
         <CustomIconButton title="Ver Trailer" onClick={() => getTrailer(media)}>
           <BiCameraMovie style={{ ...iconStyle }} />
         </CustomIconButton>
-        <CustomIconButton title="Mais informações" onClick={toogle}>
+        <CustomIconButton
+          title="Mais informações"
+          onClick={() => toogle(media)}
+        >
           <IoIosAddCircle style={{ ...iconStyle }} />
         </CustomIconButton>
       </ButtonsSection>
