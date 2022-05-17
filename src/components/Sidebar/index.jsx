@@ -1,83 +1,105 @@
 import React, { useEffect, useState } from "react";
-import {
-  ProSidebar,
-  SidebarHeader,
-  SidebarContent,
-  SidebarFooter,
-  Menu,
-  MenuItem,
-  SubMenu,
-} from "react-pro-sidebar";
 
 import { tmdbAccess } from "../../services/api";
 import { getByGenre } from "../../services/tmdb";
+import { getFromStorage } from "../../assets/js/utils";
 import { useTMDBMedias } from "../../Providers/MediasProvider";
-import { Link } from "react-router-dom";
 
-const Sidebar = () => {
-  const userData = localStorage.getItem("userData");
+import List from "@mui/material/List";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemText from "@mui/material/ListItemText";
+import Collapse from "@mui/material/Collapse";
 
-  const { name, email } = JSON.parse(userData);
+import { ListItem, Drawer } from "@mui/material";
+import { ContainerSidebar, section, category } from "./style";
+import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 
+const SidebarMUI = ({ openSidebar, setOpenSidebar }) => {
+  const [open, setOpen] = useState(false);
   const [movieGenres, setMovieGenres] = useState([]);
-  const { isLoading, getMedias } = useTMDBMedias();
+
+  const { name, email } = getFromStorage("userData");
+  const { getMedias } = useTMDBMedias();
 
   useEffect(() => {
     tmdbAccess
       .get("/genre/movie/list?&language=pt-BR")
-      .then((resp) => setMovieGenres(resp.data))
-      .catch((err) => console.log(`erro getGenres => ${err}`));
+      .then(({ data }) => setMovieGenres(data));
   }, []);
 
-  const handleFilterClick = async (genre) => {
-    const filteredMovies = await getByGenre(genre);
-    getMedias(filteredMovies);
+  const applyFilter = async (genre) => {
+    getMedias(await getByGenre(genre));
+    setOpenSidebar(false);
   };
 
   return (
-    <ProSidebar width="18vw">
-      <SidebarHeader>
-        <img src="" alt="Imagem do usuário" />
-        <h2>{name}</h2>
-        <span>{email}</span>
-      </SidebarHeader>
+    <Drawer open={openSidebar} onClose={() => setOpenSidebar(false)}>
+      <ContainerSidebar>
+        <List>
+          <ListItem>
+            <div className="cont-infos-usuario">
+              <img src="" alt="Foto de perfil" />
 
-      <SidebarContent>
-        <Menu>
-          <SubMenu title="Media">
-            <MenuItem>Filmes</MenuItem>
-            <MenuItem>Séries</MenuItem>
-          </SubMenu>
+              <div className="cont-nome-email">
+                <span>{name}</span>
+                <span>{email}</span>
+              </div>
+            </div>
+          </ListItem>
 
-          <SubMenu title="Categorias">
-            {movieGenres.genres &&
-              movieGenres.genres.map((genre) => (
-                <MenuItem
-                  key={genre.id}
-                  onClick={() => handleFilterClick(genre)}
-                >
-                  {genre.name}
-                </MenuItem>
-              ))}
-          </SubMenu>
+          <div className="divider" />
 
-          <SubMenu title="Conta">
-            <MenuItem>Biblioteca</MenuItem>
-            <MenuItem>Perfil</MenuItem>
-          </SubMenu>
-        </Menu>
-      </SidebarContent>
+          <ListItem sx={{ ...section }}>Media</ListItem>
 
-      <SidebarFooter>
-        <Menu>
-          <MenuItem>
-            Sair
-            <Link to="/" />
-          </MenuItem>
-        </Menu>
-      </SidebarFooter>
-    </ProSidebar>
+          <ListItemButton>
+            <ListItemText primary="Filmes" />
+          </ListItemButton>
+
+          <ListItemButton>
+            <ListItemText primary="Séries" />
+          </ListItemButton>
+
+          <ListItemButton onClick={() => setOpen(!open)}>
+            <ListItemText primary="Categorias" />
+            {open ? <FiChevronUp /> : <FiChevronDown />}
+          </ListItemButton>
+
+          <Collapse in={open} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              {movieGenres.genres &&
+                movieGenres.genres.map((genre) => (
+                  <ListItemButton
+                    key={genre.id}
+                    onClick={() => applyFilter(genre)}
+                    sx={{ ...category }}
+                  >
+                    <ListItemText primary={genre.name} />
+                  </ListItemButton>
+                ))}
+            </List>
+          </Collapse>
+
+          <div className="divider" />
+
+          <ListItem sx={{ ...section }}>Conta</ListItem>
+
+          <ListItemButton>
+            <ListItemText primary="Biblioteca" />
+          </ListItemButton>
+
+          <ListItemButton>
+            <ListItemText primary="Perfil" />
+          </ListItemButton>
+
+          <div className="divider" />
+
+          <ListItemButton>
+            <ListItemText primary="Sair" />
+          </ListItemButton>
+        </List>
+      </ContainerSidebar>
+    </Drawer>
   );
 };
 
-export default Sidebar;
+export default SidebarMUI;

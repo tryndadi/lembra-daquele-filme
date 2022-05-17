@@ -1,13 +1,13 @@
-import React, { useContext, useState, useEffect } from "react";
-import { FaSistrix } from "react-icons/fa";
+import React, { useContext, useState } from "react";
 
-import { SearchContext } from "../../Providers/SearchProvider";
 import { InputSearch } from "./styles";
+import { FaSistrix } from "react-icons/fa";
+import { SearchContext } from "../../Providers/SearchProvider";
 
 const SearchBar = () => {
   const [search, setSearch] = useState("");
   const { getResults } = useContext(SearchContext);
-  
+
   const handleSearch = (evt) => {
     evt.preventDefault();
     getResults(search);
@@ -23,9 +23,8 @@ const SearchBar = () => {
 
       <button type="submit">
         <FaSistrix />
-      </button>    
+      </button>
     </InputSearch>
-  
   );
 };
 
