@@ -19,6 +19,9 @@ import { useTMDBMedias } from "../../Providers/MediasProvider";
 import { useWishList } from "../../Providers/WishListProvider";
 import { useCollection } from "../../Providers/CollectionProvider";
 
+
+
+
 const Dashboard = () => {
   const [openSidebar, setOpenSidebar] = useState(false);
   const { isLoading } = useTMDBMedias();
@@ -35,6 +38,8 @@ const Dashboard = () => {
           <div className="cont-header">
             <div className="menu" onClick={() => setOpenSidebar(true)}>
               <HiMenu width={70} />
+
+              <span>Menu</span>
             </div>
 
             <Link to="/">
