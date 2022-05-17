@@ -1,10 +1,9 @@
 import React from "react";
+import ReactModal from "react-modal";
 import TraillerPlayer from "../TraillerPlayer";
 
-import ReactModal from "react-modal";
-import { AiFillCloseSquare } from "react-icons/ai";
-
 import { modalStyles } from "./styles";
+import { AiFillCloseSquare } from "react-icons/ai";
 
 import useStyles from "./styles";
 

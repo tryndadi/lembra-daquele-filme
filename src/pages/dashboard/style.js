@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyleContainer = styled.div`
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
 
   background: ${(props) => props.theme.colors.background.gradient};
@@ -15,8 +15,7 @@ export const StyleContainer = styled.div`
     color: #ffffff;
   } */
 
-  .cont-geral-dashboard{
-
+  .cont-geral-dashboard {
     header {
       width: 100vw;
       height: 90px;
@@ -75,7 +74,7 @@ export const StyleContainer = styled.div`
     }
 
     main {
-      width: 98vw;
+      width: 90vw;
       padding: 0 15px 15px 15px;
 
       nav {

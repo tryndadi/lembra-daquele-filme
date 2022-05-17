@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const VerticalFade = styled.div`
-  display: none;
+  opacity: 0;
   z-index: 3;
   width: 100%;
   height: 100%;

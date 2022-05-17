@@ -1,17 +1,18 @@
 import React from "react";
-import { Rating, Typography } from "@mui/material";
-import StarBorderIcon from "@material-ui/icons/StarBorder";
 
 import { VerticalFade } from "./styles";
 import { BiCameraMovie } from "react-icons/bi";
 import { IoIosAddCircle } from "react-icons/io";
-import { useTrailer } from "../../Providers/TrailersProvider";
-
+import { Rating, Typography } from "@mui/material";
 import CustomIconButton from "../CustomIconButton";
-
+import StarBorderIcon from "@material-ui/icons/StarBorder";
+import { useTrailer } from "../../Providers/TrailersProvider";
 import { ButtonsSection, InfosSection, iconStyle } from "./styles";
 
+import { useInfosModal } from "../../Providers/InfosModalProvider";
+
 const CardFade = ({ media }) => {
+  const { toogle } = useInfosModal();
   const { getTrailer } = useTrailer();
 
   return (
@@ -20,7 +21,10 @@ const CardFade = ({ media }) => {
         <CustomIconButton title="Ver Trailer" onClick={() => getTrailer(media)}>
           <BiCameraMovie style={{ ...iconStyle }} />
         </CustomIconButton>
-        <CustomIconButton title="Mais informações">
+        <CustomIconButton
+          title="Mais informações"
+          onClick={() => toogle(media)}
+        >
           <IoIosAddCircle style={{ ...iconStyle }} />
         </CustomIconButton>
       </ButtonsSection>
