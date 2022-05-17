@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import ReactModal from "react-modal";
 import { FaTimes } from "react-icons/fa";
-import { Image, Infos, BtnAdd, BtnClose, modalStyle } from "./style";
+import { Image, Infos, BtnAdd, BtnClose, modalStyle, Descricao } from "./style";
 import { Avatar, Rating, Typography, Box, Grid } from "@mui/material";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 import { useInfosModal } from "../../Providers/InfosModalProvider";
@@ -28,14 +28,30 @@ const ModalCardFilm = () => {
 
         <Grid item xs={12} sm={6} display="flex" justifyContent="center">
           <Infos>
-            <section overflow={"auto"}>
-              <Typography variant="h6">{media.title || media.name}</Typography>
-              <Typography size={16}>{media.overview}</Typography>
+            <Typography alignSelf="center" variant="h6">
+              {media.title || media.name}
+            </Typography>
+            <Typography
+              size={16}
+              maxHeight="34ch"
+              overflow="auto"
+              text-overflow="ellipsis"
+              white-space="nowrap"
+            >
+              {media.overview}
+            </Typography>
+
+            <Box
+              sx={{
+                gap: "10px",
+                alignItems: "center",
+                margin: "10px 0",
+              }}
+            >
               <Typography size={12}>
                 <Rating
                   sx={{ verticalAlign: "middle" }}
                   readOnly
-                  size="small"
                   precision={0.5}
                   value={media.vote_average / 2}
                   emptyIcon={
@@ -49,19 +65,11 @@ const ModalCardFilm = () => {
                 />
                 &nbsp;{media.vote_count} opiniões
               </Typography>
-            </section>
-
-            <Box
-              sx={{
-                display: "flex",
-                gap: "10px",
-                alignItems: "center",
-                margin: "10px 0",
-              }}
-            >
-              <Typography>Quem viu:</Typography>
-              <Avatar sx={{ width: "30px", height: "30px" }}>M</Avatar>
-              <Avatar sx={{ width: "30px", height: "30px" }}>A</Avatar>
+              <div style={{ display: "flex", margin: "12px 0" }}>
+                <Typography>Quem viu:</Typography>
+                <Avatar sx={{ width: "30px", height: "30px" }}>M</Avatar>
+                <Avatar sx={{ width: "30px", height: "30px" }}>A</Avatar>
+              </div>
             </Box>
             <BtnAdd>Adicionar à coleção</BtnAdd>
             <BtnAdd>Adicionar aos desejados</BtnAdd>

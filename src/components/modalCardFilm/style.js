@@ -30,7 +30,7 @@ export const modalStyle = {
     display: "flex",
     border: "none",
     transform: "scale(0.8)",
-    flexDirection: "column",
+    flexDirection: "row",
     justifyContent: "space-around",
     backgroundColor: "inherit",
     padding: "10px",
