@@ -1,30 +1,32 @@
 import React, { useEffect, useState } from 'react'
-import { FaTimes, FaTrashAlt } from "react-icons/fa";
+import { FaTimes } from "react-icons/fa";
 import ReactModal from "react-modal";
 import { BtnAdd, BtnClose, Image, Infos, modalStyle } from "./style";
 import {useCommentModal} from "../../Providers/CommentModalProvider"
 import {useCommentary} from "../../Providers/CommentaryProvider"
-import { Box, Grid, Rating, Typography } from "@mui/material";
+import {Grid, Rating, Typography } from "@mui/material";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 
 const ModalCommentFilm = () => {
     const {isOpen, toggle, media} = useCommentModal()
-    const {addComment, deleteComment, getComments, commentsMovie} = useCommentary()
+    const {addComment, getComments, commentsMovie} = useCommentary()
     const [comment, setComment] = useState('')
-
-    const imagePathPrefix = "http://image.tmdb.org/t/p/w500/"
-    const handleMedia = () => {
-        getComments(media.id)
-        console.log(commentsMovie)
-    }  
-    useEffect(() => {
-        handleMedia()
-    },[])
+    const [movieComment, setMovieComment] = useState('')
     
+    useEffect(() => {
+        getComments(media.id)
+    }, [movieComment])
+
+    const imagePathPrefix = "http://image.tmdb.org/t/p/w500/"    
+
     const handleSubmit = (evt) => {
         evt.preventDefault();
-        addComment(media.id, comment)
-        setComment('')
+        if (comment.trim().length > 0 ){            
+            addComment(media.id, comment)
+            setComment('')
+            getComments(media.id)
+            setMovieComment(comment)
+        }        
     }
 
     return(
@@ -62,9 +64,14 @@ const ModalCommentFilm = () => {
                         </Typography>
                         <form onSubmit={(evt) => handleSubmit(evt)}>
                             <div>
-                                <ul>{commentsMovie.forEach((item) => (
-                                    <li>{item.message}</li>
-                                ))}</ul>
+                                <ul>{commentsMovie.map((item) => {
+                                    return(
+                                    <li key={item.id}>
+                                        <p>{item.message}</p>
+                                    </li>                            
+                                    )
+                                })}
+                                </ul>
                             </div>
                             <input
                             minLength="2"
