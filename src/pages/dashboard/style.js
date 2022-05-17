@@ -16,8 +16,11 @@ export const StyleContainer = styled.div`
   } */
 
   .cont-geral-dashboard {
+
+    width: 100%;
+
     header {
-      width: 100vw;
+      width: 100%;
       height: 90px;
 
       .cont-header {
@@ -74,8 +77,8 @@ export const StyleContainer = styled.div`
     }
 
     main {
-      width: 90vw;
-      padding: 0 15px 15px 15px;
+      width: 99%;
+      padding-left: 15px;
 
       nav {
         width: 100%;
