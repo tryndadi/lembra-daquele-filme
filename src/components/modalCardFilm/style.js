@@ -69,5 +69,6 @@ export const BtnAdd = styled.button`
   padding: 6px 8px;
   :hover {
     background-color: #fc094b1a;
+    font-size: 14.5px;
   }
 `;
