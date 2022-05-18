@@ -6,11 +6,16 @@ import { Image, Infos, BtnClose, BtnAdd, modalStyle } from "./style";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 import { useInfosModal } from "../../Providers/InfosModalProvider";
 import { useCollection } from "../../Providers/CollectionProvider";
-import { Avatar, Rating, Typography, Box, Grid } from "@mui/material";
+
+import { Avatar, Button, Rating, Typography, Box, Grid } from "@mui/material";
+import { useWishList } from "../../Providers/WishListProvider";
+
+
 
 const ModalCardFilm = () => {
   const { isOpen, toogle, media } = useInfosModal();
   const { addMovieToCollection } = useCollection();
+  const {addMovieToWishList} = useWishList()
 
   const imagePathPrefix = "http://image.tmdb.org/t/p/w500/";
 
@@ -79,8 +84,17 @@ const ModalCardFilm = () => {
               onClick={() => addMovieToCollection(media)}
             >
               Adicionar à coleção
+
+            </Button>
+            <Button 
+              variant="contained" 
+              sx={{ textTransform: "none" }} 
+              onClick={() => addMovieToWishList(media)}
+            >
+
             </BtnAdd>
             <BtnAdd variant="contained" sx={{ textTransform: "none" }}>
+
               Adicionar aos desejados
             </BtnAdd>
           </Infos>
