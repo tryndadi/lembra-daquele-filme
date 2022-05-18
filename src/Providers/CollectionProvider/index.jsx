@@ -1,36 +1,116 @@
 import React from "react";
-import { createContext, useState, useContext } from "react";
+
+import { toast } from "react-toastify";
+import { createContext, useContext } from "react";
+import { getFromStorage } from "../../assets/js/utils";
 import { fakeApiAccess } from "../../services/api";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 export const CollectionContext = createContext([]);
 
 const CollectionProvider = ({ children }) => {
-  const [userData, setUserData] = useState(
-    JSON.parse(localStorage.getItem("userData"))
-  );
+  const history = useHistory();
 
-  const addMovieToCollection = async (movieId) => {
-    fakeApiAccess.defaults.headers.post[
+  const getUserInfos = () => getFromStorage("userData") || {};
+  const checkIfExists = async (movie) => {
+    const { id, accessToken } = getUserInfos();
+    fakeApiAccess.defaults.headers.common[
       "Authorization"
-    ] = `Bearer ${userData.accessToken}`;
-    await fakeApiAccess
-      .post("/watched", {
-        userId: userData.id,
-        movieId: movieId,
-      })
-      .then((response) => console.log(response))
-      .catch((err) => console.log(err));
+    ] = `Bearer ${accessToken}`;
+
+    try {
+      const res = await fakeApiAccess.get(
+        `/watched/?userId=${id}&movieId=${movie.id}`
+      );
+      if (res.length !== 0) {
+        toast.error("Este filme já está na sua coleção");
+        return true;
+      }
+      return false;
+    } catch (error) {
+      const unauthorizedStatus = [401, 403];
+
+      if (unauthorizedStatus.includes(error.status)) {
+        return false;
+      }
+    }
   };
 
-  const removeMovieFromCollection = (elementId) => {
-    fakeApiAccess
-      .delete(`/watched/${elementId}`, {
-        headers: {
-          Authorization: `Bearer ${userData.acessToken} `,
-        },
-      })
-      .then((response) => console.log(response))
-      .catch((err) => console.log(err));
+  const addMovieToCollection = async (movie) => {
+    const { id, accessToken } = getUserInfos();
+
+    const collectionHasMovie = await checkIfExists(movie);
+
+    if (!collectionHasMovie) {
+      const customMovieData = {
+        ...movie,
+        movieId: movie.id,
+      };
+
+      delete customMovieData.id;
+
+      fakeApiAccess.defaults.headers.post[
+        "Authorization"
+      ] = `Bearer ${accessToken}`;
+
+      try {
+        await fakeApiAccess
+          .post("/watched", {
+            userId: id,
+            ...customMovieData,
+          })
+          .then((_) => {
+            toast.success(" Filme adicionado à sua coleção");
+          });
+      } catch (error) {
+        const unauthorizedStatus = [401, 403];
+
+        if (unauthorizedStatus.includes(error.status)) {
+          history.push("/login");
+          toast.error("Sua sessão expirou. Efetue login para continuar");
+        }
+
+        toast.error("Não foi possível salvar este filme");
+      }
+    }
+  };
+
+  const removeMovieFromCollection = ({ id }) => {
+    const { accessToken } = getUserInfos();
+    try {
+      fakeApiAccess
+        .delete(`/watched/${id}`, {
+          headers: {
+            Authorization: `Bearer ${accessToken} `,
+          },
+        })
+        .then((_) => toast.success("Filme removido da sua coleção"));
+    } catch (error) {
+      const unauthorizedStatus = [401, 403];
+
+      if (unauthorizedStatus.includes(error.status)) {
+        history.push("/login");
+        toast.error("Sua sessão expirou. Efetue login para continuar");
+      }
+      toast.error("Não foi possível remover este filme da sua coleção");
+    }
+  };
+
+  const getCollection = async () => {
+    const { id, accessToken } = getFromStorage("userData") || {};
+
+    if (!id || !accessToken) {
+      history.push("/login");
+      return;
+    }
+
+    fakeApiAccess.defaults.headers.common[
+      "Authorization"
+    ] = `Bearer ${accessToken}`;
+
+    return await fakeApiAccess
+      .get(`/watched/?userId=${id}`)
+      .then(({ data }) => data);
   };
 
   return (
@@ -38,6 +118,7 @@ const CollectionProvider = ({ children }) => {
       value={{
         addMovieToCollection,
         removeMovieFromCollection,
+        getCollection,
       }}
     >
       {children}

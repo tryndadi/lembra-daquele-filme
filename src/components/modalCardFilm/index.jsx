@@ -1,17 +1,23 @@
 import React from "react";
 import ReactModal from "react-modal";
 import { FaTimes } from "react-icons/fa";
-import { Image, Infos, BtnAdd, BtnClose, modalStyle } from "./style";
-import { Avatar, Rating, Typography, Box, Grid } from "@mui/material";
+import {
+  Image,
+  Infos,
+  BtnClose,
+  ModalBody,
+  modalStyle,
+  HorizontalFade,
+} from "./style";
+
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 import { useInfosModal } from "../../Providers/InfosModalProvider";
 import { useCollection } from "../../Providers/CollectionProvider";
-import { useWishList } from "../../Providers/WishListProvider";
+import { Avatar, Button, Rating, Typography, Box, Grid } from "@mui/material";
 
 const ModalCardFilm = () => {
   const { isOpen, toogle, media } = useInfosModal();
-  const { addMovieToColletion } = useCollection();
-  const { addMovieToWishList } = useWishList();
+  const { addMovieToCollection } = useCollection();
 
   const imagePathPrefix = "http://image.tmdb.org/t/p/w500/";
 
@@ -74,11 +80,16 @@ const ModalCardFilm = () => {
                 <Avatar sx={{ width: "30px", height: "30px" }}>A</Avatar>
               </div>
             </Box>
-            <BtnAdd onClick={addMovieToColletion}>Adicionar à coleção</BtnAdd>
-            
-            <BtnAdd onClick={addMovieToWishList}>
+            <Button
+              variant="contained"
+              sx={{ textTransform: "none" }}
+              onClick={() => addMovieToCollection(media)}
+            >
+              Adicionar à coleção
+            </Button>
+            <Button variant="contained" sx={{ textTransform: "none" }}>
               Adicionar aos desejados
-            </BtnAdd>
+            </Button>
           </Infos>
         </Grid>
       </Grid>

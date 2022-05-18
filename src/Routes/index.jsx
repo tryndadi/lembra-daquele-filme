@@ -4,6 +4,7 @@ import Dashboard from "../pages/dashboard";
 import LandingPage from "../pages/landingPage";
 import LoginPage from "../pages/login";
 import RegisterPage from "../pages/register";
+import Watched from "../pages/Watched";
 
 const Routes = () => {
   return (
@@ -12,6 +13,7 @@ const Routes = () => {
       <Route component={RegisterPage} path="/register" />
       <Route component={LoginPage} path="/login" />
       <Route component={Dashboard} path="/dashboard" />
+      <Route component={Watched} path="/watched" />
     </Switch>
   );
 };
