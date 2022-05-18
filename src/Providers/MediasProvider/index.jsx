@@ -11,7 +11,6 @@ const MediasProvider = ({ children }) => {
     setIsLoading(true);
     callback().then((res) => {
       res = !Array.isArray(res) ? [res] : res;
-      console.log(res)
       setMediasList(
         res.map(({ keyWord, title, items }) => ({
           keyWord,
