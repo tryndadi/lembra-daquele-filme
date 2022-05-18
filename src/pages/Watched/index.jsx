@@ -42,7 +42,7 @@ const Watched = () => {
     getCollection()
       .then((movies) => setcCollection(movies))
       .catch(({ response }) => {
-        const errorStatus = [401, 403];
+        const errorStatus = [401];
 
         if (errorStatus.includes(response.status)) {
           history.push("/login");
