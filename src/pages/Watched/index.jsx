@@ -7,10 +7,7 @@ import { CustomCard } from "./style";
 import { CollectionContext } from "../../Providers/CollectionProvider";
 
 import logo from "../../assets/img/logo.svg";
-<<<<<<< HEAD
-=======
 import loader from "../../assets/img/loader.svg";
->>>>>>> 9734e1de2eae6170c251fb0f72d6d17ba39dc922
 
 import { Link } from "react-router-dom";
 import { FaAngleDoubleLeft } from "react-icons/fa";
@@ -67,9 +64,6 @@ const Watched = () => {
         </header>
 
         <main>
-<<<<<<< HEAD
-          {collection &&
-=======
           {isLoading ? (
             <Grid
               spacing={1}
@@ -89,7 +83,6 @@ const Watched = () => {
             </Grid>
           ) : (
             collection &&
->>>>>>> 9734e1de2eae6170c251fb0f72d6d17ba39dc922
             collection.map((movie) => (
               <CustomCard key={movie.movieId}>
                 <img
@@ -108,13 +101,8 @@ const Watched = () => {
                   </button>
                 </div>
               </CustomCard>
-<<<<<<< HEAD
-            ))}
-          
-=======
             ))
           )}
->>>>>>> 9734e1de2eae6170c251fb0f72d6d17ba39dc922
         </main>
       </div>
     </StyleContainer>

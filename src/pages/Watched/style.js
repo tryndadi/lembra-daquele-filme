@@ -1,20 +1,19 @@
 import styled from "styled-components";
 
-
-export const CustomCard = styled.div`  
-  margin: 1rem;  
+export const CustomCard = styled.div`
+  margin: 1rem;
   transition: all 200ms ease-in;
   transform: scale(0.95);
   width: 50%;
   height: auto;
-  div{
-    button{
+  div {
+    button {
       background-color: transparent;
       border: 2px solid ${(props) => props.theme.colors.grey.light};
       color: ${(props) => props.theme.colors.grey.light};
       font-size: 0.9rem;
       border-radius: 5px;
-      &:hover{
+      &:hover {
         border-color: red;
       }
     }
@@ -22,15 +21,15 @@ export const CustomCard = styled.div`
   &:hover {
     z-index: 2;
     transition: all 200ms ease-in;
-    transform: scale(1);    
+    transform: scale(1);
   }
-`
+`;
 
 export const StyleContainer = styled.div`
   width: 100%;
   min-height: 100vh;
-  background: ${(props) => props.theme.colors.background.gradient}; 
-  display : flex ;
+  background: ${(props) => props.theme.colors.background.gradient};
+  display: flex;
   flex-direction: column;
   .cont-geral-dashboard {
     width: 100%;
@@ -71,33 +70,31 @@ export const StyleContainer = styled.div`
             color: ${(props) => props.theme.colors.grey.light};
             cursor: pointer;
           }
-        }}
-          img {
-            width: 60px;
-          }
-          svg {
-            color: ${(props) => props.theme.colors.grey.light};
-          }
+        }
       }
-
-        @media screen and (min-width: 770px) and (max-width: 950px) {
-          display: flex;
-          flex-wrap: nowrap;
-          justify-content: space-between;          
-          a {
-            width: fit-content;
-          }
-        }
-        @media screen and (min-width: 950px) {
-          display: flex;
-          flex-wrap: nowrap;
-          justify-content: space-between;
-          width: 100%;
-          
-        }
+      img {
+        width: 60px;
+      }
+      svg {
+        color: ${(props) => props.theme.colors.grey.light};
       }
     }
 
+    @media screen and (min-width: 770px) and (max-width: 950px) {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      a {
+        width: fit-content;
+      }
+    }
+    @media screen and (min-width: 950px) {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      width: 100%;
+    }
+  }
 
   @media screen and (min-width: 570px) {
     header {
@@ -115,8 +112,6 @@ export const StyleContainer = styled.div`
       width: 100%;
       display: flex;
       justify-content: space-evenly;
-      
-      
     }
   }
-`
+`;
