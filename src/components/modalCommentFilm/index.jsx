@@ -35,7 +35,7 @@ const ModalCommentFilm = () => {
   return (
     <ReactModal
       style={{ ...modalStyle }}
-      isOpen={isOpen}
+      isOpen={!isOpen}
       onRequestClose={toggle}
       ariaHideApp={false}
     >
@@ -84,9 +84,13 @@ const ModalCommentFilm = () => {
             <form onSubmit={(evt) => handleSubmit(evt)}>
               <div>
                 <ul>
-                  {commentsMovie.forEach((item) => (
-                    <li>{item.message}</li>
-                  ))}
+                  {commentsMovie.map((item) => {
+                    return (
+                      <li key={item.id}>
+                        <p>{item.message}</p>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
               <input
