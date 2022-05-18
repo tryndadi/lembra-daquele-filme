@@ -44,7 +44,7 @@ export const Image = styled.img`
   max-width: 350px;
   max-height: 490px;
   @media screen and (max-width: 576px) {
-    margin-top: 200px;
+    margin-top: 25px;
   }
 `;
 

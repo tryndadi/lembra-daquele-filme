@@ -69,7 +69,7 @@ const ModalCardFilm = () => {
                 &nbsp;{media.vote_count} opiniões
               </Typography>
               <div style={{ display: "flex", margin: "12px 0" }}>
-                <Typography>Quem viu:</Typography>
+                <Typography marginRigth="10px">Quem viu:</Typography>
                 <Avatar sx={{ width: "30px", height: "30px" }}>M</Avatar>
                 <Avatar sx={{ width: "30px", height: "30px" }}>A</Avatar>
               </div>
