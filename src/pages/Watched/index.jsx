@@ -4,28 +4,26 @@ import { toast } from "react-toastify";
 
 import { imagePathPrefix } from "../../assets/js/utils";
 import { CustomCard } from "./style";
-import SidebarMUI from "../../components/Sidebar";
+//import SidebarMUI from "../../components/Sidebar";
 import { CollectionContext } from "../../Providers/CollectionProvider";
 
 import logo from "../../assets/img/logo.svg";
+import Grid from "@mui/material/Grid";
 import loader from "../../assets/img/loader.svg";
 
-import { Grid } from "@mui/material";
 import { Link } from "react-router-dom";
 import { FaAngleDoubleLeft } from "react-icons/fa";
 import { StyleContainer } from "./style";
 import { Redirect } from "react-router-dom";
-
-import SearchBar from "../../components/searchBar";
+//import SearchBar from "../../components/searchBar";
 import { useUser } from "../../Providers/UserProvider";
 import { useTMDBMedias } from "../../Providers/MediasProvider";
 
 const Watched = () => {
   const [collection, setcCollection] = useState(null);
-  const [openSidebar, setOpenSidebar] = useState(false);
+  //const [openSidebar, setOpenSidebar] = useState(false);
   const { isLoading } = useTMDBMedias();
   const { isLoggedIn } = useUser();
-
   const history = useHistory();
 
   const { getCollection, removeMovieFromCollection } = useContext(
@@ -42,7 +40,7 @@ const Watched = () => {
     getCollection()
       .then((movies) => setcCollection(movies))
       .catch(({ response }) => {
-        const errorStatus = [401, 403];
+        const errorStatus = [401];
 
         if (errorStatus.includes(response.status)) {
           history.push("/login");
@@ -72,7 +70,7 @@ const Watched = () => {
         </header>
 
         <main>
-          {isLoading ? (
+          {collection && isLoading ? (
             <Grid
               spacing={1}
               container

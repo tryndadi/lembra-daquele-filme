@@ -5,6 +5,7 @@ import LandingPage from "../pages/landingPage";
 import LoginPage from "../pages/login";
 import RegisterPage from "../pages/register";
 import Watched from "../pages/Watched";
+import WishList from "../pages/wishlist";
 
 const Routes = () => {
   return (
@@ -14,6 +15,7 @@ const Routes = () => {
       <Route component={LoginPage} path="/login" />
       <Route component={Dashboard} path="/dashboard" />
       <Route component={Watched} path="/watched" />
+      <Route component={WishList} path="/wishlist" />
     </Switch>
   );
 };

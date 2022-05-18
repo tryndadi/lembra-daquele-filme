@@ -2,7 +2,7 @@ import InputComponent from "../../components/Input";
 import { FaUserAlt, FaEnvelope, FaKey } from "react-icons/fa";
 import logoCompleta from "../../assets/img/logoCompleta.svg";
 
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -10,8 +10,12 @@ import { ContainerGeral } from "./style";
 import { fakeApiAccess } from "../../services/api";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const RegisterPage = () => {
+
+  const history = useHistory()
+
   const sechema = yup.object().shape({
     name: yup
       .string()
@@ -52,9 +56,17 @@ const RegisterPage = () => {
 
     fakeApiAccess
       .post("/api/register", JSON.stringify(infoUserRegister))
-      .then((_) => toast.success("Conta cadastrada com sucesso!"))
+      .then((_) => handleSuccessRegister())
       .catch((_) => toast.error("Email já cadastrado."));
   };
+
+  const handleSuccessRegister = () => {
+
+    toast.success("Conta cadastrada com sucesso!")
+
+    history.push('/login')
+  }
+
 
   return (
     <>
