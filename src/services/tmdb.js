@@ -10,6 +10,22 @@ export const getByGenre = async ({ name, id }) => {
   });
 };
 
+export const getSeries = async (name) => {
+  return async () => ({
+    keyWord: "popularSeries",
+    title: name,
+    items: await tmdbAccess.get(`/tv/popular?api_key=9274a24698b0d50f3d975771c35fd96e&language=pt-BR`),
+  })
+}
+
+export const getMovies = async () => {
+  return async () => ({
+    keyWord: "popularMovies",
+    title: "Filmes mais populares",
+    items: await tmdbAccess.get("/movie/popular/?language=pt-BR"),
+  })
+}
+
 export default {
   getMedia: async () => {
     return [

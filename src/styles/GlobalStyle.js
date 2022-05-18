@@ -1,6 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
+
   :root {
     --bg-red-low: rgba(48, 25, 51, 1);
     --bg-red-ligth: rgba(252, 9, 75, 1);
@@ -56,6 +57,7 @@ const GlobalStyle = createGlobalStyle`
   body{
     font-family: 'Poppins', sans-serif;
     cursor: default;
+    height: 100%;
 
     ::-webkit-scrollbar {
       width: 5px;

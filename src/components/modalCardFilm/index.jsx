@@ -10,12 +10,15 @@ import {
   modalStyle,
   HorizontalFade,
 } from "./style";
-import { Avatar, Button, Rating, Typography, Box, Grid } from "@mui/material";
+
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 import { useInfosModal } from "../../Providers/InfosModalProvider";
+import { useCollection } from "../../Providers/CollectionProvider";
+import { Avatar, Button, Rating, Typography, Box, Grid } from "@mui/material";
 
 const ModalCardFilm = () => {
   const { isOpen, toogle, media } = useInfosModal();
+  const { addMovieToCollection } = useCollection();
 
   const imagePathPrefix = "http://image.tmdb.org/t/p/w500/";
 
@@ -68,7 +71,11 @@ const ModalCardFilm = () => {
               <Avatar sx={{ width: "30px", height: "30px" }}>M</Avatar>
               <Avatar sx={{ width: "30px", height: "30px" }}>A</Avatar>
             </Box>
-            <Button variant="contained" sx={{ textTransform: "none" }}>
+            <Button
+              variant="contained"
+              sx={{ textTransform: "none" }}
+              onClick={() => addMovieToCollection(media)}
+            >
               Adicionar à coleção
             </Button>
             <Button variant="contained" sx={{ textTransform: "none" }}>
@@ -77,15 +84,6 @@ const ModalCardFilm = () => {
           </Infos>
         </Grid>
       </Grid>
-      {/* 
-        <figure>
-          <img src={""} alt="imagem do filme" />
-        </figure>
-        <h2>Nome do filme</h2>
-        <section>
-          <button>Coleção</button>
-          <button>Desejados</button>
-        </section> */}
     </ReactModal>
   );
 };

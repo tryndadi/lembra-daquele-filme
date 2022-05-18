@@ -59,6 +59,8 @@ export const StyleContainer = styled.div`
 
         img {
           width: 60px;
+
+          cursor: pointer;
         }
 
         .cont-input-search {

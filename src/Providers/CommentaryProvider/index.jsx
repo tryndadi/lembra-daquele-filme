@@ -12,7 +12,7 @@ const CommentaryProvider = ({children}) => {
     const getComments = (idMovie) => {
         fakeApiAccess.get(`api/comments/movie/${idMovie}`)
         .then((res) => setCommentsMovie(res.data.splice(-10)))        
-        .catch((err) => console.log(err))    
+        .catch((err) => console.log(err))
     }
 
     const addComment = (idMovie, comment) => {
@@ -23,7 +23,7 @@ const CommentaryProvider = ({children}) => {
                 movieId: idMovie        
         })
         .then((res) => toast.success("Comentário enviado com sucesso!"))
-        .catch((err) => console.log(err))  
+        .catch((err) => toast.error("Algo deu errado! Não foi possível adicionar seu comentário :("))  
         .finally((_) => delete fakeApiAccess.defaults.headers.common["Authorization"])      
     }
 
@@ -44,8 +44,7 @@ const CommentaryProvider = ({children}) => {
             deleteComment,
             getComments,
             commentsMovie 
-        }}
-        >
+        }}>        
             {children}
         </CommentaryContext.Provider>
     )
