@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import { tmdbAccess } from "../../services/api";
-import { getByGenre } from "../../services/tmdb";
+import { getByGenre, getSeries, getMovies } from "../../services/tmdb";
 import { getFromStorage } from "../../assets/js/utils";
 import { useTMDBMedias } from "../../Providers/MediasProvider";
 
@@ -38,6 +38,15 @@ const SidebarMUI = ({ openSidebar, setOpenSidebar, handleLogout }) => {
     setOpenSidebar(false);
   };
 
+  const applySeriesFilter = async () => {
+    getMedias(await getSeries("Séries Populares"))
+    setOpenSidebar(false);
+  }
+
+  const applyMoviesFilter = async () => {
+    getMedias(await getMovies())
+    setOpenSidebar(false);
+  }
 
   return (
     <Drawer open={openSidebar} onClose={() => setOpenSidebar(false)} >
@@ -58,11 +67,11 @@ const SidebarMUI = ({ openSidebar, setOpenSidebar, handleLogout }) => {
 
           <ListItem sx={{ ...section }}>Media</ListItem>
 
-          <ListItemButton>
+          <ListItemButton onClick={applyMoviesFilter}>
             <ListItemText primary="Filmes" />
           </ListItemButton>
 
-          <ListItemButton>
+          <ListItemButton onClick={applySeriesFilter}>
             <ListItemText primary="Séries" />
           </ListItemButton>
 
