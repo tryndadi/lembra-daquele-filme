@@ -163,6 +163,7 @@ export const CustomCard = styled.div`
 
 export const SliderContainer = styled.div`
   color: rgba(255, 255, 255, 0.5);
+  width: 97%;
 `;
 
 export const CustomSlider = styled(slider)`

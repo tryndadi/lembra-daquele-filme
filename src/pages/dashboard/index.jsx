@@ -46,17 +46,19 @@ const Dashboard = () => {
       <div className="cont-geral-dashboard">
         <header>
           <div className="cont-header">
-            <div className="menu" onClick={() => setOpenSidebar(true)}>
-              <HiMenu width={70} />
+            <div className="menu-img">
+              <div className="menu" onClick={() => setOpenSidebar(true)}>
+                <HiMenu width={70} />
 
-              <span>Menu</span>
+                <span>Menu</span>
+              </div>
+
+              <Link to="/">
+                <img src={logo} alt="logo" />
+              </Link>
             </div>
 
-            <Link to="/">
-              <img src={logo} alt="logo" />
-            </Link>
-
-            <SearchBar />
+            <SearchBar className="cont-search" />
           </div>
         </header>
 
