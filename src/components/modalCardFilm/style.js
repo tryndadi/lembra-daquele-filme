@@ -61,7 +61,7 @@ export const Infos = styled.div`
 
 export const BtnAdd = styled.button`
   border: none;
-  font-size: 14px;
+  font-size: 15px;
   color: #fc094b;
   text-transform: uppercase;
   background-color: transparent;
@@ -69,6 +69,6 @@ export const BtnAdd = styled.button`
   padding: 6px 8px;
   :hover {
     background-color: #fc094b1a;
-    font-size: 14.5px;
+    font-size: 15.2px;
   }
 `;
