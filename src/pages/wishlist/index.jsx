@@ -24,7 +24,7 @@ const WishList = () => {
 console.log(list)
   return list ? (
     list.map(({body, id}) => (
-      <CustomCard key={body.id}>
+      <CustomCard key={id}>
         <img
           src={imagePathPrefix + body.poster_path}
           alt={body.title}

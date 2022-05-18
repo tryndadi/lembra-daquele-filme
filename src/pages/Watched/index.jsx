@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 
 import { imagePathPrefix } from "../../assets/js/utils";
 import { CustomCard } from "./style";
-import SidebarMUI from "../../components/Sidebar";
+//import SidebarMUI from "../../components/Sidebar";
 import { CollectionContext } from "../../Providers/CollectionProvider";
 
 import logo from "../../assets/img/logo.svg";
@@ -16,13 +16,13 @@ import { FaAngleDoubleLeft } from "react-icons/fa";
 import { StyleContainer } from "./style";
 import { Redirect } from "react-router-dom";
 
-import SearchBar from "../../components/searchBar";
+//import SearchBar from "../../components/searchBar";
 import { useUser } from "../../Providers/UserProvider";
 import { useTMDBMedias } from "../../Providers/MediasProvider";
 
 const Watched = () => {
   const [collection, setcCollection] = useState(null);
-  const [openSidebar, setOpenSidebar] = useState(false);
+  //const [openSidebar, setOpenSidebar] = useState(false);
   const { isLoading } = useTMDBMedias();
   const { isLoggedIn } = useUser();
 
