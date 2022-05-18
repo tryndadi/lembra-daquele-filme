@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 
 import { tmdbAccess } from "../../services/api";
-import { getByGenre, getSeries, getMovies } from "../../services/tmdb";
+import tmdb, { getByGenre, getSeries, getMovies } from "../../services/tmdb";
+
 import { getFromStorage } from "../../assets/js/utils";
 import { useTMDBMedias } from "../../Providers/MediasProvider";
 
@@ -84,7 +85,7 @@ const SidebarMUI = ({ openSidebar, setOpenSidebar, handleLogout }) => {
             <List component="div" disablePadding>
 
               <ListItemButton
-                // onClick={() => applyFilter('todos')}
+                onClick={() => getMedias(tmdb.getMedia)}
                 sx={{ ...category }}
               >
                 <ListItemText primary='Todos'/>
