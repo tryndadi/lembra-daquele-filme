@@ -7,10 +7,8 @@ import { CustomCard } from "./style";
 import { CollectionContext } from "../../Providers/CollectionProvider";
 
 import logo from "../../assets/img/logo.svg";
-<<<<<<< HEAD
-=======
+import Grid from "@mui/material/Grid";
 import loader from "../../assets/img/loader.svg";
->>>>>>> 9734e1de2eae6170c251fb0f72d6d17ba39dc922
 
 import { Link } from "react-router-dom";
 import { FaAngleDoubleLeft } from "react-icons/fa";
@@ -22,6 +20,7 @@ import { useTMDBMedias } from "../../Providers/MediasProvider";
 const Watched = () => {
   const [collection, setcCollection] = useState(null);
   const { isLoggedIn } = useUser();
+  const history = useHistory();
 
   const { getCollection, removeMovieFromCollection } = useContext(
     CollectionContext
@@ -67,10 +66,7 @@ const Watched = () => {
         </header>
 
         <main>
-<<<<<<< HEAD
-          {collection &&
-=======
-          {isLoading ? (
+          {/* {isLoading ? (
             <Grid
               spacing={1}
               container
@@ -87,9 +83,8 @@ const Watched = () => {
                 />
               </Grid>
             </Grid>
-          ) : (
-            collection &&
->>>>>>> 9734e1de2eae6170c251fb0f72d6d17ba39dc922
+          ) : ( */}
+          {collection &&
             collection.map((movie) => (
               <CustomCard key={movie.movieId}>
                 <img
@@ -108,13 +103,9 @@ const Watched = () => {
                   </button>
                 </div>
               </CustomCard>
-<<<<<<< HEAD
-            ))}
-          
-=======
             ))
-          )}
->>>>>>> 9734e1de2eae6170c251fb0f72d6d17ba39dc922
+          // )
+          }
         </main>
       </div>
     </StyleContainer>
