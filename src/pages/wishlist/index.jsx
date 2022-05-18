@@ -23,18 +23,18 @@ const WishList = () => {
 
 console.log(list)
   return list ? (
-    list.map((movie) => (
-      <CustomCard key={movie.id}>
+    list.map(({body, id}) => (
+      <CustomCard key={body.id}>
         <img
-          src={imagePathPrefix + movie.poster_path}
-          alt={movie.title}
+          src={imagePathPrefix + body.poster_path}
+          alt={body.title}
           width="100%"
         />
 
         <button
           onClick={() => {
-            removeMovieFromWishList(movie.id);
-            listUpdate(movie);
+            removeMovieFromWishList(id);
+            listUpdate(body);
           }}
         >
           remover

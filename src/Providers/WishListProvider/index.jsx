@@ -14,17 +14,28 @@ const WishListProvider = ({ children }) => {
     JSON.parse(localStorage.getItem("userData"))
   );
 
-  const addMovieToWishList = async (movieId) => {
+  const addMovieToWishList = async (movie) => {
+
+    const { id } = getUserInfos();
+
+    const customMovieData = {
+      ...movie,
+      movieId: movie.id
+    }
+
+    delete customMovieData.id
+
     await fakeApiAccess
       .post("/wishWatch", {
         headers: { Authorization: `Bearer ${userData.accessToken}` },
-        body: { userId: userData.id, movieId: movieId },
+        body: { userId: id, ...customMovieData },
       })
       .then((response) => console.log(response))
       .catch((err) => console.log(err));
   };
 
   const removeMovieFromWishList = async (elementId) => {
+
     await fakeApiAccess.delete(`/wishWatch/${elementId}`, {
       headers: { Authorization: `Bearer ${userData.accessToken}` },
     });
