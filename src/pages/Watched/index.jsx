@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 
 import { imagePathPrefix } from "../../assets/js/utils";
 import { CustomCard } from "./style";
+//import SidebarMUI from "../../components/Sidebar";
 import { CollectionContext } from "../../Providers/CollectionProvider";
 
 import logo from "../../assets/img/logo.svg";
@@ -14,11 +15,14 @@ import { Link } from "react-router-dom";
 import { FaAngleDoubleLeft } from "react-icons/fa";
 import { StyleContainer } from "./style";
 import { Redirect } from "react-router-dom";
+//import SearchBar from "../../components/searchBar";
 import { useUser } from "../../Providers/UserProvider";
 import { useTMDBMedias } from "../../Providers/MediasProvider";
 
 const Watched = () => {
   const [collection, setcCollection] = useState(null);
+  //const [openSidebar, setOpenSidebar] = useState(false);
+  const { isLoading } = useTMDBMedias();
   const { isLoggedIn } = useUser();
   const history = useHistory();
 
@@ -66,7 +70,7 @@ const Watched = () => {
         </header>
 
         <main>
-          {/* {isLoading ? (
+          {collection && isLoading ? (
             <Grid
               spacing={1}
               container
@@ -83,8 +87,8 @@ const Watched = () => {
                 />
               </Grid>
             </Grid>
-          ) : ( */}
-          {collection &&
+          ) : (
+            collection &&
             collection.map((movie) => (
               <CustomCard key={movie.movieId}>
                 <img
@@ -104,8 +108,7 @@ const Watched = () => {
                 </div>
               </CustomCard>
             ))
-          // )
-          }
+          )}
         </main>
       </div>
     </StyleContainer>
