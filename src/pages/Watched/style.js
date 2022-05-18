@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CustomCard = styled.div`
+export const CustomCard = styled.ul`
   transition: all 200ms ease-in;
   transform: scale(0.95);
   width: 99%;
@@ -125,7 +125,7 @@ export const StyleContainer = styled.div`
   flex-direction: column;
   .cont-geral-dashboard {
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
