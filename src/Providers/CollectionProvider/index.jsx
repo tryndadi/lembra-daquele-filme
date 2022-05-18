@@ -22,7 +22,9 @@ const CollectionProvider = ({ children }) => {
       const res = await fakeApiAccess.get(
         `/watched/?userId=${id}&movieId=${movie.id}`
       );
-      if (res.length !== 0) {
+
+      console.log(res);
+      if (res.data.length !== 0) {
         toast.error("Este filme já está na sua coleção");
         return true;
       }
