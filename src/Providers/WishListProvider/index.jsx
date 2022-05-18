@@ -1,9 +1,14 @@
 import React, { createContext, useState, useContext } from "react";
 import { fakeApiAccess } from "../../services/api";
+import fakeapi from "../../services/fakeapi";
 
 export const WishListContext = createContext();
 
 const WishListProvider = ({ children }) => {
+
+  const [mediasList, setMediasList] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
   const [userData, setUserData] = useState(
     JSON.parse(localStorage.getItem("userData"))
   );
@@ -24,9 +29,29 @@ const WishListProvider = ({ children }) => {
     });
   };
 
+  const getMedias = (callback) => {
+    setIsLoading(true);
+    callback().then((res) => {
+      res = !Array.isArray(res) ? [res] : res;
+      setMediasList(
+        res.map(({ keyWord, title, items }) => ({
+          keyWord,
+          title,
+          items: items.data.results,
+        }))
+      );
+      return setIsLoading(false);
+    });
+  };
+ 
+  useEffect(() => {
+    getMedias(fakeapi.getMedia(userData.accessToken));
+  }, []);
+
+
   return (
     <WishListContext.Provider
-      value={{ addMovieToWishList, removeMovieFromWishList }}
+      value={{ addMovieToWishList, removeMovieFromWishList, mediasList, isLoading, getMedias, setMediasList }}
     >
       {children}
     </WishListContext.Provider>
