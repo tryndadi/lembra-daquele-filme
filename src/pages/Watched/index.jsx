@@ -8,7 +8,7 @@ import SidebarMUI from "../../components/Sidebar";
 import { CollectionContext } from "../../Providers/CollectionProvider";
 
 import logo from "../../assets/img/logo.svg";
-import loader from "../../assets/img/loader.gif";
+import loader from "../../assets/img/loader.svg";
 
 import { Grid } from "@mui/material";
 import { Link } from "react-router-dom";
@@ -19,7 +19,7 @@ import { Redirect } from "react-router-dom";
 import SearchBar from "../../components/searchBar";
 import { useUser } from "../../Providers/UserProvider";
 import { useTMDBMedias } from "../../Providers/MediasProvider";
-import { useHistory } from "react-router-dom";
+/* import { useHistory } from "react-router-dom"; */
 
 const Watched = () => {
   const [collection, setcCollection] = useState(null);
@@ -33,7 +33,7 @@ const Watched = () => {
     CollectionContext
   );
 
-  const history = useHistory();
+/*   const history = useHistory(); */
 
   const collectionUpdate = (movie) => {
     setcCollection((currentCollection) =>
