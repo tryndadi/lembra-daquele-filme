@@ -2,29 +2,29 @@ import React, { useContext, useEffect, useState } from "react";
 
 import { imagePathPrefix } from "../../assets/js/utils";
 import { CustomCard } from "../../components/moviesSlider/styles";
-import { CollectionContext } from "../../Providers/CollectionProvider";
+import { WishListContext } from "../../Providers/WishListProvider";
+
 
 const WishList = () => {
-  const [collection, setcCollection] = useState(null);
-  const { getCollection, removeMovieFromCollection } = useContext(
-    CollectionContext
-  );
+  const [list, setList] = useState(null);
+  const {getWishes, removeMovieFromWishList} = useContext(WishListContext)
 
-  const collectionUpdate = (movie) => {
-    setcCollection((currentCollection) =>
-      currentCollection.filter(({ movieId }) => movieId !== movie.movieId)
+  const listUpdate = (movie) => {
+    setList((currentList) =>
+      currentList.filter(({ movieId }) => movieId !== movie.movieId)
     );
   };
 
   useEffect(() => {
-    getCollection()
-      .then((movies) => setcCollection(movies))
+    getWishes()
+      .then((movies) => setList(movies))
       .catch((err) => err);
   }, []);
 
-  return collection ? (
-    collection.map((movie) => (
-      <CustomCard key={movie.movieId}>
+console.log(list)
+  return list ? (
+    list.map((movie) => (
+      <CustomCard key={movie.id}>
         <img
           src={imagePathPrefix + movie.poster_path}
           alt={movie.title}
@@ -33,8 +33,8 @@ const WishList = () => {
 
         <button
           onClick={() => {
-            removeMovieFromCollection(movie);
-            collectionUpdate(movie);
+            removeMovieFromWishList(movie.id);
+            listUpdate(movie);
           }}
         >
           remover
@@ -42,8 +42,8 @@ const WishList = () => {
       </CustomCard>
     ))
   ) : (
-    <h1>Olá</h1>
+    <h1>Sua lista está vazia</h1>
   );
 };
 
-export default Watched;
+export default WishList;

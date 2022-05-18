@@ -1,13 +1,14 @@
 import React, { createContext, useState, useContext } from "react";
+import { useHistory } from "react-router-dom";
+import { getFromStorage } from "../../assets/js/utils";
 import { fakeApiAccess } from "../../services/api";
-import fakeapi from "../../services/fakeapi";
 
 export const WishListContext = createContext();
 
 const WishListProvider = ({ children }) => {
 
-  const [mediasList, setMediasList] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const history = useHistory()
+  const getUserInfos = () => getFromStorage("userData") || {}
 
   const [userData, setUserData] = useState(
     JSON.parse(localStorage.getItem("userData"))
@@ -29,29 +30,27 @@ const WishListProvider = ({ children }) => {
     });
   };
 
-  const getMedias = (callback) => {
-    setIsLoading(true);
-    callback().then((res) => {
-      res = !Array.isArray(res) ? [res] : res;
-      setMediasList(
-        res.map(({ keyWord, title, items }) => ({
-          keyWord,
-          title,
-          items: items.data.results,
-        }))
-      );
-      return setIsLoading(false);
-    });
-  };
- 
-  useEffect(() => {
-    getMedias(fakeapi.getMedia(userData.accessToken));
-  }, []);
+  const getWishes = async () => {
 
+    const {userId, accessToken} = getUserInfos()
+
+    // if (!userId || !accessToken){
+    //   history.push("/login")
+    //   return
+    // }
+
+    fakeApiAccess.defaults.headers.common[
+      "Authorization"
+    ] = `Bearer ${accessToken}`
+
+    return await fakeApiAccess
+    .get(`wishWatch/?userId=${userId}`)
+    .then(({data}) => data)
+  }
 
   return (
     <WishListContext.Provider
-      value={{ addMovieToWishList, removeMovieFromWishList, mediasList, isLoading, getMedias, setMediasList }}
+      value={{ addMovieToWishList, removeMovieFromWishList, getWishes}}
     >
       {children}
     </WishListContext.Provider>
