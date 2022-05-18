@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 
-export const CustomCard = styled.div`
-  
+export const CustomCard = styled.div`  
+  margin: 1rem;  
   transition: all 200ms ease-in;
   transform: scale(0.95);
-  width: 150px;
+  width: 50%;
   height: auto;
   div{
     button{
@@ -19,12 +19,10 @@ export const CustomCard = styled.div`
       }
     }
   }
-
   &:hover {
     z-index: 2;
     transition: all 200ms ease-in;
-    transform: scale(1);
-    
+    transform: scale(1);    
   }
 `
 
@@ -117,7 +115,7 @@ export const StyleContainer = styled.div`
       width: 100%;
       display: flex;
       justify-content: space-evenly;
-      flex-wrap: wrap;
+      
       
     }
   }
