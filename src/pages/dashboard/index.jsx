@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import logo from "../../assets/img/logo.svg";
-import loader from "../../assets/img/loader.gif";
+import loader from "../../assets/img/loader2.svg";
 
 import { Grid } from "@mui/material";
 import { Link } from "react-router-dom";
@@ -19,10 +19,11 @@ import { useTMDBMedias } from "../../Providers/MediasProvider";
 import { useWishList } from "../../Providers/WishListProvider";
 import { useCollection } from "../../Providers/CollectionProvider";
 import { useHistory } from "react-router-dom";
+import tmdb from "../../services/tmdb";
 
 const Dashboard = () => {
   const [openSidebar, setOpenSidebar] = useState(false);
-  const { isLoading } = useTMDBMedias();
+  const { isLoading, getMedias } = useTMDBMedias();
   const { isLoggedIn } = useUser();
 
   const history = useHistory();
@@ -53,9 +54,7 @@ const Dashboard = () => {
                 <span>Menu</span>
               </div>
 
-              <Link to="/">
-                <img src={logo} alt="logo" />
-              </Link>
+              <img onClick={() => getMedias(tmdb.getMedia)} src={logo} alt="logo" />
             </div>
 
             <SearchBar className="cont-search" />
@@ -75,7 +74,7 @@ const Dashboard = () => {
                 <img
                   src={loader}
                   width="100%"
-                  style={{ maxWidth: "50px" }}
+                  style={{ maxWidth: "100px" }}
                   alt="loader"
                 />
               </Grid>
