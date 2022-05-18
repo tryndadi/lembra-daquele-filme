@@ -35,6 +35,7 @@ const UserProvider = ({ children }) => {
       })
       .catch((res) => toast.error("Email ou senha errados!"));
   };
+
   return (
     <UserContext.Provider value={{ login, isLoggedIn }}>
       {children}

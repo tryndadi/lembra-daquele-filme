@@ -1,4 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { toast } from "react-toastify";
 
 import { imagePathPrefix } from "../../assets/js/utils";
 import { CustomCard } from "../../components/moviesSlider/styles";
@@ -10,6 +12,8 @@ const Watched = () => {
     CollectionContext
   );
 
+  const history = useHistory();
+
   const collectionUpdate = (movie) => {
     setcCollection((currentCollection) =>
       currentCollection.filter(({ movieId }) => movieId !== movie.movieId)
@@ -19,7 +23,14 @@ const Watched = () => {
   useEffect(() => {
     getCollection()
       .then((movies) => setcCollection(movies))
-      .catch((err) => err);
+      .catch(({ response }) => {
+        const errorStatus = [401, 403];
+
+        if (errorStatus.includes(response.status)) {
+          history.push("/login");
+          toast.error("Sua sessão expirou. Efetue o login novamente");
+        }
+      });
   }, []);
 
   return collection ? (
