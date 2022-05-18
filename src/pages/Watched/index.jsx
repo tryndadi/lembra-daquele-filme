@@ -10,16 +10,13 @@ import loader from "../../assets/img/loader.gif";
 
 import { Grid } from "@mui/material";
 import { Link } from "react-router-dom";
-import { HiMenu } from "react-icons/hi";
+import { FaAngleDoubleLeft } from "react-icons/fa";
 import { StyleContainer } from "./style";
 import { Redirect } from "react-router-dom";
 
 import SearchBar from "../../components/searchBar";
 import { useUser } from "../../Providers/UserProvider";
 import { useTMDBMedias } from "../../Providers/MediasProvider";
-
-import { useWishList } from "../../Providers/WishListProvider";
-import { useCollection } from "../../Providers/CollectionProvider";
 import { useHistory } from "react-router-dom";
 
 const Watched = () => {
@@ -51,32 +48,21 @@ const Watched = () => {
     history.push("/");
   }
   return isLoggedIn ? (
-    <StyleContainer>
-      <aside>
-        <SidebarMUI
-          openSidebar={openSidebar}
-          setOpenSidebar={setOpenSidebar}
-          handleLogout={handleLogout}
-        />
-      </aside>
+    <StyleContainer>      
 
       <div className="cont-geral-dashboard">
         <header>
-          <div className="cont-header">
-            <div className="menu-img">
-              <div className="menu" onClick={() => setOpenSidebar(true)}>
-                <HiMenu width={70} />
-
-                <span>Menu</span>
+          <div className="cont-header">            
+              <div className="menu" onClick={() => history.push("/dashboard")}>
+                <FaAngleDoubleLeft width={70} />
+                <span>Voltar</span>
               </div>
 
               <Link to="/">
                 <img src={logo} alt="logo" />
               </Link>
             </div>
-
-            <SearchBar className="cont-search" />
-          </div>
+          
         </header>
 
         <main>
@@ -105,15 +91,17 @@ const Watched = () => {
                   alt={movie.title}
                   width="100%"
                 />
-        
-                <button
-                  onClick={() => {
-                    removeMovieFromCollection(movie);
-                    collectionUpdate(movie);
-                  }}
-                >
-                  remover
-                </button>
+                <div>
+                  <button
+                    onClick={() => {
+                      removeMovieFromCollection(movie);
+                      collectionUpdate(movie);
+                    }}
+                  >
+                    Remover
+                  </button>
+                </div>
+                
               </CustomCard>
             )))}
           
