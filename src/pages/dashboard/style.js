@@ -8,35 +8,38 @@ export const StyleContainer = styled.div`
 
   display: flex;
 
-
   .cont-geral-dashboard {
-
     width: 100%;
 
     header {
       width: 100%;
-      height: 90px;
+      height: 120px;
 
       .cont-header {
         width: 100%;
-
-        padding: 15px;
+        height: 100%;
 
         display: flex;
-        justify-content: space-between;
+        flex-wrap: wrap;
         align-items: center;
+        justify-content: center;
+        gap: 12px;
 
         box-sizing: border-box;
 
-        .menu{
+        .menu-img {
+          width: 100%;
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+        }
+        .menu {
           width: 270px;
 
           display: flex;
           align-items: center;
-
           /* cursor: pointer; */
-
-          span{
+          span {
             margin-left: 10px;
 
             color: ${(props) => props.theme.colors.grey.light};
@@ -44,10 +47,10 @@ export const StyleContainer = styled.div`
             cursor: pointer;
           }
 
-          svg{
+          svg {
             width: 35px;
             height: 35px;
-  
+
             color: ${(props) => props.theme.colors.grey.light};
 
             cursor: pointer;
@@ -93,13 +96,38 @@ export const StyleContainer = styled.div`
             color: ${(props) => props.theme.colors.grey.light};
           }
         }
+
+        @media screen and (min-width: 770px) and (max-width: 950px) {
+          display: flex;
+          flex-wrap: nowrap;
+          justify-content: space-evenly;
+
+          .menu-img {
+            width: 50%;
+          }
+        }
+        @media screen and (min-width: 950px) {
+          display: flex;
+          flex-wrap: nowrap;
+          justify-content: space-between;
+          width: 95%;
+          .menu-img {
+            width: 50%;
+            justify-content: space-between;
+            padding-left: 5%;
+          }
+        }
       }
     }
 
     main {
-      width: 99%;
-      padding-left: 15px;
+      width: 100%;
+      padding-top: 30px;
+      padding-left: 2%;
 
+      h6 {
+        padding-left: 15px;
+      }
       nav {
         width: 100%;
         margin-bottom: 25px;
@@ -155,15 +183,16 @@ export const StyleContainer = styled.div`
     }
   }
 
-  @media screen and (max-width: 550px) {
+  @media screen and (min-width: 570px) {
     header {
-      height: 130px;
-
       .cont-header {
-        height: 100%;
-
-        flex-direction: column;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+        align-items: center;
       }
+    }
+    img {
     }
 
     main {

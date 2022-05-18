@@ -24,7 +24,7 @@ const MoviesSections = () => {
     <div>
       {mediasList &&
         mediasList.map((medias, i) => (
-          <SliderContainer key={i}>
+          <SliderContainer className="list" key={i}>
             <Typography variant="h6">{medias.title}</Typography>
             <CustomSlider
               {...(medias.keyWord === "populars" ? customSettings : settings)}
