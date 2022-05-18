@@ -10,12 +10,10 @@ import { useCollection } from "../../Providers/CollectionProvider";
 import { Avatar, Button, Rating, Typography, Box, Grid } from "@mui/material";
 import { useWishList } from "../../Providers/WishListProvider";
 
-
-
 const ModalCardFilm = () => {
   const { isOpen, toogle, media } = useInfosModal();
   const { addMovieToCollection } = useCollection();
-  const {addMovieToWishList} = useWishList()
+  const { addMovieToWishList } = useWishList();
 
   const imagePathPrefix = "http://image.tmdb.org/t/p/w500/";
 
@@ -84,17 +82,13 @@ const ModalCardFilm = () => {
               onClick={() => addMovieToCollection(media)}
             >
               Adicionar à coleção
+            </BtnAdd>
 
-            </Button>
-            <Button 
-              variant="contained" 
-              sx={{ textTransform: "none" }} 
+            <BtnAdd
+              variant="contained"
+              sx={{ textTransform: "none" }}
               onClick={() => addMovieToWishList(media)}
             >
-
-            </BtnAdd>
-            <BtnAdd variant="contained" sx={{ textTransform: "none" }}>
-
               Adicionar aos desejados
             </BtnAdd>
           </Infos>
