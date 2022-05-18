@@ -1,7 +1,7 @@
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useState, useContext, useEffect } from "react";
 import { toast } from "react-toastify";
 import { fakeApiAccess } from "../../services/api";
-import { addToStorage } from "../../assets/js/utils";
+import { addToStorage, getUserInfos } from "../../assets/js/utils";
 import { useHistory } from "react-router-dom";
 
 const UserContext = createContext();
@@ -11,6 +11,13 @@ const UserProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(
     JSON.parse(localStorage.getItem("userData")) || false
   );
+
+  useEffect(() => {
+    const { id, accessToken } = getUserInfos();
+    if (!id || !accessToken) {
+      history.push("/login");
+    }
+  }, []);
 
   const login = ({ email, password }) => {
     const infoUserLogin = {

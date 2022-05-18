@@ -2,6 +2,7 @@ import React from "react";
 
 import { toast } from "react-toastify";
 import { createContext, useContext } from "react";
+import { getUserInfos } from "../../assets/js/utils";
 import { getFromStorage } from "../../assets/js/utils";
 import { fakeApiAccess } from "../../services/api";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
@@ -11,7 +12,6 @@ export const CollectionContext = createContext([]);
 const CollectionProvider = ({ children }) => {
   const history = useHistory();
 
-  const getUserInfos = () => getFromStorage("userData") || {};
   const checkIfExists = async (movie) => {
     const { id, accessToken } = getUserInfos();
     fakeApiAccess.defaults.headers.common[

@@ -12,3 +12,5 @@ export const getFromStorage = (label) => {
 
   return JSON.parse(data);
 };
+
+export const getUserInfos = () => getFromStorage("userData") || {};
