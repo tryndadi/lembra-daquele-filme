@@ -123,7 +123,7 @@ export const StyleContainer = styled.div`
     }
 
     main {
-      width: 100%;
+      width: 98%;
       padding-top: 30px;
       padding-left: 2%;
 
