@@ -22,7 +22,7 @@ export const InfosSection = styled.div`
 `;
 
 export const ButtonsSection = styled.div`
-  gap: 15px;
+  gap: 5px;
   padding: 10px;
   display: flex;
   transition: all 200ms ease-in;
