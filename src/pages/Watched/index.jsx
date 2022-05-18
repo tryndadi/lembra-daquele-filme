@@ -22,11 +22,11 @@ const Watched = () => {
       .catch((err) => err);
   }, []);
 
-  return collection !== null ? (
+  return collection ? (
     collection.map((movie) => (
       <CustomCard key={movie.movieId}>
         <img
-          src={imagePathPrefix + movie.image}
+          src={imagePathPrefix + movie.poster_path}
           alt={movie.title}
           width="100%"
         />

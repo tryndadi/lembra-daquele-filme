@@ -1,5 +1,7 @@
 import React from "react";
-import { createContext, useState, useContext } from "react";
+
+import { toast } from "react-toastify";
+import { createContext, useContext } from "react";
 import { getFromStorage } from "../../assets/js/utils";
 import { fakeApiAccess } from "../../services/api";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
@@ -9,35 +11,89 @@ export const CollectionContext = createContext([]);
 const CollectionProvider = ({ children }) => {
   const history = useHistory();
 
-  const addMovieToCollection = async (movie) => {
-    const { id, accessToken } = getFromStorage("userData") || {};
-
-    fakeApiAccess.defaults.headers.post[
+  const getUserInfos = () => getFromStorage("userData") || {};
+  const checkIfExists = async (movie) => {
+    const { id, accessToken } = getUserInfos();
+    fakeApiAccess.defaults.headers.common[
       "Authorization"
     ] = `Bearer ${accessToken}`;
-    await fakeApiAccess
-      .post("/watched", {
-        userId: id,
+
+    try {
+      const res = await fakeApiAccess.get(
+        `/watched/?userId=${id}&movieId=${movie.id}`
+      );
+      if (res.length !== 0) {
+        toast.error("Este filme já está na sua coleção");
+        return true;
+      }
+      return false;
+    } catch (error) {
+      const unauthorizedStatus = [401, 403];
+
+      if (unauthorizedStatus.includes(error.status)) {
+        return false;
+      }
+    }
+  };
+
+  const addMovieToCollection = async (movie) => {
+    const { id, accessToken } = getUserInfos();
+
+    const collectionHasMovie = await checkIfExists(movie);
+
+    if (!collectionHasMovie) {
+      const customMovieData = {
+        ...movie,
         movieId: movie.id,
-        image: movie.poster_path,
-        title: movie.title || movie.name,
-        average: movie.vote_average,
-        vote_count: movie.vote_count,
-      })
-      .then((response) => console.log(response))
-      .catch((err) => console.log(err));
+      };
+
+      delete customMovieData.id;
+
+      fakeApiAccess.defaults.headers.post[
+        "Authorization"
+      ] = `Bearer ${accessToken}`;
+
+      try {
+        await fakeApiAccess
+          .post("/watched", {
+            userId: id,
+            ...customMovieData,
+          })
+          .then((_) => {
+            toast.success(" Filme adicionado à sua coleção");
+          });
+      } catch (error) {
+        const unauthorizedStatus = [401, 403];
+
+        if (unauthorizedStatus.includes(error.status)) {
+          history.push("/login");
+          toast.error("Sua sessão expirou. Efetue login para continuar");
+        }
+
+        toast.error("Não foi possível salvar este filme");
+      }
+    }
   };
 
   const removeMovieFromCollection = ({ id }) => {
-    const { accessToken } = getFromStorage("userData") || {};
-    fakeApiAccess
-      .delete(`/watched/${id}`, {
-        headers: {
-          Authorization: `Bearer ${accessToken} `,
-        },
-      })
-      .then((response) => console.log(response))
-      .catch((err) => console.log(err));
+    const { accessToken } = getUserInfos();
+    try {
+      fakeApiAccess
+        .delete(`/watched/${id}`, {
+          headers: {
+            Authorization: `Bearer ${accessToken} `,
+          },
+        })
+        .then((_) => toast.success("Filme removido da sua coleção"));
+    } catch (error) {
+      const unauthorizedStatus = [401, 403];
+
+      if (unauthorizedStatus.includes(error.status)) {
+        history.push("/login");
+        toast.error("Sua sessão expirou. Efetue login para continuar");
+      }
+      toast.error("Não foi possível remover este filme da sua coleção");
+    }
   };
 
   const getCollection = async () => {
