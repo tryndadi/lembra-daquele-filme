@@ -47,6 +47,7 @@ export const CustomCard = styled.ul`
       color: ${(props) => props.theme.colors.grey.light};
       font-size: 0.9rem;
       border-radius: 5px;
+
       &:hover {
         border-color: red;
       }
@@ -184,8 +185,16 @@ export const StyleContainer = styled.div`
       display: flex;
       flex-wrap: nowrap;
       width: 100%;
-    }
 
+  @media screen and (min-width: 570px) {
+    header {
+      .cont-header {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+        align-items: center;
+      }
+    }
     main {
       width: 100%;
       height: 98%;
