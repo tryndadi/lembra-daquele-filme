@@ -2,7 +2,7 @@ import InputComponent from "../../components/Input";
 import { FaUserAlt, FaEnvelope, FaKey } from "react-icons/fa";
 import logoCompleta from "../../assets/img/logoCompleta.svg";
 
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -13,8 +13,7 @@ import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
 const RegisterPage = () => {
-
-  const history = useHistory()
+  const history = useHistory();
 
   const sechema = yup.object().shape({
     name: yup
@@ -61,12 +60,10 @@ const RegisterPage = () => {
   };
 
   const handleSuccessRegister = () => {
+    toast.success("Conta cadastrada com sucesso!");
 
-    toast.success("Conta cadastrada com sucesso!")
-
-    history.push('/login')
-  }
-
+    history.push("/login");
+  };
 
   return (
     <>

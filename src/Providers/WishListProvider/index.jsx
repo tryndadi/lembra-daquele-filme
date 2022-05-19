@@ -1,5 +1,4 @@
 import React, { createContext, useState, useContext } from "react";
-import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import { getFromStorage } from "../../assets/js/utils";
 import { fakeApiAccess } from "../../services/api";
@@ -7,60 +6,49 @@ import { fakeApiAccess } from "../../services/api";
 export const WishListContext = createContext();
 
 const WishListProvider = ({ children }) => {
-
-  const history = useHistory()
-  const getUserInfos = () => getFromStorage("userData") || {}
-
+  const getUserInfos = () => getFromStorage("userData") || {};
   const doubleCheck = async (movie) => {
-
-    const { id, accessToken } = getUserInfos()
+    const { id, accessToken } = getUserInfos();
 
     fakeApiAccess.defaults.headers.common[
       "Authorization"
-    ] = `Bearer ${accessToken}`
+    ] = `Bearer ${accessToken}`;
 
     try {
-
       const res = await fakeApiAccess.get(
         `/wishWatch/?userId=${id}&movieId=${movie.id}`
-      )
+      );
 
       if (res.data.length !== 0) {
         toast.error("Este filme já está na sua Lista de Desejos");
-        return true
+        return true;
       }
 
-      return false
-
+      return false;
     } catch (error) {
-
       const unauthorizedStatus = [401, 403];
 
       if (unauthorizedStatus.includes(error.status)) {
         return false;
       }
     }
-  }
+  };
 
-  const [userData, setUserData] = useState(
-    JSON.parse(localStorage.getItem("userData"))
-  );
+  const [userData] = useState(JSON.parse(localStorage.getItem("userData")));
 
   const addMovieToWishList = async (movie) => {
-
     const { id } = getUserInfos();
 
-    const wishListHasMovie = await doubleCheck(movie)
+    const wishListHasMovie = await doubleCheck(movie);
 
-    if(!wishListHasMovie){
-
+    if (!wishListHasMovie) {
       const customMovieData = {
         ...movie,
-        movieId: movie.id
-      }
-  
-      delete customMovieData.id
-  
+        movieId: movie.id,
+      };
+
+      delete customMovieData.id;
+
       await fakeApiAccess
         .post("/wishWatch", {
           headers: { Authorization: `Bearer ${userData.accessToken}` },
@@ -71,22 +59,20 @@ const WishListProvider = ({ children }) => {
         })
         .catch((err) => console.log(err));
     }
-
   };
 
   const removeMovieFromWishList = async (elementId) => {
-
-    await fakeApiAccess.delete(`/wishWatch/${elementId}`, {
-      headers: { Authorization: `Bearer ${userData.accessToken}` },
-    })
-    .then((_) => {
-      toast.success(" Filme removido à Lista de Desejos")
-    });
+    await fakeApiAccess
+      .delete(`/wishWatch/${elementId}`, {
+        headers: { Authorization: `Bearer ${userData.accessToken}` },
+      })
+      .then((_) => {
+        toast.success(" Filme removido à Lista de Desejos");
+      });
   };
 
   const getWishes = async () => {
-
-    const {userId, accessToken} = getUserInfos()
+    const { userId, accessToken } = getUserInfos();
 
     // if (!userId || !accessToken){
     //   history.push("/login")
@@ -95,16 +81,16 @@ const WishListProvider = ({ children }) => {
 
     fakeApiAccess.defaults.headers.common[
       "Authorization"
-    ] = `Bearer ${accessToken}`
+    ] = `Bearer ${accessToken}`;
 
     return await fakeApiAccess
-    .get(`wishWatch/?userId=${userId}`)
-    .then(({data}) => data)
-  }
+      .get(`wishWatch/?userId=${userId}`)
+      .then(({ data }) => data);
+  };
 
   return (
     <WishListContext.Provider
-      value={{ addMovieToWishList, removeMovieFromWishList, getWishes}}
+      value={{ addMovieToWishList, removeMovieFromWishList, getWishes }}
     >
       {children}
     </WishListContext.Provider>

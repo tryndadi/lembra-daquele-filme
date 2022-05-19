@@ -4,25 +4,26 @@ import { toast } from "react-toastify";
 
 import { imagePathPrefix } from "../../assets/js/utils";
 import { CustomCard } from "./style";
-//import SidebarMUI from "../../components/Sidebar";
 import { CollectionContext } from "../../Providers/CollectionProvider";
 
 import logo from "../../assets/img/logo.svg";
-import Grid from "@mui/material/Grid";
 import loader from "../../assets/img/loader.svg";
 
+import { Grid } from "@mui/material";
 import { Link } from "react-router-dom";
-import { FaAngleDoubleLeft } from "react-icons/fa";
+import { FaAngleDoubleLeft, FaEdit } from "react-icons/fa";
+
 import { StyleContainer } from "./style";
 import { Redirect } from "react-router-dom";
-//import SearchBar from "../../components/searchBar";
 import { useUser } from "../../Providers/UserProvider";
 import { useTMDBMedias } from "../../Providers/MediasProvider";
+import { useCommentModal } from "../../Providers/CommentModalProvider";
 import ModalCommentFilm from "../../components/modalCommentFilm";
 
+
 const Watched = () => {
+  const {toggle} = useCommentModal()
   const [collection, setcCollection] = useState(null);
-  //const [openSidebar, setOpenSidebar] = useState(false);
   const { isLoading } = useTMDBMedias();
   const { isLoggedIn } = useUser();
   const history = useHistory();
@@ -50,10 +51,6 @@ const Watched = () => {
       });
   }, []);
 
-  const handleLogout = () => {
-    localStorage.removeItem("userData");
-    history.push("/");
-  };
   return isLoggedIn ? (
     <StyleContainer>
       <div className="cont-geral-dashboard">
@@ -92,11 +89,14 @@ const Watched = () => {
             collection &&
             collection.map((movie) => (
               <CustomCard key={movie.movieId}>
-                <img
-                  src={imagePathPrefix + movie.poster_path}
-                  alt={movie.title}
-                  width="100%"
-                />
+                <div className="movie-tittle">
+                  <img
+                    src={imagePathPrefix + movie.poster_path}
+                    alt={movie.title}
+                    width="100%"
+                  />
+                  <span>{movie.title}</span>
+                </div>
                 <div>
                   <button
                     onClick={() => {
@@ -105,6 +105,9 @@ const Watched = () => {
                     }}
                   >
                     Remover
+                  </button>
+                  <button>
+                    <FaEdit onClick={() => toggle(movie)}/>
                   </button>
                 </div>
               </CustomCard>
