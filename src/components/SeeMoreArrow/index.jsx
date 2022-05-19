@@ -3,13 +3,13 @@ import React from "react";
 import { ContainerArrow } from "./style";
 import { FaChevronDown } from 'react-icons/fa';
 
-
+// window.scrollTo(0, 500)
 
 const SeeMoreArrow = () => {
 
   return (
     <>
-      <ContainerArrow onClick={() => window.scrollTo(0, 500)}>
+      <ContainerArrow onClick={() => window.scroll({top: 500, left: 0, behavior: 'smooth' })}>
         <FaChevronDown className="animate__animated animate__fadeOutDown animate__slower animate__delay-2s animate__infinite"/>
       </ContainerArrow>
     </>
