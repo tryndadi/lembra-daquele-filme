@@ -16,7 +16,7 @@ const CommentaryProvider = ({ children }) => {
   const addComment = (idMovie, comment) => {
     const { name } = userData;
 
-    fakeApiAccess.defaults.headers.post[
+    fakeApiAccess.defaults.headers.common[
       "Authorization"
     ] = `Bearer ${userData.accessToken}`;
     fakeApiAccess
