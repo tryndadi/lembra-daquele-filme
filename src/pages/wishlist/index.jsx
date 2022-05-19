@@ -63,6 +63,7 @@ const WishList = () => {
         </header>
 
         <main>
+          <h2>Lista de Desejos</h2>
           {list && isLoading ? (
             <Grid
               spacing={1}
