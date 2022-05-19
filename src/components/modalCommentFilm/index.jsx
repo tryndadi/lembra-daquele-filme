@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import ReactModal from "react-modal";
-import { BtnAdd, BtnClose, Image, Infos, modalStyle } from "./style";
+import {
+  BtnAdd,
+  BtnClose,
+  ContainerComentario,
+  Image,
+  Infos,
+  modalStyle,
+} from "./style";
 import { useCommentModal } from "../../Providers/CommentModalProvider";
 import { useCommentary } from "../../Providers/CommentaryProvider";
 import { Grid, Rating, Typography } from "@mui/material";
@@ -77,20 +84,23 @@ const ModalCommentFilm = () => {
               />
               &nbsp;{media.vote_count} opiniões
             </Typography>
-            <form onSubmit={(evt) => handleSubmit(evt)}>
-              <div>
-                <ul>
-                  {commentsMovie.map((item) => {
-                    return (
-                      <li key={item.id}>
+
+            <ContainerComentario>
+            <ul>
+                {commentsMovie.map((item) => {
+                return (
+                    <li key={item.id}>
                         <p>{item.message}</p>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
+                    </li>
+                );
+                })}
+            </ul>
+            </ContainerComentario>
+
+            <form onSubmit={(evt) => handleSubmit(evt)}>
               <input
                 minLength="2"
+                maxLength='90'
                 value={comment}
                 onChange={(evt) => setComment(evt.target.value)}
               />
@@ -117,21 +127,21 @@ const ModalCommentFilm = () => {
 //     const {addComment, getComments, commentsMovie} = useCommentary()
 //     const [comment, setComment] = useState('')
 //     const [movieComment, setMovieComment] = useState('')
-    
+
 //     useEffect(() => {
 //         getComments(media.id)
 //     }, [movieComment])
 
-//     const imagePathPrefix = "http://image.tmdb.org/t/p/w500/"    
+//     const imagePathPrefix = "http://image.tmdb.org/t/p/w500/"
 
 //     const handleSubmit = (evt) => {
 //         evt.preventDefault();
-//         if (comment.trim().length > 0 ){            
+//         if (comment.trim().length > 0 ){
 //             addComment(media.id, comment)
 //             setComment('')
 //             getComments(media.id)
 //             setMovieComment(comment)
-//         }        
+//         }
 //     }
 //     return (
 //         <ReactModal
@@ -149,7 +159,7 @@ const ModalCommentFilm = () => {
 //                 </Grid>
 //                 <Grid item xs={12} sm={6} display="flex" justifyContent="space-between" flex-direction="column">
 //                     <Infos>
-//                         <Typography variant="h6">{media.title || media.name}</Typography>                        
+//                         <Typography variant="h6">{media.title || media.name}</Typography>
 //                         <Typography size={12}>
 //                         <Rating
 //                             sx={{ verticalAlign: "middle" }}
@@ -172,7 +182,7 @@ const ModalCommentFilm = () => {
 //                                     return(
 //                                     <li key={item.id}>
 //                                         <p>{item.message}</p>
-//                                     </li>                            
+//                                     </li>
 //                                     )
 //                                 })}
 //                                 </ul>
