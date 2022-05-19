@@ -3,7 +3,6 @@ import React from "react";
 import { ContainerArrow } from "./style";
 import { FaChevronDown } from 'react-icons/fa';
 
-// window.scrollTo(0, 500)
 
 const SeeMoreArrow = () => {
 
