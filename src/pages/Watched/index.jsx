@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { toast } from "react-toastify";
 
 import { imagePathPrefix } from "../../assets/js/utils";
-import { CustomCard, MainContainer } from "./style";
+import { CustomCard } from "./style";
 import { CollectionContext } from "../../Providers/CollectionProvider";
 
 import logo from "../../assets/img/logo.svg";
@@ -15,38 +15,19 @@ import { FaAngleDoubleLeft, FaEdit } from "react-icons/fa";
 
 import { StyleContainer } from "./style";
 import { Redirect } from "react-router-dom";
-
-// =======
-// import { CustomCard } from "./style";
-// //import SidebarMUI from "../../components/Sidebar";
-// import { CollectionContext } from "../../Providers/CollectionProvider";
-
-// import logo from "../../assets/img/logo.svg";
-// import Grid from "@mui/material/Grid";
-// import loader from "../../assets/img/loader.svg";
-
-// import { Link } from "react-router-dom";
-// import { FaAngleDoubleLeft } from "react-icons/fa";
-// import { StyleContainer } from "./style";
-// import { Redirect } from "react-router-dom";
-// //import SearchBar from "../../components/searchBar";
-// >>>>>>> develop
 import { useUser } from "../../Providers/UserProvider";
 import { useTMDBMedias } from "../../Providers/MediasProvider";
 
 const Watched = () => {
   const [collection, setcCollection] = useState(null);
-  const [openSidebar, setOpenSidebar] = useState(false);
   const { isLoading } = useTMDBMedias();
   const { isLoggedIn } = useUser();
   const history = useHistory();
 
-
   const { getCollection, removeMovieFromCollection } = useContext(
     CollectionContext
   );
-  const history = useHistory();
-  
+
   const collectionUpdate = (movie) => {
     setcCollection((currentCollection) =>
       currentCollection.filter(({ movieId }) => movieId !== movie.movieId)
@@ -57,7 +38,6 @@ const Watched = () => {
     getCollection()
       .then((movies) => setcCollection(movies))
       .catch(({ response }) => {
-      
         const errorStatus = [401];
 
         if (errorStatus.includes(response.status)) {
@@ -67,10 +47,6 @@ const Watched = () => {
       });
   }, []);
 
-  const handleLogout = () => {
-    localStorage.removeItem("userData");
-    history.push("/");
-  };
   return isLoggedIn ? (
     <StyleContainer>
       <div className="cont-geral-dashboard">
@@ -88,9 +64,7 @@ const Watched = () => {
         </header>
 
         <main>
-          {isLoading ? (
           {collection && isLoading ? (
-
             <Grid
               spacing={1}
               container
@@ -131,7 +105,6 @@ const Watched = () => {
                   <button>
                     <FaEdit />
                   </button>
-
                 </div>
               </CustomCard>
             ))

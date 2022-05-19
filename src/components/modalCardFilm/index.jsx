@@ -1,28 +1,18 @@
 import React from "react";
 import ReactModal from "react-modal";
 import { FaTimes } from "react-icons/fa";
-import {
-  Image,
-  Infos,
-  BtnClose,
-  ModalBody,
-  modalStyle,
-  HorizontalFade,
-} from "./style";
-
 
 import StarBorderIcon from "@material-ui/icons/StarBorder";
+import { useWishList } from "../../Providers/WishListProvider";
 import { useInfosModal } from "../../Providers/InfosModalProvider";
 import { useCollection } from "../../Providers/CollectionProvider";
-import { Avatar, Button, Rating, Typography, Box, Grid } from "@mui/material";
-import { useWishList } from "../../Providers/WishListProvider";
-
+import { Avatar, Rating, Typography, Box, Grid } from "@mui/material";
+import { Image, Infos, BtnClose, modalStyle, BtnAdd } from "./style";
 
 const ModalCardFilm = () => {
   const { isOpen, toogle, media } = useInfosModal();
   const { addMovieToCollection } = useCollection();
   const { addMovieToWishList } = useWishList();
-
 
   const imagePathPrefix = "http://image.tmdb.org/t/p/w500/";
 
@@ -85,8 +75,7 @@ const ModalCardFilm = () => {
                 <Avatar sx={{ width: "30px", height: "30px" }}>A</Avatar>
               </div>
             </Box>
-            <Button
-
+            <BtnAdd
               variant="contained"
               sx={{ textTransform: "none" }}
               onClick={() => addMovieToCollection(media)}
