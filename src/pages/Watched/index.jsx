@@ -18,6 +18,7 @@ import { Redirect } from "react-router-dom";
 //import SearchBar from "../../components/searchBar";
 import { useUser } from "../../Providers/UserProvider";
 import { useTMDBMedias } from "../../Providers/MediasProvider";
+import ModalCommentFilm from "../../components/modalCommentFilm";
 
 const Watched = () => {
   const [collection, setcCollection] = useState(null);
@@ -108,7 +109,7 @@ const Watched = () => {
                 </div>
               </CustomCard>
             ))
-          )}
+            )}
         </main>
       </div>
     </StyleContainer>
