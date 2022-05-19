@@ -70,7 +70,7 @@ const ModalCommentFilm = () => {
         >
           <Infos>
             <Typography variant="h6">{media.title || media.name}</Typography>
-            <Typography size={12}>
+            <Typography size={16}>
               <Rating
                 sx={{ verticalAlign: "middle" }}
                 readOnly
@@ -105,6 +105,7 @@ const ModalCommentFilm = () => {
 
             <form onSubmit={(evt) => handleSubmit(evt)}>
               <input
+                placeholder="Adicione seu comentário"
                 minLength="2"
                 maxLength="90"
                 value={comment}
