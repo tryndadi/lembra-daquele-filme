@@ -93,10 +93,10 @@ const ModalCommentFilm = () => {
                 {commentMedia.map((item) => {
                   return (
                     <li key={item.id}>
-                      <p>{item.message}</p>
-                      <p>
+                      <p className="username">
                         <small>{item.name}</small>
                       </p>
+                      <p>{item.message}</p>
                     </li>
                   );
                 })}
