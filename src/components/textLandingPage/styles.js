@@ -35,7 +35,8 @@ export const ContainerDiv = styled.div`
         @media screen and (min-width: 769px){
             display: flex;
             flex-direction: row;
-            justify-content: space-around;
+            justify-content: space-between;
+            /* justify-content: space-around; */
             &:nth-child(odd){
                 flex-direction: row-reverse;
             }

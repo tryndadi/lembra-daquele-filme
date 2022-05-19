@@ -8,6 +8,7 @@ import TextLandingPage from "../../components/textLandingPage";
 import FooterLandingPage from "../../components/footerLandingPage";
 
 import { Header, LogoContainer, TopPageContainer, Container } from "./styles";
+import SeeMoreArrow from "../../components/SeeMoreArrow";
 
 const LandingPage = () => {
   return (
@@ -27,6 +28,9 @@ const LandingPage = () => {
             <ButtonToPage route="/login">Entrar</ButtonToPage>
           </div>
         </div>
+
+        <SeeMoreArrow/>
+
         <img src={landingPage_1} alt="Ilustração" />
       </TopPageContainer>
       <TextLandingPage />
