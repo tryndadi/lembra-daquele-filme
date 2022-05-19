@@ -89,21 +89,21 @@ const ModalCommentFilm = () => {
               &nbsp;{media.vote_count} opiniões
             </Typography>
             <ContainerComentario>
-            <ul>
-                {commentsMovie.map((item) => {
-                return (
+              <ul>
+                {commentMedia.map((item) => {
+                  return (
                     <li key={item.id}>
-                        <p>{item.message}</p>
+                      <p>{item.message}</p>
                     </li>
-                );
+                  );
                 })}
-            </ul>
+              </ul>
             </ContainerComentario>
 
             <form onSubmit={(evt) => handleSubmit(evt)}>
               <input
                 minLength="2"
-                maxLength='90'
+                maxLength="90"
                 value={comment}
                 onChange={(evt) => setComment(evt.target.value)}
               />
@@ -115,6 +115,5 @@ const ModalCommentFilm = () => {
     </ReactModal>
   );
 };
-
 
 export default ModalCommentFilm;
