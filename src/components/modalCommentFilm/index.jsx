@@ -118,10 +118,14 @@ const ModalCommentFilm = () => {
   const { addComment, getComments, commentsMovie } = useCommentary();
   const [comment, setComment] = useState("");
   const [movieComment, setMovieComment] = useState("");
+  const [commentMedia, setCommentMedia] = useState([])
 
   useEffect(() => {
-    getComments(media.id);
-  }, [movieComment]);
+    (async () => { 
+      const res = await getComments(media.id)
+      setCommentMedia(res.data.splice(-10))
+    })();
+  }, [isOpen, movieComment]);
 
   const imagePathPrefix = "http://image.tmdb.org/t/p/w500/";
 
@@ -186,7 +190,7 @@ const ModalCommentFilm = () => {
             <form onSubmit={(evt) => handleSubmit(evt)}>
               <div>
                 <ul>
-                  {commentsMovie.map((item) => {
+                  {commentMedia.map((item) => {
                     return (
                       <li key={item.id}>
                         <p>{item.message}</p>
