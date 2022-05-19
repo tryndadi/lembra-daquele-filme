@@ -7,6 +7,7 @@ import RegisterPage from "../pages/register";
 import Watched from "../pages/Watched";
 import WishList from "../pages/wishlist";
 
+
 const Routes = () => {
   return (
     <Switch>
@@ -16,6 +17,7 @@ const Routes = () => {
       <Route component={Dashboard} path="/dashboard" />
       <Route component={Watched} path="/watched" />
       <Route component={WishList} path="/wishlist" />
+
     </Switch>
   );
 };
