@@ -115,15 +115,15 @@ import StarBorderIcon from "@material-ui/icons/StarBorder";
 
 const ModalCommentFilm = () => {
   const { isOpen, toggle, media } = useCommentModal();
-  const { addComment, getComments, commentsMovie } = useCommentary();
+  const { addComment, getComments } = useCommentary();
   const [comment, setComment] = useState("");
   const [movieComment, setMovieComment] = useState("");
-  const [commentMedia, setCommentMedia] = useState([])
+  const [commentMedia, setCommentMedia] = useState([]);
 
   useEffect(() => {
-    (async () => { 
-      const res = await getComments(media.id)
-      setCommentMedia(res.data.splice(-10))
+    (async () => {
+      const res = await getComments(media.movieId);
+      setCommentMedia(res.data.splice(-10));
     })();
   }, [isOpen, movieComment]);
 
@@ -132,9 +132,9 @@ const ModalCommentFilm = () => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     if (comment.trim().length > 0) {
-      addComment(media.id, comment);
+      addComment(media.movieId, comment);
       setComment("");
-      getComments(media.id);
+      getComments(media.movieId);
       setMovieComment(comment);
     }
   };

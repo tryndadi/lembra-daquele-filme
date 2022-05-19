@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { toast } from "react-toastify";
 
-import { imagePathPrefix } from "../../assets/js/utils";
 import { CustomCard } from "./style";
+import { imagePathPrefix } from "../../assets/js/utils";
 import { CollectionContext } from "../../Providers/CollectionProvider";
 
 import logo from "../../assets/img/logo.svg";
@@ -17,15 +17,11 @@ import { StyleContainer } from "./style";
 import { Redirect } from "react-router-dom";
 import { useUser } from "../../Providers/UserProvider";
 import { useTMDBMedias } from "../../Providers/MediasProvider";
-import ModalCommentFilm from "../../components/modalCommentFilm";
-import { useCommentary } from "../../Providers/CommentaryProvider";
 import { useCommentModal } from "../../Providers/CommentModalProvider";
 
 const Watched = () => {
   const { toggle } = useCommentModal();
   const [collection, setcCollection] = useState(null);
-  const { toogle } = useCommentary();
-
   const { isLoading } = useTMDBMedias();
   const { isLoggedIn } = useUser();
   const history = useHistory();
@@ -109,7 +105,7 @@ const Watched = () => {
                     Remover
                   </button>
                   <button>
-                    <FaEdit onClick={() => toogle(movie)} />
+                    <FaEdit onClick={() => toggle(movie)} />
                   </button>
                 </div>
               </CustomCard>
