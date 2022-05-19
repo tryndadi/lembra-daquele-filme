@@ -4,7 +4,7 @@ export const CustomCard = styled.ul`
   transition: all 200ms ease-in;
   transform: scale(0.95);
   width: 99%;
-  height: 30vh;
+  height: 20vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -58,17 +58,22 @@ export const CustomCard = styled.ul`
     transition: all 200ms ease-in;
     transform: scale(1);
   }
-
+  @media screen and (min-width: 570px) and (max-width: 770px) {
+    height: 37vh;
+    img {
+      height: 34vh;
+    }
+  }
   @media screen and (min-width: 770px) and (max-width: 950px) {
     width: 50%;
-    height: 40vh;
+    height: 45vh;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
     img {
       width: 50%;
-      height: 30vh;
+      height: 32vh;
     }
 
     .movie-tittle {
@@ -191,8 +196,9 @@ export const StyleContainer = styled.div`
         .cont-header {
           display: flex;
           flex-wrap: nowrap;
-          justify-content: space-around;
+          justify-content: space-between;
           align-items: center;
+          padding: 20px;
         }
       }
       main {
