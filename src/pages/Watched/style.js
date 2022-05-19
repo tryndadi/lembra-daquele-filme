@@ -205,7 +205,7 @@ export const StyleContainer = styled.div`
         width: 100%;
         height: 98%;
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
         flex-direction: column;
       }
       @media screen and (min-width: 770px) and (max-width: 950px) {
