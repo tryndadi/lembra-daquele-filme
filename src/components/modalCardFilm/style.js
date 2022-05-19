@@ -26,6 +26,7 @@ export const modalStyle = {
   },
   content: {
     overflow: "auto",
+    inset: "auto",
     position: "absolute",
     maxWidth: "840px",
     display: "flex",
