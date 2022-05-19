@@ -9,7 +9,7 @@ import { CollectionContext } from "../../Providers/CollectionProvider";
 import logo from "../../assets/img/logo.svg";
 import loader from "../../assets/img/loader.svg";
 
-import { Grid } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { FaAngleDoubleLeft, FaEdit } from "react-icons/fa";
 
@@ -65,6 +65,9 @@ const Watched = () => {
           </div>
         </header>
 
+        <Typography variant="h6" sx={{ color: "rgba(255,255,255,0.5)" }}>
+          Minha coleção
+        </Typography>
         <main>
           {collection && isLoading ? (
             <Grid
@@ -93,7 +96,7 @@ const Watched = () => {
                     alt={movie.title}
                     width="100%"
                   />
-                  <span>{movie.title}</span>
+                  <span>{movie.title || movie.name}</span>
                 </div>
                 <div>
                   <button

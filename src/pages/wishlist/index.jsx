@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { imagePathPrefix } from "../../assets/js/utils";
 import { FaAngleDoubleLeft } from "react-icons/fa";
 import { toast } from "react-toastify";
-import { Grid } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import { StyleContainer, CustomCard } from "../Watched/style";
 
 import logo from "../../assets/img/logo.svg";
@@ -60,6 +60,9 @@ const WishList = () => {
           </div>
         </header>
 
+        <Typography variant="h6" sx={{ color: "rgba(255,255,255,0.5)" }}>
+          Lista de desejos
+        </Typography>
         <main>
           {list && isLoading ? (
             <Grid
@@ -85,10 +88,10 @@ const WishList = () => {
                 <div className="movie-tittle">
                   <img
                     src={imagePathPrefix + movie.poster_path}
-                    alt={movie.title}
+                    alt={movie.title || movie.name}
                     width="100%"
                   />
-                  <span>{movie.title}</span>
+                  <span>{movie.title || movie.name}</span>
                 </div>
                 <div>
                   <button
