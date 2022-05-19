@@ -25,6 +25,7 @@ export const modalStyle = {
     backgroundColor: "rgba(0,0,0,0.7)",
   },
   content: {
+    maxHeigth: "100%",
     overflow: "auto",
     inset: "auto",
     position: "absolute",
