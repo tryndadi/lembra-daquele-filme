@@ -1,4 +1,5 @@
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useContext } from "react";
+import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import { getFromStorage } from "../../assets/js/utils";
 import { fakeApiAccess } from "../../services/api";
@@ -6,87 +7,123 @@ import { fakeApiAccess } from "../../services/api";
 export const WishListContext = createContext();
 
 const WishListProvider = ({ children }) => {
-  const getUserInfos = () => getFromStorage("userData") || {};
+
+  const history = useHistory()
+
+  const getUserInfos = () => getFromStorage("userData") || {}
+
   const doubleCheck = async (movie) => {
-    const { id, accessToken } = getUserInfos();
+
+    const { id, accessToken } = getUserInfos()
 
     fakeApiAccess.defaults.headers.common[
       "Authorization"
-    ] = `Bearer ${accessToken}`;
+    ] = `Bearer ${accessToken}`
 
     try {
       const res = await fakeApiAccess.get(
         `/wishWatch/?userId=${id}&movieId=${movie.id}`
-      );
+      )
 
       if (res.data.length !== 0) {
-        toast.error("Este filme já está na sua Lista de Desejos");
-        return true;
+        toast.error("Este filme já está na sua Lista de Desejos")
+        return true
       }
 
-      return false;
+      return false
     } catch (error) {
-      const unauthorizedStatus = [401, 403];
+      const unauthorizedStatus = [401, 403]
 
       if (unauthorizedStatus.includes(error.status)) {
-        return false;
+
+        return false
       }
     }
-  };
-
-  const [userData] = useState(JSON.parse(localStorage.getItem("userData")));
+  }
 
   const addMovieToWishList = async (movie) => {
-    const { id } = getUserInfos();
 
-    const wishListHasMovie = await doubleCheck(movie);
+    const { id, accessToken } = getUserInfos()
+
+    const wishListHasMovie = await doubleCheck(movie)
 
     if (!wishListHasMovie) {
       const customMovieData = {
         ...movie,
         movieId: movie.id,
-      };
+      }
 
-      delete customMovieData.id;
+      delete customMovieData.id
 
-      await fakeApiAccess
-        .post("/wishWatch", {
-          headers: { Authorization: `Bearer ${userData.accessToken}` },
-          body: { userId: id, ...customMovieData },
-        })
-        .then((_) => {
-          toast.success(" Filme adicionado à Lista de Desejos");
-        })
-        .catch((err) => console.log(err));
+      fakeApiAccess.defaults.headers.post[
+        "Authorization"
+      ] = `Bearer ${accessToken}`
+
+      try {
+        await fakeApiAccess
+          .post("/wishWatch", {
+            userId: id,
+            ...customMovieData,
+          })
+          .then((_) => {
+            toast.success(" Filme adicionado à sua Lista de Desejos");
+          })
+      } catch (error) {
+
+        const unauthorizedStatus = [401, 403]
+
+        if (unauthorizedStatus.includes(error.status)) {
+
+          history.push("/login");
+          toast.error("Sua sessão expirou. Efetue login para continuar")
+        }
+
+        toast.error("Não foi possível salvar este filme")
+      }
     }
   };
 
-  const removeMovieFromWishList = async (elementId) => {
-    await fakeApiAccess
-      .delete(`/wishWatch/${elementId}`, {
-        headers: { Authorization: `Bearer ${userData.accessToken}` },
-      })
-      .then((_) => {
-        toast.success(" Filme removido à Lista de Desejos");
-      });
-  };
+  const removeMovieFromWishList = ({ id }) => {
+
+    const { accessToken } = getUserInfos()
+
+    try {
+      fakeApiAccess
+        .delete(`/wishWatch/${id}`, {
+          headers: {
+            Authorization: `Bearer ${accessToken} `,
+          },
+        })
+        .then((_) => toast.success("Filme removido da sua Lista de Desejos"))
+    } catch (error) {
+
+      const unauthorizedStatus = [401, 403]
+
+      if (unauthorizedStatus.includes(error.status)) {
+        history.push("/login");
+        toast.error("Sua sessão expirou. Efetue login para continuar")
+      }
+      toast.error("Não foi possível remover este filme da sua Lista de Desejos")
+    }
+  }
 
   const getWishes = async () => {
-    const { userId, accessToken } = getUserInfos();
+    const { id, accessToken } = getFromStorage("userData") || {}
 
-    // if (!userId || !accessToken){
-    //   history.push("/login")
-    //   return
-    // }
+    if (!id || !accessToken) {
+
+      history.push("/login")
+      return
+    }
 
     fakeApiAccess.defaults.headers.common[
       "Authorization"
-    ] = `Bearer ${accessToken}`;
+    ] = `Bearer ${accessToken}`
 
     return await fakeApiAccess
-      .get(`wishWatch/?userId=${userId}`)
-      .then(({ data }) => data);
-  };
+      .get(`/wishWatch/?userId=${id}`)
+      .then(({ data }) => data)
+  }
 
   return (
     <WishListContext.Provider
@@ -94,8 +131,8 @@ const WishListProvider = ({ children }) => {
     >
       {children}
     </WishListContext.Provider>
-  );
-};
+  )
+}
 
-export default WishListProvider;
-export const useWishList = () => useContext(WishListContext);
+export default WishListProvider
+export const useWishList = () => useContext(WishListContext)

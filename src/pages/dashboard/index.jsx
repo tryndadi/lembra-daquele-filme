@@ -50,15 +50,10 @@ const Dashboard = () => {
 
                 <span>Menu</span>
               </div>
-
-              <img
-                onClick={() => getMedias(tmdb.getMedia)}
-                src={logo}
-                alt="logo"
-              />
+              <img onClick={() => getMedias(tmdb.getMedia)} src={logo} alt="logo" title="Home"/>
             </div>
 
-            <SearchBar className="cont-search" />
+            <SearchBar className="cont-search"/>
           </div>
         </header>
 

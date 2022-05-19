@@ -6,11 +6,12 @@ import tmdb, { getByGenre, getSeries, getMovies } from "../../services/tmdb";
 import { getFromStorage } from "../../assets/js/utils";
 import { useTMDBMedias } from "../../Providers/MediasProvider";
 
+import { useHistory } from "react-router-dom";
+
 import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import Collapse from "@mui/material/Collapse";
-
 import { ListItem, Drawer, Divider } from "@mui/material";
 import { ContainerSidebar, section, category, divider, generalStyle } from "./style";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
@@ -27,6 +28,8 @@ const SidebarMUI = ({ openSidebar, setOpenSidebar, handleLogout }) => {
 
   const { name, email } = getFromStorage("userData");
   const { getMedias } = useTMDBMedias();
+
+  const history = useHistory()
 
   useEffect(() => {
     tmdbAccess
@@ -109,11 +112,11 @@ const SidebarMUI = ({ openSidebar, setOpenSidebar, handleLogout }) => {
           <ListItem sx={{ ...section }}>Conta</ListItem>
 
           <ListItemButton>
-            <ListItemText primary="Lista de Desejos" />
+            <ListItemText primary="Lista de Desejos" onClick={() => history.push('/wishlist')}/>
           </ListItemButton>
 
           <ListItemButton>
-            <ListItemText primary="Filmes Assistidos" />
+            <ListItemText primary="Filmes Assistidos" onClick={() => history.push('/watched')}/>
           </ListItemButton>
 
           <Divider sx={{...divider}}/>
