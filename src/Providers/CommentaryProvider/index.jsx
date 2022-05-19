@@ -9,10 +9,11 @@ const CommentaryProvider = ({children}) => {
     const userData = JSON.parse(localStorage.getItem("userData"))
     const [commentsMovie, setCommentsMovie] = useState([])
         
-    const getComments = (idMovie) => {
-        fakeApiAccess.get(`api/comments/movie/${idMovie}`)
-        .then((res) => setCommentsMovie(res.data.splice(-10)))        
-        .catch((err) => console.log(err))
+    const getComments = async (idMovie) => {
+        return (await fakeApiAccess.get(`api/comments/movie/${idMovie}`))
+        //.then((res) => setCommentsMovie(res.data.splice(-10)))        
+        //.catch((err) => console.log(err))
+
     }
 
     const addComment = (idMovie, comment) => {
