@@ -31,7 +31,7 @@ const RegisterPage = () => {
       .matches(/(?=.*?[a-z])/, "Conter ao menos uma letra minúscula")
       .matches(/(?=.*?[A-Z])/, "Conter ao menos uma letra maiúscula")
       .matches(/(?=.*?[0-9])/, "Conter ao menos um número")
-      .matches(/(?=.*?[#?!@$%^&*-])/, "Conter ao menos um símbolo"),
+      .matches(/(?=.*?[#?!@$%^&*-.:;,])/, "Conter ao menos um símbolo"),
     confirmPassword: yup
       .string()
       .required("Campo obrigatório.")
