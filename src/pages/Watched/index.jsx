@@ -18,6 +18,8 @@ import { Redirect } from "react-router-dom";
 import { useUser } from "../../Providers/UserProvider";
 import { useTMDBMedias } from "../../Providers/MediasProvider";
 import { useCommentModal } from "../../Providers/CommentModalProvider";
+import ModalCommentFilm from "../../components/modalCommentFilm";
+
 
 const Watched = () => {
   const {toggle} = useCommentModal()
@@ -110,7 +112,7 @@ const Watched = () => {
                 </div>
               </CustomCard>
             ))
-          )}
+            )}
         </main>
       </div>
     </StyleContainer>
