@@ -62,7 +62,7 @@ const Watched = () => {
             </div>
 
             <Link to="/">
-              <img src={logo} alt="logo" />
+              <img src={logo} alt="logo" title="Dashboard"/>
             </Link>
           </div>
         </header>

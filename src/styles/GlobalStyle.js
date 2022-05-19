@@ -88,6 +88,20 @@ const GlobalStyle = createGlobalStyle`
 
   .MuiPaper-root{
     background: linear-gradient(360deg, rgba(48,25,51,1) 0%, rgba(132,19,56,1) 45%, rgba(171,16,58,1) 89%);
+
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+
+    ::-webkit-scrollbar-track, ::-webkit-scrollbar-corner {
+      background: var(--bg-red-middle);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--bg-red-ligth);
+      border-radius: 3px;
+    }
   }
 `;
 

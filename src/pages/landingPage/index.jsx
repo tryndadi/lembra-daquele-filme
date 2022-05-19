@@ -19,7 +19,7 @@ const LandingPage = () => {
         <div>
           <LogoContainer>
             <img className="img_logo" src={logo} alt="" />
-            <h2>Sua biblioteca de filmes ...</h2>
+            <h2>Sua biblioteca de filmes.</h2>
           </LogoContainer>
 
           <ButtonToPage route="/register">Faça seu cadastro</ButtonToPage>
