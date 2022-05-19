@@ -4,7 +4,6 @@ import logo from "../../assets/img/logo.svg";
 import loader from "../../assets/img/loader2.svg";
 
 import { Grid } from "@mui/material";
-import { Link } from "react-router-dom";
 import { HiMenu } from "react-icons/hi";
 import { StyleContainer } from "./style";
 import { Redirect } from "react-router-dom";
@@ -16,8 +15,6 @@ import MoviesSections from "../../components/moviesSlider";
 import { useUser } from "../../Providers/UserProvider";
 import { useTMDBMedias } from "../../Providers/MediasProvider";
 
-import { useWishList } from "../../Providers/WishListProvider";
-import { useCollection } from "../../Providers/CollectionProvider";
 import { useHistory } from "react-router-dom";
 import tmdb from "../../services/tmdb";
 
@@ -53,11 +50,10 @@ const Dashboard = () => {
 
                 <span>Menu</span>
               </div>
-
-              <img onClick={() => getMedias(tmdb.getMedia)} src={logo} alt="logo" />
+              <img onClick={() => getMedias(tmdb.getMedia)} src={logo} alt="logo" title="Home"/>
             </div>
 
-            <SearchBar className="cont-search" />
+            <SearchBar className="cont-search"/>
           </div>
         </header>
 

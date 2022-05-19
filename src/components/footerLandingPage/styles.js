@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const Container = styled.footer`
   box-sizing: border-box;
-  margin-top: 40px;
+  margin-top: 150px;
+  /* margin-top: 40px; */
   display: flex;
   flex-direction: column;
   width: 100%;

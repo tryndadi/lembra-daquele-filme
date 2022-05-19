@@ -1,44 +1,39 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import { toast } from "react-toastify";
 
-import { CustomCard } from "./style";
 import { imagePathPrefix } from "../../assets/js/utils";
-import { CollectionContext } from "../../Providers/CollectionProvider";
+import { FaAngleDoubleLeft } from "react-icons/fa";
+import { toast } from "react-toastify";
+import { Grid, Typography } from "@mui/material";
+import { StyleContainer, CustomCard } from "../Watched/style";
 
 import logo from "../../assets/img/logo.svg";
 import loader from "../../assets/img/loader.svg";
 
-import { Grid, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
-import { FaAngleDoubleLeft, FaEdit } from "react-icons/fa";
-
-import { StyleContainer } from "./style";
 import { Redirect } from "react-router-dom";
-import { useUser } from "../../Providers/UserProvider";
-import { useTMDBMedias } from "../../Providers/MediasProvider";
-import { useCommentModal } from "../../Providers/CommentModalProvider";
+import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
-const Watched = () => {
-  const { toggle } = useCommentModal();
-  const [collection, setcCollection] = useState(null);
-  const { isLoading } = useTMDBMedias();
+import { WishListContext } from "../../Providers/WishListProvider";
+import { useTMDBMedias } from "../../Providers/MediasProvider";
+import { useUser } from "../../Providers/UserProvider";
+
+const WishList = () => {
+  const [list, setList] = useState(null);
+  const { getWishes, removeMovieFromWishList } = useContext(WishListContext);
   const { isLoggedIn } = useUser();
+  const { isLoading } = useTMDBMedias();
+
   const history = useHistory();
 
-  const { getCollection, removeMovieFromCollection } = useContext(
-    CollectionContext
-  );
-
-  const collectionUpdate = (movie) => {
-    setcCollection((currentCollection) =>
-      currentCollection.filter(({ movieId }) => movieId !== movie.movieId)
+  const listUpdate = (movie) => {
+    setList((currentList) =>
+      currentList.filter(({ movieId }) => movieId !== movie.movieId)
     );
   };
 
   useEffect(() => {
-    getCollection()
-      .then((movies) => setcCollection(movies))
+    getWishes()
+      .then((movies) => setList(movies))
       .catch(({ response }) => {
         const errorStatus = [401];
 
@@ -60,16 +55,16 @@ const Watched = () => {
             </div>
 
             <Link to="/">
-              <img src={logo} alt="logo" title="Dashboard"/>
+              <img src={logo} alt="logo" />
             </Link>
           </div>
         </header>
 
         <Typography variant="h6" sx={{ color: "rgba(255,255,255,0.5)" }}>
-          Minha coleção
+          Lista de desejos
         </Typography>
         <main>
-          {collection && isLoading ? (
+          {list && isLoading ? (
             <Grid
               spacing={1}
               container
@@ -87,13 +82,13 @@ const Watched = () => {
               </Grid>
             </Grid>
           ) : (
-            collection &&
-            collection.map((movie) => (
+            list &&
+            list.map((movie) => (
               <CustomCard key={movie.movieId}>
                 <div className="movie-tittle">
                   <img
                     src={imagePathPrefix + movie.poster_path}
-                    alt={movie.title}
+                    alt={movie.title || movie.name}
                     width="100%"
                   />
                   <span>{movie.title || movie.name}</span>
@@ -101,14 +96,11 @@ const Watched = () => {
                 <div>
                   <button
                     onClick={() => {
-                      removeMovieFromCollection(movie);
-                      collectionUpdate(movie);
+                      removeMovieFromWishList(movie);
+                      listUpdate(movie);
                     }}
                   >
                     Remover
-                  </button>
-                  <button>
-                    <FaEdit onClick={() => toggle(movie)} />
                   </button>
                 </div>
               </CustomCard>
@@ -121,4 +113,5 @@ const Watched = () => {
     <Redirect to="/login" />
   );
 };
-export default Watched;
+
+export default WishList;

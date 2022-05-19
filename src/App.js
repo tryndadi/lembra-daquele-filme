@@ -2,8 +2,6 @@ import React from "react";
 import Routes from "./Routes";
 
 import { ToastContainer } from "react-toastify";
-import { useInfosModal } from "./Providers/InfosModalProvider";
-import { useCommentModal } from "./Providers/CommentModalProvider";
 import ModalCardFilm from "./components/modalCardFilm";
 import "react-toastify/dist/ReactToastify.css";
 import ModalCommentFilm from "./components/modalCommentFilm";

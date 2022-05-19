@@ -12,9 +12,12 @@ const CommentsModalProvider = ({ children }) => {
     setIsOpen((currentState) => !currentState);
   };
 
-  <CommentsModalContext.Provider value={{ media, isOpen, toogle }}>
-    {children}
-  </CommentsModalContext.Provider>;
+  return (
+    <CommentsModalContext.Provider value={{ media, isOpen, setIsOpen, toogle }}>
+      {children}
+    </CommentsModalContext.Provider>
+  );
 };
 
 export default CommentsModalProvider;
+export const useCommentsModal = () => useContext(CommentsModalContext);

@@ -10,8 +10,11 @@ import { ContainerGeral } from "./style";
 import { fakeApiAccess } from "../../services/api";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const RegisterPage = () => {
+  const history = useHistory();
+
   const sechema = yup.object().shape({
     name: yup
       .string()
@@ -28,7 +31,7 @@ const RegisterPage = () => {
       .matches(/(?=.*?[a-z])/, "Conter ao menos uma letra minúscula")
       .matches(/(?=.*?[A-Z])/, "Conter ao menos uma letra maiúscula")
       .matches(/(?=.*?[0-9])/, "Conter ao menos um número")
-      .matches(/(?=.*?[#?!@$%^&*-])/, "Conter ao menos um símbolo"),
+      .matches(/(?=.*?[#?!@$%^&*-.:;,])/, "Conter ao menos um símbolo"),
     confirmPassword: yup
       .string()
       .required("Campo obrigatório.")
@@ -52,8 +55,14 @@ const RegisterPage = () => {
 
     fakeApiAccess
       .post("/api/register", JSON.stringify(infoUserRegister))
-      .then((_) => toast.success("Conta cadastrada com sucesso!"))
+      .then((_) => handleSuccessRegister())
       .catch((_) => toast.error("Email já cadastrado."));
+  };
+
+  const handleSuccessRegister = () => {
+    toast.success("Conta cadastrada com sucesso!");
+
+    history.push("/login");
   };
 
   return (

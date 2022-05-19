@@ -99,7 +99,7 @@ export const TopPageContainer = styled.div`
       justify-content: center;
     }
     @media screen and (min-width: 769px) {
-      width: 60%;
+      /* width: 60%; */
       > .div_button-login {
         display: none;
       }
@@ -110,10 +110,18 @@ export const TopPageContainer = styled.div`
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
-    max-width: 1000px;
+    max-width: 98vw;
+    /* max-width: 1000px; */
     > img {
       width: 50%;
     }
     margin: 80px 0px;
+  }
+
+  @media screen and (max-width: 768px){
+    
+    .animate__fadeOutDown{
+      display: none;
+    }
   }
 `;

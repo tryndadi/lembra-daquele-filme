@@ -14,17 +14,19 @@ export const getSeries = async (name) => {
   return async () => ({
     keyWord: "popularSeries",
     title: name,
-    items: await tmdbAccess.get(`/tv/popular?api_key=9274a24698b0d50f3d975771c35fd96e&language=pt-BR`),
-  })
-}
+    items: await tmdbAccess.get(
+      `/tv/popular?api_key=9274a24698b0d50f3d975771c35fd96e&language=pt-BR`
+    ),
+  });
+};
 
 export const getMovies = async () => {
   return async () => ({
     keyWord: "popularMovies",
     title: "Filmes mais populares",
     items: await tmdbAccess.get("/movie/popular/?language=pt-BR"),
-  })
-}
+  });
+};
 
 export default {
   getMedia: async () => {
@@ -46,13 +48,6 @@ export default {
         items: await tmdbAccess.get("/trending/all/week?language=pt-BR"),
       },
 
-      // {
-      //   keyWord: "originals",
-      //   title: "Originais da Netflix",
-      //   items: await tmdbAccess.get(
-      //     "/discover/tv?with_network=213&language=pt-BR"
-      //   ),
-      // },
       // {
       //   keyWord: "action",
       //   title: "Ação",

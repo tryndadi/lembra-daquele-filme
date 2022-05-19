@@ -15,8 +15,9 @@ export const BtnClose = styled.button`
 
 export const modalStyle = {
   overlay: {
+    zIndex: "10",
     width: "100%",
-    minHeight: "100vh",
+    minHeight: "100%",
     padding: 0,
     display: "flex",
     justifyContent: "center",
@@ -25,6 +26,7 @@ export const modalStyle = {
   },
   content: {
     overflow: "auto",
+    inset: "auto",
     position: "absolute",
     maxWidth: "840px",
     display: "flex",
