@@ -1,6 +1,9 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
+  #root{
+    height: 100%;
+  }
   :root {
     --bg-red-low: rgba(48, 25, 51, 1);
     --bg-red-ligth: rgba(252, 9, 75, 1);
