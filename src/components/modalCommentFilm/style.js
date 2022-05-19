@@ -5,6 +5,7 @@ export const BtnAdd = styled.button`
   border: 2px solid #ffffff;
   border-radius: 8px;
   color: #ffffff;
+  margin-left: 15px;
   :hover {
     cursor: pointer;
   }
@@ -57,3 +58,44 @@ export const Infos = styled.div`
   flex-direction: column;
   gap: 10px;
 `;
+
+
+export const ContainerComentario = styled.div`
+
+
+  ul{
+    height: 100%;
+    max-height: 300px;
+
+    overflow-y: auto;
+
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+
+    ::-webkit-scrollbar-track, ::-webkit-scrollbar-corner {
+      background: var(--bg-red-middle);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--bg-red-ligth);
+      border-radius: 3px;
+    }
+
+    li{
+      max-height: 50px;
+
+      margin-bottom: 5px;
+      padding: 5px 8px;
+
+      background-color: var(--bg-red-low);
+      color: #ffffff;
+
+      border-radius: 5px;
+
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+  }
+`
