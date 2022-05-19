@@ -26,7 +26,7 @@ const ModalCardFilm = () => {
       <BtnClose onClick={toogle}>
         <FaTimes />
       </BtnClose>
-      <Grid container spacing={1} alignItems={"center"}>
+      <Grid container spacing={1} alignItems={"center"} maxHeight={"100vh"}>
         <Grid item xs={12} sm={6} display="flex" justifyContent="center">
           <Image src={imagePathPrefix + media.poster_path} />
         </Grid>
