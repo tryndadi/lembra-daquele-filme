@@ -4,7 +4,7 @@ export const CustomCard = styled.ul`
   transition: all 200ms ease-in;
   transform: scale(0.95);
   width: 99%;
-  height: 30vh;
+  height: 20vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -47,7 +47,6 @@ export const CustomCard = styled.ul`
       color: ${(props) => props.theme.colors.grey.light};
       font-size: 0.9rem;
       border-radius: 5px;
-
       &:hover {
         border-color: red;
       }
@@ -59,17 +58,22 @@ export const CustomCard = styled.ul`
     transition: all 200ms ease-in;
     transform: scale(1);
   }
-
+  @media screen and (min-width: 570px) and (max-width: 770px) {
+    height: 37vh;
+    img {
+      height: 34vh;
+    }
+  }
   @media screen and (min-width: 770px) and (max-width: 950px) {
     width: 50%;
-    height: 40vh;
+    height: 45vh;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
     img {
       width: 50%;
-      height: 30vh;
+      height: 32vh;
     }
 
     .movie-tittle {
@@ -185,33 +189,36 @@ export const StyleContainer = styled.div`
       display: flex;
       flex-wrap: nowrap;
       width: 100%;
+    }
 
-  @media screen and (min-width: 570px) {
-    header {
-      .cont-header {
+    @media screen and (min-width: 570px) {
+      header {
+        .cont-header {
+          display: flex;
+          flex-wrap: nowrap;
+          justify-content: space-between;
+          align-items: center;
+          padding: 20px;
+        }
+      }
+      main {
+        width: 100%;
+        height: 98%;
         display: flex;
-        flex-wrap: nowrap;
-        justify-content: space-around;
-        align-items: center;
+        justify-content: center;
+        flex-direction: column;
       }
-    }
-    main {
-      width: 100%;
-      height: 98%;
-      display: flex;
-      justify-content: space-around;
-      flex-direction: column;
-    }
-    @media screen and (min-width: 770px) and (max-width: 950px) {
-      main {
-        flex-direction: row;
-        flex-wrap: wrap;
+      @media screen and (min-width: 770px) and (max-width: 950px) {
+        main {
+          flex-direction: row;
+          flex-wrap: wrap;
+        }
       }
-    }
-    @media screen and (min-width: 950px) {
-      main {
-        flex-direction: row;
-        flex-wrap: wrap;
+      @media screen and (min-width: 950px) {
+        main {
+          flex-direction: row;
+          flex-wrap: wrap;
+        }
       }
     }
   }

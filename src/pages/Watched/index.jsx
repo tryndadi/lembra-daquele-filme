@@ -2,14 +2,14 @@ import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { toast } from "react-toastify";
 
-import { imagePathPrefix } from "../../assets/js/utils";
 import { CustomCard } from "./style";
+import { imagePathPrefix } from "../../assets/js/utils";
 import { CollectionContext } from "../../Providers/CollectionProvider";
 
 import logo from "../../assets/img/logo.svg";
 import loader from "../../assets/img/loader.svg";
 
-import { Grid } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { FaAngleDoubleLeft, FaEdit } from "react-icons/fa";
 
@@ -18,11 +18,9 @@ import { Redirect } from "react-router-dom";
 import { useUser } from "../../Providers/UserProvider";
 import { useTMDBMedias } from "../../Providers/MediasProvider";
 import { useCommentModal } from "../../Providers/CommentModalProvider";
-import ModalCommentFilm from "../../components/modalCommentFilm";
-
 
 const Watched = () => {
-  const {toggle} = useCommentModal()
+  const { toggle } = useCommentModal();
   const [collection, setcCollection] = useState(null);
   const { isLoading } = useTMDBMedias();
   const { isLoggedIn } = useUser();
@@ -67,6 +65,9 @@ const Watched = () => {
           </div>
         </header>
 
+        <Typography variant="h6" sx={{ color: "rgba(255,255,255,0.5)" }}>
+          Minha coleção
+        </Typography>
         <main>
           {collection && isLoading ? (
             <Grid
@@ -95,7 +96,7 @@ const Watched = () => {
                     alt={movie.title}
                     width="100%"
                   />
-                  <span>{movie.title}</span>
+                  <span>{movie.title || movie.name}</span>
                 </div>
                 <div>
                   <button
@@ -107,12 +108,12 @@ const Watched = () => {
                     Remover
                   </button>
                   <button>
-                    <FaEdit onClick={() => toggle(movie)}/>
+                    <FaEdit onClick={() => toggle(movie)} />
                   </button>
                 </div>
               </CustomCard>
             ))
-            )}
+          )}
         </main>
       </div>
     </StyleContainer>
