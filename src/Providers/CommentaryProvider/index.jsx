@@ -14,7 +14,8 @@ const CommentaryProvider = ({ children }) => {
   };
 
   const addComment = (idMovie, comment) => {
-    console.log(idMovie);
+    const { name } = userData;
+
     fakeApiAccess.defaults.headers.post[
       "Authorization"
     ] = `Bearer ${userData.accessToken}`;
@@ -23,6 +24,7 @@ const CommentaryProvider = ({ children }) => {
         userId: userData.id,
         message: comment,
         movieId: idMovie,
+        name,
       })
       .then((res) => toast.success("Comentário enviado com sucesso!"))
       .catch((err) =>

@@ -94,6 +94,9 @@ const ModalCommentFilm = () => {
                   return (
                     <li key={item.id}>
                       <p>{item.message}</p>
+                      <p>
+                        <small>{item.name}</small>
+                      </p>
                     </li>
                   );
                 })}
