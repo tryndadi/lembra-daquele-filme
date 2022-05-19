@@ -92,6 +92,11 @@ export const Infos = styled.div`
     }
   }
 
+  .username {
+    color: #ff9b54;
+    text-align: right;
+  }
+
   input {
     border: none;
     border-radius: 5px;
