@@ -34,4 +34,7 @@
 <li> Visualizar nome de usuários que comentaram a mídia </li>
 <li> Visualizar trailer da mídia.</li>
 
-<h5 align="right"> Made with 💙 </h5>
+<div align="center">
+  <h5> Made with 💙 by <a href="https://github.com/beatrizmunhozl">me</a> (as Product Owner) and:</h5>
+<h6> <a href="https://github.com/imrochamatheus">Matheus Rocha</a> (as Tech Lead), <a href="https://github.com/stefanyfellix">Stefany Felix</a> ( as Scrum Master), <a href="https://github.com/arthur-r-goncalves">Arthur Gonçalves</a> (as QA), <a href="https://github.com/tryndadi">Vinícius Trindade</a> (as QA), <a href="https://github.com/gisela-mariano">Gisela Mariano</a> (as QA)</h6>
+</div>
